@@ -57,6 +57,7 @@ def upgrade():
     sa.Column('comment', sa.String(250)),
     sa.Column('created_on', sa.DateTime()),
     sa.Column('updated_on', sa.DateTime()),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
 
