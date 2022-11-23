@@ -8,12 +8,13 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
-    post_id = db.Column(db.Integer)
+    post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("posts.id")))
     comment = db.Column(db.String(250))
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     user = db.relationship("User", back_populates="comments")
+    post = db.relationship("Post", back_populates="comments")
 
     def to_dict(self):
         return {
