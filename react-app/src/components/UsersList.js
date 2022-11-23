@@ -6,25 +6,25 @@ function UsersList() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('/api/users/');
+      const response = await fetch('/api/posts/');
       const responseData = await response.json();
-      setUsers(responseData.users);
+      setUsers(responseData);
     }
     fetchData();
   }, []);
 
-  const userComponents = users.map((user) => {
-    return (
-      <li key={user.id}>
-        <NavLink to={`/users/${user.id}`}>{user.first_name} {user.last_name}</NavLink>
-      </li>
-    );
-  });
+  // const userComponents = users.map((user) => {
+  //   return (
+  //     <li key={user.id}>
+  //       <NavLink to={`/users/${user.id}`}>{user.first_name} {user.last_name}</NavLink>
+  //     </li>
+  //   );
+  // });
 
   return (
     <>
-      <h1>User List: </h1>
-      <ul>{userComponents}</ul>
+      <h1>test</h1>
+      <ul>{JSON.stringify(users)}</ul>
     </>
   );
 }
