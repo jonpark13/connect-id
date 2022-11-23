@@ -17,12 +17,16 @@ class Post(db.Model):
     comments = db.relationship("Comment", back_populates="post")
     likes = db.relationship("Like", back_populates="post")
 
-    def to_dict(self):
-        return {
+    def to_dict(self, comments=False, likes=False):
+        post = {
             'id': self.id,
             'user_id': self.user_id,
             'post_body': self.post_body,
-            'comments': self.comments,
-            'likes': self.likes,
             'created_on': self.created_on
         }
+        if(comments):
+            post['comments'] = [comment.to_dict() for comment in self.comments]
+        if(likes):
+            post['likes']= [like.to_dict() for like in self.likes]
+
+        return post
