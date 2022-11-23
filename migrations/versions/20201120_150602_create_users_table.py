@@ -42,11 +42,12 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('images', sa.Text(), nullable=False),
-    sa.Column('post', sa.Text()),
+    sa.Column('post_body', sa.Text()),
     sa.Column('comments', sa.String()),
     sa.Column('likes', sa.String()),
     sa.Column('created_on', sa.DateTime()),
     sa.Column('updated_on', sa.DateTime()),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
 
@@ -68,6 +69,7 @@ def upgrade():
     sa.Column('type', sa.String()),
     sa.Column('created_on', sa.DateTime()),
     sa.Column('updated_on', sa.DateTime()),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
 

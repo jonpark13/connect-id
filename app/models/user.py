@@ -22,6 +22,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     comments = db.relationship("Comment", back_populates="user")
+    posts = db.relationship("Post", back_populates="user")
+    likes = db.relationship("Like", back_populates="user")
 
     @property
     def password(self):

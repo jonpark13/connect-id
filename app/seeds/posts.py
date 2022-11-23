@@ -5,21 +5,21 @@ from app.models import db, User, Post, environment, SCHEMA
 def seed_posts():
     post1 = Post(
         user_id = 1,
-        post = "testing post 1",
+        post_body = "testing post 1",
         images = "https://i.imgur.com/SGZVyKe.jpeg",
         # comments = ,
         # likes = ,
     )
     post2 = Post(
         user_id = 2,
-        post = "testing post 2",
+        post_body = "testing post 2",
         images = "",
         # comments = ,
         # likes = ,
     )
     post3 = Post(
         user_id = 3,
-        post = "testing post 3",
+        post_body = "testing post 3",
         images = "https://i.imgur.com/rkVF20T.png",
         # comments = ,
         # likes = ,
