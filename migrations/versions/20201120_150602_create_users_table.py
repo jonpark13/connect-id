@@ -43,8 +43,6 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('images', sa.Text(), nullable=False),
     sa.Column('post_body', sa.Text()),
-    sa.Column('comments', sa.String()),
-    sa.Column('likes', sa.String()),
     sa.Column('created_on', sa.DateTime()),
     sa.Column('updated_on', sa.DateTime()),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
