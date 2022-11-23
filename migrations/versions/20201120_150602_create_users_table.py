@@ -38,6 +38,28 @@ def upgrade():
     sa.UniqueConstraint('email')
     )
 
+    op.create_table('comments',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.String(length=40), nullable=False),
+    sa.Column('post_id', sa.Integer(), nullable=False),
+    sa.Column('comment', sa.String(250)),
+    sa.Column('created_on', sa.DateTime()),
+    sa.Column('updated_on', sa.DateTime()),
+    sa.PrimaryKeyConstraint('id')
+    )
+
+    op.create_table('posts',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('images', sa.Text(), nullable=False),
+    sa.Column('post', sa.Text()),
+    sa.Column('comments', sa.String()),
+    sa.Column('likes', sa.String()),
+    sa.Column('created_on', sa.DateTime()),
+    sa.Column('updated_on', sa.DateTime()),
+    sa.PrimaryKeyConstraint('id')
+    )
+
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###qqqqqqqqq
