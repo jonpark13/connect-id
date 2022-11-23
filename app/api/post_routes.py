@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Post
 from app.forms import PostForm
+from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
 
@@ -43,6 +44,7 @@ def edit_post(id):
     post = Post.query.get(id)
     if post:
         if post.user_id == current_user.id:
+            post.updated_on = datetime.utcnow()
             if request.json['post_body']:
                 post.post_body = request.json['post_body']
             if request.json['images']:
@@ -73,3 +75,12 @@ def delete_post(id):
             return {"message": "Current user does not own this post"}
     else:
         return {"message": f"The Post at id:{id} does not exist "}
+
+@post_routes.route('/current')
+def current_users_posts():
+    """
+    Query for all posts by logged in user and returns them in a list of user dictionaries, including their respective
+    comments and likes
+    """
+    user_posts = Post.query.filter(Post.user_id == current_user.id).all()
+    return {'posts': [post.to_dict(comments=True,likes=True) for post in user_posts]}
