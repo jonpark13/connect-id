@@ -13,8 +13,6 @@ class Comment(db.Model):
     created_on = db.Column(db.DateTime, server_default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
-    user = db.relationship("User", back_populates="comments")
-
     def to_dict(self):
         return {
             'id': self.id,
