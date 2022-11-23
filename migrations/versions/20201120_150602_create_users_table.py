@@ -59,6 +59,7 @@ def upgrade():
     sa.Column('created_on', sa.DateTime()),
     sa.Column('updated_on', sa.DateTime()),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
 
@@ -70,6 +71,7 @@ def upgrade():
     sa.Column('created_on', sa.DateTime()),
     sa.Column('updated_on', sa.DateTime()),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
 
