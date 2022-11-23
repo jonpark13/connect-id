@@ -22,7 +22,8 @@ class Post(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'post_body': self.post_body,
-            'created_on': self.created_on
+            'created_on': self.created_on,
+            'images': self.images
         }
         if(comments):
             post['comments'] = [comment.to_dict() for comment in self.comments]
