@@ -52,7 +52,7 @@ def upgrade():
 
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.String(length=40), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('post_id', sa.Integer(), nullable=False),
     sa.Column('comment', sa.String(250)),
     sa.Column('created_on', sa.DateTime()),
