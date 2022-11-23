@@ -63,7 +63,7 @@ def upgrade():
 
     op.create_table('likes',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.String(length=40), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('post_id', sa.Integer(), nullable=False),
     sa.Column('type', sa.String()),
     sa.Column('created_on', sa.DateTime()),
