@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, User, Post, Comment
-from app.forms import PostForm, CommentForm
+from app.models import db, User, Post, Comment, Like
+from app.forms import PostForm, CommentForm, LikeForm
 from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
@@ -45,7 +45,6 @@ def add_comment(id):
     if post:
         form = CommentForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        print(form.data)
         if form.validate_on_submit():
             new_comment = Comment(
                 comment = form.data["comment"],
@@ -55,6 +54,26 @@ def add_comment(id):
             db.session.add(new_comment)
             db.session.commit()
             return {'comment': new_comment.to_dict()}
+
+@post_routes.route('/<int:id>/likes', methods=['POST'])
+@login_required
+def add_like(id):
+    """
+    Add a like to existing post by logged in User, returning newest post entry as a dictionary
+    """
+    post = Post.query.get(id)
+    if post:
+        form = LikeForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            new_like = Like(
+                type = form.data["type"],
+                user_id = current_user.id,
+                post_id = id
+            )
+            db.session.add(new_like)
+            db.session.commit()
+            return {'like': new_like.to_dict()}
 
 @post_routes.route('/<int:id>', methods=['PUT'])
 @login_required
