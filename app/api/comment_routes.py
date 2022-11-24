@@ -34,46 +34,44 @@ def comments():
 #         db.session.commit()
 #         return {'post': new_post.to_dict()}
 
-# @post_routes.route('/<int:id>', methods=['PUT'])
-# @login_required
-# def edit_post(id):
-#     """
-#     Query for existing post, then edit by logged in User, returning newest post entry as a dictionary
-#     """
-#     post = Post.query.get(id)
-#     if post:
-#         if post.user_id == current_user.id:
-#             post.updated_on = datetime.utcnow()
-#             if request.json['post_body']:
-#                 post.post_body = request.json['post_body']
-#             if request.json['images']:
-#                 post.images = request.json['images']
+@comment_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_comment(id):
+    """
+    Query for existing comment, then edit by logged in User, returning newest post entry as a dictionary
+    """
+    edit_comment = Comment.query.get(id)
+    if edit_comment:
+        if edit_comment.user_id == current_user.id:
+            edit_comment.updated_on = datetime.utcnow()
+            if request.json['comment']:
+                edit_comment.comment = request.json['comment']
 
-#             db.session.commit()
+            db.session.commit()
 
-#             return {'post': post.to_dict()}
-#         else:
-#             return {"message": "Current user does not own this post"}
-#     else:
-#         return {"message": f"The Post at id:{id} does not exist "}
+            return {'comment': edit_comment.to_dict()}
+        else:
+            return {"message": "Current user does not own this comment"}
+    else:
+        return {"message": f"The Comment at id:{id} does not exist "}
 
-# @post_routes.route('/<int:id>', methods=['DELETE'])
-# @login_required
-# def delete_post(id):
-#     """
-#     Query for existing post, then delete by logged in User, returning the status message
-#     """
-#     post = Post.query.get(id)
-#     if post:
-#         if post.user_id == current_user.id:
-#             db.session.delete(post)
-#             db.session.commit()
+@comment_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_comment(id):
+    """
+    Query for existing comment, then delete by logged in User, returning the status message
+    """
+    del_comment = Comment.query.get(id)
+    if del_comment:
+        if del_comment.user_id == current_user.id:
+            db.session.delete(del_comment)
+            db.session.commit()
 
-#             return {'message': "Post was successfully deleted"}
-#         else:
-#             return {"message": "Current user does not own this post"}
-#     else:
-#         return {"message": f"The Post at id:{id} does not exist "}
+            return {'message': "Comment was successfully deleted"}
+        else:
+            return {"message": "Current user does not own this comment"}
+    else:
+        return {"message": f"The Comment at id:{id} does not exist "}
 
 # @post_routes.route('/current')
 # def current_users_posts():

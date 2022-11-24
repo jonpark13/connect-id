@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, User, Post
-from app.forms import PostForm
+from app.models import db, User, Post, Comment
+from app.forms import PostForm, CommentForm
 from datetime import datetime
 
 post_routes = Blueprint('posts', __name__)
@@ -34,6 +34,27 @@ def add_post():
         db.session.add(new_post)
         db.session.commit()
         return {'post': new_post.to_dict()}
+
+@post_routes.route('/<int:id>/comments', methods=['POST'])
+@login_required
+def add_comment(id):
+    """
+    Add a new comment to existing post by logged in User, returning newest post entry as a dictionary
+    """
+    post = Post.query.get(id)
+    if post:
+        form = CommentForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        print(form.data)
+        if form.validate_on_submit():
+            new_comment = Comment(
+                comment = form.data["comment"],
+                user_id = current_user.id,
+                post_id = id
+            )
+            db.session.add(new_comment)
+            db.session.commit()
+            return {'comment': new_comment.to_dict()}
 
 @post_routes.route('/<int:id>', methods=['PUT'])
 @login_required
