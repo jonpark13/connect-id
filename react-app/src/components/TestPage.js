@@ -3,7 +3,14 @@ import { useParams } from 'react-router-dom';
 
 function Home() {
   const [posts, setPosts] = useState({posts:[]});
+  const [postEdit, setPostEdit] = useState('')
   const { userId }  = useParams();
+
+  const payload = {
+    user_id: "test",
+    post_body: "test",
+    post_id: "test"
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -14,6 +21,20 @@ function Home() {
     fetchData();
   }, []);
 
+  const handleEditPost = async (id) => {
+    let res = await fetch(`/api/posts/${id}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: payload
+    })
+  }
+
+  const handleDeletePost = () => {
+
+  }
+
   return (
     <div>
         {
@@ -22,6 +43,14 @@ function Home() {
                     <div>
                         <div>
                             <strong>{e.user_info.first_name} {e.user_info.last_name}</strong>
+                        </div>
+                        <div>
+                            <button onClick={() => {console.log('edit')}}>
+                                Edit Post
+                            </button>
+                            <button onClick={() => {console.log('edit')}}>
+                                Delete Post
+                            </button>
                         </div>
                     </div>
                     { e.images &&
