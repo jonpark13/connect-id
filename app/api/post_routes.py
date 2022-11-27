@@ -33,7 +33,7 @@ def add_post():
         )
         db.session.add(new_post)
         db.session.commit()
-        return {'post': new_post.to_dict()}
+        return new_post.to_dict(comments=True, likes=True)
 
 @post_routes.route('/<int:id>/comments', methods=['POST'])
 @login_required
@@ -53,7 +53,7 @@ def add_comment(id):
             )
             db.session.add(new_comment)
             db.session.commit()
-            return {'comment': new_comment.to_dict()}
+            return new_comment.to_dict()
 
 @post_routes.route('/<int:id>/likes', methods=['POST'])
 @login_required
@@ -73,7 +73,7 @@ def add_like(id):
             )
             db.session.add(new_like)
             db.session.commit()
-            return {'like': new_like.to_dict()}
+            return new_like.to_dict()
 
 @post_routes.route('/<int:id>', methods=['PUT'])
 @login_required
