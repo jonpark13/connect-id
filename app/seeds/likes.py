@@ -33,6 +33,21 @@ def seed_likes():
         post_id = 1,
         type = "thumbsup"
     )
+    like7 = Like(
+        user_id = 1,
+        post_id = 5,
+        type = "thumbsup"
+    )
+    like8 = Like(
+        user_id = 2,
+        post_id = 5,
+        type = "thumbsup"
+    )
+    like9 = Like(
+        user_id = 3,
+        post_id = 5,
+        type = "thumbsup"
+    )
 
     db.session.add(like1)
     db.session.add(like2)
@@ -40,6 +55,9 @@ def seed_likes():
     db.session.add(like4)
     db.session.add(like5)
     db.session.add(like6)
+    db.session.add(like7)
+    db.session.add(like8)
+    db.session.add(like9)
 
     db.session.commit()
 
