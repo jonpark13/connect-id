@@ -62,6 +62,9 @@ def add_like(id):
     Add a like to existing post by logged in User, returning newest post entry as a dictionary
     """
     post = Post.query.get(id)
+    liked_posts = Like.query.filter(Like.user_id == current_user.id).filter(Like.post_id == id).all()
+    if len(liked_posts):
+        return {"message": "This post is already liked by you"}
     if post:
         form = LikeForm()
         form['csrf_token'].data = request.cookies['csrf_token']
@@ -74,6 +77,10 @@ def add_like(id):
             db.session.add(new_like)
             db.session.commit()
             return new_like.to_dict()
+        else:
+            return {"message": "Error"}
+    else:
+        return {"message": f"The Post at id:{id} does not exist "}
 
 @post_routes.route('/<int:id>', methods=['PUT'])
 @login_required
