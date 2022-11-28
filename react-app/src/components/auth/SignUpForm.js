@@ -4,8 +4,9 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
+  const [errors, setErrors] = useState({});
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -15,17 +16,15 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(firstName, lastName, email, password));
       if (data) {
         setErrors(data)
       }
     }
+    else {
+      setErrors(prev => { return {...prev, password:"Passwords do not match"}})
+    }
   };
-
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -44,20 +43,33 @@ const SignUpForm = () => {
 
   return (
     <form onSubmit={onSignUp}>
-      <div>
+      {/* <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
-      </div>
+      </div> */}
       <div>
-        <label>User Name</label>
+        <label>First Name</label>
         <input
           type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
+          name='firstName'
+          onChange={(e) => setFirstName(e.target.value)}
+          value={firstName}
+          style={errors.first_name ? {color:"red", border:"red 1px solid"} : {color:"black"}}
         ></input>
       </div>
+      {<div>{errors.first_name}</div>}
+      <div>
+        <label>Last Name</label>
+        <input
+          type='text'
+          name='lastName'
+          onChange={(e) => setLastName(e.target.value)}
+          value={lastName}
+          style={errors.last_name ? {color:"red", border:"red 1px solid"} : {color:"black"}}
+        ></input>
+      </div>
+      {<div>{errors.last_name}</div>}
       <div>
         <label>Email</label>
         <input
@@ -65,8 +77,10 @@ const SignUpForm = () => {
           name='email'
           onChange={updateEmail}
           value={email}
+          style={errors.email ? {color:"red", border:"red 1px solid"} : {color:"black"}}
         ></input>
       </div>
+      {<div>{errors.email}</div>}
       <div>
         <label>Password</label>
         <input
@@ -74,8 +88,10 @@ const SignUpForm = () => {
           name='password'
           onChange={updatePassword}
           value={password}
+          style={errors.password ? {color:"red", border:"red 1px solid"} : {color:"black"}}
         ></input>
       </div>
+      {<div>{errors.password}</div>}
       <div>
         <label>Repeat Password</label>
         <input
