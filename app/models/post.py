@@ -21,7 +21,7 @@ class Post(db.Model):
     def to_dict(self, comments=False, likes=False):
         post = {
             'id': self.id,
-            'user_id': self.user_id,
+            'user_info': self.user.to_dict(),
             'post_body': self.post_body,
             'created_on': self.created_on,
             'updated_on': self.updated_on,
