@@ -45,6 +45,27 @@ def seed_comments():
         # comments = ,
         # likes = ,
     )
+    comment7 = Comment(
+        user_id = 1,
+        post_id = 5,
+        comment = "comment7"
+        # comments = ,
+        # likes = ,
+    )
+    comment8 = Comment(
+        user_id = 2,
+        post_id = 5,
+        comment = "comment8"
+        # comments = ,
+        # likes = ,
+    )
+    comment9 = Comment(
+        user_id = 3,
+        post_id = 5,
+        comment = "comment9"
+        # comments = ,
+        # likes = ,
+    )
 
     db.session.add(comment1)
     db.session.add(comment2)
@@ -52,6 +73,9 @@ def seed_comments():
     db.session.add(comment4)
     db.session.add(comment5)
     db.session.add(comment6)
+    db.session.add(comment7)
+    db.session.add(comment8)
+    db.session.add(comment9)
 
     db.session.commit()
 

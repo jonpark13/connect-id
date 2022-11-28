@@ -24,10 +24,34 @@ def seed_posts():
         # comments = ,
         # likes = ,
     )
+    post4 = Post(
+        user_id = 1,
+        post_body = "testing post 4",
+        images = "https://i.imgur.com/Ve9zZPX.jpeg",
+        # comments = ,
+        # likes = ,
+    )
+    post5 = Post(
+        user_id = 2,
+        post_body = "testing post 5",
+        images = "https://i.imgur.com/ISWtVym.jpeg",
+        # comments = ,
+        # likes = ,
+    )
+    post6 = Post(
+        user_id = 3,
+        post_body = "testing post 6",
+        images = "",
+        # comments = ,
+        # likes = ,
+    )
 
     db.session.add(post1)
     db.session.add(post2)
     db.session.add(post3)
+    db.session.add(post4)
+    db.session.add(post5)
+    db.session.add(post6)
 
     db.session.commit()
 
