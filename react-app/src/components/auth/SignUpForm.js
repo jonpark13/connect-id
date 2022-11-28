@@ -55,7 +55,7 @@ const SignUpForm = () => {
           name='firstName'
           onChange={(e) => setFirstName(e.target.value)}
           value={firstName}
-          style={errors.first_name ? {color:"red", border:"red 1px solid"} : {color:"black"}}
+          style={errors.first_name ? {color:"red", border:"red 1px solid", caretColor:"black"} : {color:"black"}}
         ></input>
       </div>
       {<div>{errors.first_name}</div>}
@@ -66,7 +66,7 @@ const SignUpForm = () => {
           name='lastName'
           onChange={(e) => setLastName(e.target.value)}
           value={lastName}
-          style={errors.last_name ? {color:"red", border:"red 1px solid"} : {color:"black"}}
+          style={errors.last_name ? {color:"red", border:"red 1px solid", caretColor:"black"} : {color:"black"}}
         ></input>
       </div>
       {<div>{errors.last_name}</div>}
@@ -77,7 +77,7 @@ const SignUpForm = () => {
           name='email'
           onChange={updateEmail}
           value={email}
-          style={errors.email ? {color:"red", border:"red 1px solid"} : {color:"black"}}
+          style={errors.email ? {color:"red", border:"red 1px solid", caretColor:"black"} : {color:"black"}}
         ></input>
       </div>
       {<div>{errors.email}</div>}
@@ -88,7 +88,7 @@ const SignUpForm = () => {
           name='password'
           onChange={updatePassword}
           value={password}
-          style={errors.password ? {color:"red", border:"red 1px solid"} : {color:"black"}}
+          style={errors.password ? {color:"red", border:"red 1px solid", caretColor:"black"} : {color:"black"}}
         ></input>
       </div>
       {<div>{errors.password}</div>}
@@ -100,8 +100,10 @@ const SignUpForm = () => {
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
+          style={errors.password ? {color:"red", border:"red 1px solid", caretColor:"black"} : {color:"black"}}
         ></input>
       </div>
+      {<div>{errors.password}</div>}
       <button type='submit'>Sign Up</button>
     </form>
   );
