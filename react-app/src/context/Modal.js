@@ -24,7 +24,21 @@ export function ModalProvider({ children }) {
 
 export function Modal({ onClose, children }) {
   const modalNode = useContext(ModalContext);
+  const closeOnEscapeKeyDown = e => {
+    if ((e.charCode || e.keyCode) === 27) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.body.addEventListener("keydown", closeOnEscapeKeyDown);
+    return function cleanup() {
+      document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
+    };
+  }, []);
+
   if (!modalNode) return null;
+
 
   return ReactDOM.createPortal(
     <div id="modal">

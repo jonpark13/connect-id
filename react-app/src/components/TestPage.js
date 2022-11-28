@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useParams} from 'react-router-dom';
 import * as postActions from '../store/post'
+import EditPostModal from './ModalTest';
 
 function Home() {
     const dispatch = useDispatch()
@@ -16,17 +17,16 @@ function Home() {
         dispatch(postActions.getUserPosts())
     }, []);
 
-    const payload = {
+    let payload = {
         user_id: user.user.id,
         post_body: newPost,
         images: ""
     }
 
-    const handleEditPost = async (id) => {
-        console.log(id)
+    const handleDeletePost = (e, id) => {
+        e.preventDefault()
+        dispatch(postActions.deleteUserPost(id))
     }
-
-    const handleDeletePost = () => {}
 
     const handleSubmitPost = (e) => {
         e.preventDefault()
@@ -35,7 +35,7 @@ function Home() {
 
     return (
         <div> {Object.keys(myPosts).length &&
-            Object.values(myPosts).map(e => (
+            Object.values(myPosts).map(post => (
                 <div className='postContainer'
                     style={
                         {margin: "20"}
@@ -43,23 +43,17 @@ function Home() {
                     <div>
                         <div>
                             <strong>{
-                                e.user_info.first_name
+                                post.user_info.first_name
                             }
                                 {
-                                e.user_info.last_name
+                                post.user_info.last_name
                             }</strong>
                         </div>
                         <div>
+                            <EditPostModal postInfo={post}/>
                             <button onClick={
-                                () => {
-                                    handleEditPost(e.id)
-                                }
-                            }>
-                                Edit Post
-                            </button>
-                            <button onClick={
-                                () => {
-                                    console.log('edit')
+                                (e) => {
+                                    handleDeletePost(e, post.id)
                                 }
                             }>
                                 Delete Post
@@ -67,9 +61,9 @@ function Home() {
                         </div>
                     </div>
                     {
-                    e.images && <div>
+                    post.images && <div>
                         <img src={
-                                e.images
+                                post.images
                             }
                             style={
                                 {
@@ -81,17 +75,17 @@ function Home() {
                     </div>
                 }
                     <div> {
-                        e.post_body
+                        post.post_body
                     } </div>
-                    {!!e.likes &&
+                    {!!post.likes &&
                         <div>{
                             }
                             likes: {
-                            e.likes.length
+                            post.likes.length
                         } </div>
                     }
-                    { !!e.comments && <div> {
-                        e.comments.map(com => (
+                    { !!post.comments && <div> {
+                        post.comments.map(com => (
                             <div> {
                                 com.comment
                             } </div>

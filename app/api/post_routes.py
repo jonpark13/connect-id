@@ -92,7 +92,7 @@ def edit_post(id):
 
             db.session.commit()
 
-            return {'post': post.to_dict()}
+            return post.to_dict()
         else:
             return {"message": "Current user does not own this post"}
     else:

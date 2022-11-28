@@ -73,7 +73,7 @@ export const addUserPost = (postData) => async (dispatch) => {
 }
 
 export const editUserPost = (postData, postId) => async (dispatch) => {
-    const response = await fetch(`/api/posts/${postId}/`, {
+    const response = await fetch(`/api/posts/${postId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(postData)
@@ -86,14 +86,14 @@ export const editUserPost = (postData, postId) => async (dispatch) => {
     return response;
 }
 
-// export const deleteProjectComment = (id) => async (dispatch) => {
-//     const response = await fetch(`/api/comments/${id}/delete`, {
-//         method: "DELETE",
-//     });
-//     if (response.ok) {
-//         dispatch(deleteComment(id))
-//     }
-// }
+export const deleteUserPost = (id) => async (dispatch) => {
+    const response = await fetch(`/api/posts/${id}`, {
+        method: "DELETE",
+    });
+    if (response.ok) {
+        dispatch(deletePost(id))
+    }
+}
 
 export const clearUserComm = () => async (dispatch) => {
     dispatch(clearPosts())
