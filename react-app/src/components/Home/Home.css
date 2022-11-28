@@ -1,5 +1,5 @@
 .homePage {
-    background-color: rgb(231, 236, 255);
+    background-color: rgb(240, 243, 255);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,6 +29,13 @@
     box-shadow: 0px 0px 1px rgb(45, 45, 45);
 }
 
+.userContainerTop {
+    background-color: rgb(88, 139, 157);
+    height:75px;
+    width:100%;
+    border-radius: 10px 10px 0 0;
+}
+
 .postsContainer {
     display: flex;
     flex-direction: column;
@@ -36,8 +43,37 @@
     margin: 10px 10px;
 }
 
+.postsCreator {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px rgb(45, 45, 45);
+    background-color: white;
+}
+
+.postsCreatorUpper {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 15px;
+}
+
+.postsCreatorButton {
+    width:380px;
+    height:40px;
+    border: rgb(186, 186, 186) solid 1px;
+    border-radius: 20px;
+    text-align: left;
+}
+
+.postsCreatorLower {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 15px;
+}
+
 .postContainer {
-    margin: 10px 0px;
+    margin-top: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 1px rgb(45, 45, 45);
     background-color: white;
