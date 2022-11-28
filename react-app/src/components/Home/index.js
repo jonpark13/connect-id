@@ -23,11 +23,34 @@ function Home() {
   }, []);
 
   return (
-    <div> {
-        posts.posts.map(e => (
-            <HomePost post={e} session={session} fetchData={fetchData}/>
-        ))
-    } </div>
+    <div className='homePage'> 
+      <div className='homeContent'>
+        <div className='userContainer'>
+          <div>
+          {
+            session.user.first_name
+          } {
+            session.user.last_name
+          }
+          </div>
+          <div style={{width: "100%", display: "flex", inlineSize: "200px", wordBreak: "break-all"}}>
+          {
+            JSON.stringify(session.user)
+          }
+          </div>
+        </div>
+        <div className='postsContainer'>
+        {
+            posts.posts.map(e => (
+                <HomePost post={e} session={session} fetchData={fetchData}/>
+            ))
+        }
+        </div>
+        <div className='newContainer'>
+            news
+        </div>
+      </div>
+    </div>
 );
 }
 export default Home;

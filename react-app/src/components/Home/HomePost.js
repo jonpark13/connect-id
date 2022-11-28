@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import EditCommentModal from './CommentModal'
 
 function HomePost({post, session, fetchData}) {
     const [newComments, setNewComments] = useState('')
@@ -96,6 +97,9 @@ function HomePost({post, session, fetchData}) {
                 post.comments.map(com => (
                     <div style={{margin: "5px 0px"}}>
                     <div> {com.user_info.first_name} {com.user_info.last_name}
+                    {com.user_info.id === session.user.id && 
+                    <EditCommentModal commentInfo={com} session={session} fetchData={fetchData}/>
+                    }
                     </div>
                     <div> {com.comment}</div>
                     </div>
