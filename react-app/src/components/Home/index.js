@@ -26,7 +26,7 @@ function Home() {
     <div className='homePage'> 
       <div className='homeContent'>
         <div className='userContainer'>
-          <div>
+          <div className='userContainerTop'>
           {
             session.user.first_name
           } {
@@ -40,6 +40,15 @@ function Home() {
           </div>
         </div>
         <div className='postsContainer'>
+          <div className='postsCreator'>
+            <div className='postsCreatorUpper'>
+              user img
+            <button className='postsCreatorButton'>Start a post</button>
+            </div>
+            <div className='postsCreatorLower'>
+
+            </div>
+          </div>
         {
             posts.posts.map(e => (
                 <HomePost post={e} session={session} fetchData={fetchData}/>

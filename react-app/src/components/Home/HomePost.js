@@ -45,7 +45,7 @@ function HomePost({post, session, fetchData}) {
     return (
         <div className='postContainer'
             style={
-                {margin: "20"}
+                {padding: "15px 20px"}
         }>
             <div>
                 <div>
