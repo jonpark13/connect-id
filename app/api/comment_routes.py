@@ -47,9 +47,11 @@ def edit_comment(id):
             if request.json['comment']:
                 edit_comment.comment = request.json['comment']
 
-            db.session.commit()
+                db.session.commit()
 
-            return {'comment': edit_comment.to_dict()}
+                return edit_comment.to_dict()
+            else:
+                return {"message": "Comment cannot be empty"}
         else:
             return {"message": "Current user does not own this comment"}
     else:
