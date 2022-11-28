@@ -22,11 +22,16 @@ function Home() {
     fetchData();
   }, []);
 
+  if (!session.user) {
+    return null;
+  }
+
   return (
     <div className='homePage'> 
       <div className='homeContent'>
         <div className='userContainer'>
           <div className='userContainerTop'>
+            <div className='userContainerSemiTop'></div>
           {
             session.user.first_name
           } {
