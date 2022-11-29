@@ -15,8 +15,15 @@ function UserOptions({ user }) {
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);
+    const closeMenu = (e) => {
+        if(e.target.className=="userOptionsContainer"){
+            e.stopPropagation();
+            e.preventDefault();
+        }
+        else {
+
+            setShowMenu(false);
+        }
     };
 
     document.addEventListener('click', closeMenu);
@@ -25,13 +32,13 @@ function UserOptions({ user }) {
   }, [showMenu]);
 
   return (
-    <div  className="navBarLinks" style={{margin:"10px 5px", width:"60px"}} onClick={openMenu}>
-        <div style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", color:'black', textDecoration:'none'}}>
+    <div  className="navBarLinks" onClick={openMenu}>
+        <div className="navBarLinksCont">
 
-            <i className="fa-regular fa-circle-user" /><div>Me</div>
+            <i className="fa-regular fa-circle-user"/><div style={{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", marginTop: "5px",fontSize:"12px"}}>Me <i className="meArrow fa-solid fa-angles-down" style={{marginLeft:"5px",fontSize:"10px"}}/></div>
         </div>
 
-      {user && showMenu && (
+      {showMenu && (
         <div className="userOptionsContainer">
           <div>{user.first_name} {user.last_name}
           </div>
