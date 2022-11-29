@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import * as postActions from '../store/post'
 import EditPostModal from './ModalTest';
 
 function Home() {
     const dispatch = useDispatch()
+    const history = useHistory()
     const myPosts = useSelector((state) => state.post)
     const user = useSelector((state) => state.session)
+    const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
     const [posts, setPosts] = useState({});
     const [postEdit, setPostEdit] = useState('')
     const [newPost, setNewPost] = useState('')
@@ -30,8 +33,46 @@ function Home() {
 
     const handleSubmitPost = (e) => {
         e.preventDefault()
-        dispatch(postActions.addUserPost(payload))
     }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let images = document.querySelector(".imagesInput")
+        let formData
+        console.log(images.files.length)
+        if (images.files.length) {
+            console.log(images.files)
+            formData = new FormData();
+            for (const img of images.files) {
+                formData.append("image", img);
+            }
+        }
+        
+        // aws uploads can be a bit slow—displaying
+        // some sort of loading message is a good idea
+        setImageLoading(true);
+
+        const res = await fetch('/api/posts/images', {
+            method: "POST",
+            body: formData,
+        });
+        if (res.ok) {
+            let data = await res.json();
+            payload.images = data.images
+            dispatch(postActions.addUserPost(payload))
+            setImageLoading(false);
+            
+        }
+        else {
+            setImageLoading(false);
+            console.log("error");
+        }
+    }
+    
+    // const updateImage = (e) => {
+    //     const file = e.target.files[0];
+    //     setImage(file);
+    // }
 
     return (
         <div> {Object.keys(myPosts).length &&
@@ -63,12 +104,12 @@ function Home() {
                     {
                     post.images && <div>
                         <img src={
-                                post.images
+                                post.images[0]
                             }
                             style={
                                 {
                                     height: "120px",
-                                    width: "120px",
+                                    width: "100%",
                                     objectFit: "cover"
                                 }
                             }/>
@@ -94,11 +135,18 @@ function Home() {
                 </div>
             ))
         } 
-            <form onSubmit={handleSubmitPost}>
+            <form onSubmit={handleSubmit}>
                 <textarea placeholder='What!!' value={newPost} onChange={(e) => {setNewPost(e.target.value);console.log(newPost)}} />
+                <input
+                className='imagesInput'
+                type="file"
+                multiple
+                accept="image/*"
+                />
                 <button type='submit'>
                     Add Post
                 </button>
+                {(imageLoading)&& <p>Loading...</p>}
             </form>
         </div>
     );

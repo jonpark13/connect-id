@@ -25,7 +25,7 @@ class Post(db.Model):
             'post_body': self.post_body,
             'created_on': self.created_on,
             'updated_on': self.updated_on,
-            'images': self.images
+            'images': self.images.strip('][').split(', ')
         }
         if(comments):
             post['comments'] = [comment.to_dict() for comment in self.comments]

@@ -8,7 +8,7 @@ const NavBar = () => {
     <div>
       <div className='navBar' style={{display:"flex", flexDirection:"reverse-row", justifyContent: 'center'}}>
         <div className='navBarLinks' style={{margin:"10px 5px"}}>
-          <NavLink style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", color:'black', textDecoration:'none'}} to='/' exact={true} activeClassName='active'>
+          <NavLink style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", color:'black', textDecoration:'none'}} to='/feed' exact={true} activeClassName='active'>
             <i className="fa-solid fa-house-chimney" /><div>Home</div>
           </NavLink>
         </div>
