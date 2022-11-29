@@ -1,0 +1,26 @@
+.navBarContainer {
+    width:101%;
+    height: 55px;
+    box-shadow: 0px 0px 1px rgb(0, 0, 0);
+    z-index: 3;
+}
+
+.navBar {
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    box-shadow: 0px 0px 1px rgb(0, 0, 0);
+}
+
+.userOptionsContainer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 1px rgb(45, 45, 45);
+    border-radius: 4px;
+    width: 250px;
+}
+

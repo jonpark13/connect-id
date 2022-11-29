@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -15,6 +15,7 @@ import Profile from './components/Profile';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const user = useSelector(state => state.session)
 
   useEffect(() => {
     (async() => {
@@ -25,6 +26,10 @@ function App() {
 
   if (!loaded) {
     return null;
+  }
+
+  if (!user) {
+    return <Redirect path='/login' />
   }
 
   return (
