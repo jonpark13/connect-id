@@ -3,6 +3,7 @@ import EditCommentModal from './CommentModal'
 
 function HomePost({post, session, fetchData}) {
     const [newComments, setNewComments] = useState('')
+    const [hidden, setHidden] = useState(true)
 
     const handleLikePost = async (e, postId) => {
         e.preventDefault()
@@ -57,6 +58,9 @@ function HomePost({post, session, fetchData}) {
                     }</strong>
                 </div>
             </div>
+            <div> {
+                post.post_body
+            } </div>
             {
             post.images && <div>
                 <img src={
@@ -64,23 +68,27 @@ function HomePost({post, session, fetchData}) {
                     }
                     style={
                         {
-                            height: "120px",
-                            width: "120px",
+                            maxHeight: "1000px",
+                            width: "100%",
                             objectFit: "cover"
                         }
                     }/>
             </div>
         }
-            <div> {
-                post.post_body
-            } </div>
-            <div>
-                likes: {
+            {!!post.likes.length && (<div>
+            <i style={{fontSize:"12px"}} className="fa-regular fa-thumbs-up" /> {
                 post.likes.length
-            } </div>
-            <button onClick={
-                (a) => handleLikePost(a, post.id)
-            }>Like</button>
+            } </div>)
+            }
+            <div className='buttonsContainer'>
+
+            <button className='postButton' onClick={(a) => handleLikePost(a, post.id)}><i className="fa-regular fa-hand-spock" /> Like</button>
+            <button className='postButton' onClick={() => setHidden(!hidden)}>
+                <i className="fa-regular fa-comment-dots" /> Comment
+            </button>
+
+            </div>
+            <div className='commentsContainer' style={hidden ? {display: "none"} : {display: "flex"}}>
             <div>
                 <input placeholder='comment'
                     value={newComments}
@@ -105,6 +113,7 @@ function HomePost({post, session, fetchData}) {
                     </div>
                 ))
             } </div>
+            </div>
         </div>
 
     )
