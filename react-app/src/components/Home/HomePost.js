@@ -75,11 +75,20 @@ function HomePost({post, session, fetchData}) {
                     }/>
             </div>
         }
-            {!!post.likes.length && (<div>
-            <i style={{fontSize:"12px"}} className="fa-regular fa-thumbs-up" /> {
-                post.likes.length
-            } </div>)
+        <div className='postQuickInfo'>
+            {
+                !!post.likes.length && (<div style={{fontSize:"12px", color:"grey"}}>
+                <i className="fa-regular fa-thumbs-up" /> {
+                    post.likes.length
+                } </div>)
             }
+            {
+                !!post.comments.length && (<div className='quickComment' onClick={() => setHidden(!hidden)}>
+                    {
+                        post.comments.length
+                    } {post.comments.length > 1 ? "comments" : "comment"}</div>)
+            }
+        </div>
             <div className='buttonsContainer'>
 
             <button className='postButton' onClick={(a) => handleLikePost(a, post.id)}><i className="fa-regular fa-hand-spock" /> Like</button>
@@ -109,7 +118,7 @@ function HomePost({post, session, fetchData}) {
                     <EditCommentModal commentInfo={com} session={session} fetchData={fetchData}/>
                     }
                     </div>
-                    <div> {com.comment}</div>
+                    <div style={{width: "100%", display: "flex", wordBreak: "break-all"}}> {com.comment}</div>
                     </div>
                 ))
             } </div>
