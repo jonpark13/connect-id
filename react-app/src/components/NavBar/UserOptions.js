@@ -31,8 +31,8 @@ function UserOptions({ user }) {
             <i className="fa-regular fa-circle-user" /><div>Me</div>
         </div>
 
-      {showMenu && (
-        <div>
+      {user && showMenu && (
+        <div className="userOptionsContainer">
           <div>{user.first_name} {user.last_name}
           </div>
           <div>

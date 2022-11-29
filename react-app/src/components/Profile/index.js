@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import * as postActions from '../../store/post'
 import './Profile.css'
 
@@ -22,7 +22,7 @@ function Profile() {
   }, []);
 
   if (!session.user) {
-    return null;
+    return <Redirect to={'/login'} />
   }
 
   return (
