@@ -126,6 +126,18 @@
     margin: 5px 5px;
 }
 
+.postButton:active:hover {
+    background-color: rgb(195, 195, 195);
+}
+
 .postButton:hover {
     background-color: rgb(217, 217, 217);
+}
+
+.feedUserIcon {
+    position:relative;
+    font-size: 75px;
+    left:31%;
+    bottom: 48%;
+    color: rgb(111, 186, 190);
 }

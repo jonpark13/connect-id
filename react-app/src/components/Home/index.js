@@ -31,16 +31,18 @@ function Home() {
       <div className='homeContent'>
         <div className='userContainer'>
           <div className='userContainerTop'>
-            <div className='userContainerSemiTop'></div>
+            <div className='userContainerSemiTop'>
+
+            </div>
+          </div>
+          <div style={{width: "100%", display: "flex", inlineSize: "200px", wordBreak: "break-all"}}>
+            <i className="feedUserIcon fa-regular fa-circle-user" />
+          </div>
+          <div>
           {
             session.user.first_name
           } {
             session.user.last_name
-          }
-          </div>
-          <div style={{width: "100%", display: "flex", inlineSize: "200px", wordBreak: "break-all"}}>
-          {
-            JSON.stringify(session.user)
           }
           </div>
         </div>
