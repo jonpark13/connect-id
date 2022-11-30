@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import CommentOptions from '../CommentOptions'
 import EditCommentModal from './CommentModal'
 import PostOptions from './PostOptions'
 
@@ -119,7 +120,7 @@ function HomePost({post, session, fetchData}) {
                     <div style={{margin: "5px 0px"}}>
                     <div> {com.user_info.first_name} {com.user_info.last_name}
                     {com.user_info.id === session.user.id && 
-                    <EditCommentModal commentInfo={com} session={session} fetchData={fetchData}/>
+                    <CommentOptions commentInfo={com} session={session} fetchData={fetchData}/>
                     }
                     </div>
                     <div style={{width: "100%", display: "flex", wordBreak: "break-all"}}> {com.comment}</div>
