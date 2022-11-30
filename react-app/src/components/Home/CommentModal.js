@@ -24,6 +24,7 @@ function EditCommentModal({commentInfo, session, fetchData}) {
         const resData = await response.json()
         console.log(resData, "COMMENT RESULTS")
         fetchData()
+        document.body.style.overflow = 'scroll'
         setShowModal(false)
     }
 
@@ -47,8 +48,11 @@ function EditCommentModal({commentInfo, session, fetchData}) {
                         {width: "100%"}
                     }>
                         {
-                        JSON.stringify(commentInfo)
+                        "Edit Comment"
                     }
+                        {/* {
+                        JSON.stringify(commentInfo)
+                    } */}
                         <div> {
                             commentInfo.user_info.first_name
                         }
