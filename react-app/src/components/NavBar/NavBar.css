@@ -8,15 +8,34 @@
     top:0
 }
 
-.navBar {
+.navBarInner {
     display:flex;
     flex-direction:row;
+    align-items: center;
     justify-content: center;
+    height:55px
+}
+
+.navBar {
+    width:350px;
+    min-width: 350px;
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+}
+
+.leftNav {
+    justify-content: start;
+    margin-left: 200px;
+}
+
+.rightNav {
+    justify-content:end;
+    margin-right: 200px;
 }
 
 .navBarLinks {
-    width: 60px;
-    height: 20px;
+    width: 80px;
     padding: 10px 0px 8px 0px;
     text-decoration:none;
     display:flex;
@@ -55,12 +74,12 @@
     display: flex;
     cursor:auto;
     flex-direction: column;
-    position: relative;
+    position: absolute;
     background-color: white;
     justify-content: center;
     align-items: center;
-    top: 20px;
-    right: 100px;
+    top: 64px;
+    right: 700px 15%;
     box-shadow: 0px 0px 1px rgb(45, 45, 45);
     border-radius: 4px;
     width: 250px;

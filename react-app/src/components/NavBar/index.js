@@ -118,8 +118,14 @@ const NavBar = () => {
     }
     return (
         <div className='navBarContainer'>
-            <div className='navBar'>
-                {userStatus} </div>
+            <div className='navBarInner'>
+              <div className='navBar leftNav'>
+              <img style={{height:"40px", width:"40px", objectFit:'cover', float:'left'}} src='./connectidLogo.png'/>
+              </div>
+              <div className='navBar rightNav'>
+                {userStatus} 
+              </div>
+            </div>
         </div>
     );
 }

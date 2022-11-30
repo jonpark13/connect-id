@@ -41,7 +41,8 @@ function EditCommentModal({commentInfo, session, fetchData}) {
             showModal && (
                 <Modal onClose={
                     () => {setShowModal(false);document.body.style.overflow = 'scroll'}
-                }>
+                } type={'postForm'}
+                >
                     <div style={
                         {width: "100%"}
                     }>

@@ -59,7 +59,7 @@ function Home() {
         {
             posts.posts.map(e => (
                 <HomePost post={e} session={session} fetchData={fetchData}/>
-            ))
+            )).reverse()
         }
         </div>
         <div className='newContainer'>

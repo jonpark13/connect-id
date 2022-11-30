@@ -22,7 +22,7 @@ export function ModalProvider({ children }) {
   )
 }
 
-export function Modal({ onClose, children }) {
+export function Modal({ onClose, type, children }) {
   const modalNode = useContext(ModalContext);
   const closeOnEscapeKeyDown = e => {
     if ((e.charCode || e.keyCode) === 27) {
@@ -44,7 +44,7 @@ export function Modal({ onClose, children }) {
   return ReactDOM.createPortal(
     <div id="modal">
       <div id="modal-background" onClick={onClose} />
-      <div id="modal-content">
+      <div className={type}>
         {children}
       </div>
     </div>,

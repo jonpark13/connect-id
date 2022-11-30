@@ -28,7 +28,7 @@ function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
     <>
       <button className="editButt" onClick={() => setShowModal(true)}>Edit Post</button>
       {showModal && (
-        <Modal onClose={() => {setShowModal(false);document.body.style.overflow = 'scroll'}}>
+        <Modal onClose={() => {setShowModal(false);document.body.style.overflow = 'scroll'}} type={'postForm'}>
             <div style={{width: "100%"}}>
             {JSON.stringify(postInfo)}
                 <div>

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
 import * as postActions from '../../store/post'
+import './CreatePostForm.css'
 
 function CreatePostForm({showModal, setShowModal}) {
     const dispatch = useDispatch()
@@ -60,28 +61,36 @@ function CreatePostForm({showModal, setShowModal}) {
         document.body.style.overflow = 'scroll'
         setShowModal(false)
     }
-    
-    // const updateImage = (e) => {
-    //     const file = e.target.files[0];
-    //     setImage(file);
-    // }
 
     return (
-        <div> 
+        <>
+        <div className='postFormHeader'>
+            <div style={{fontSize:"18px"}}>Create Post</div>
+        </div>
+        <div className='postFormBody'>
             <form onSubmit={handleSubmit}>
-                <textarea placeholder='What!!' value={newPost} onChange={(e) => {setNewPost(e.target.value);console.log(newPost)}} />
-                <input
-                className='imagesInput'
-                type="file"
-                multiple
-                accept="image/*"
-                />
-                <button type='submit'>
-                    Add Post
+                <textarea className="postText" placeholder='What do you want to talk about?' value={newPost} onChange={(e) => {setNewPost(e.target.value);console.log(newPost)}} />
+                <div className='postBottom'>
+                    <label style={{display:"flex", flexDirection:"column", alignItems:'center', width:'max-content'}}>
+                    <div className='circleBackground'>
+                    <i className="fa-regular fa-image" style={{fontSize:"30px"}}/>
+                    </div>
+                    <input
+                    className='imagesInput'
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    // style={{display:"none"}}
+                    />
+                </label>
+                <button className="createPostButton" disabled={!newPost.length} type='submit'>
+                    Post
                 </button>
+                </div>
                 {(imageLoading)&& <p>Loading...</p>}
             </form>
         </div>
+        </>
     );
 }
 export default CreatePostForm;
