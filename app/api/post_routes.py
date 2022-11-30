@@ -139,7 +139,7 @@ def edit_post(id):
             if request.json['post_body']:
                 post.post_body = request.json['post_body']
             if request.json['images']:
-                post.images = request.json['images']
+                post.images = "[" + ", ".join(request.json['images']) + "]"
 
             db.session.commit()
 

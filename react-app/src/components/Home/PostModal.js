@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Modal } from "../context/Modal";
-import * as postActions from './../store/post'
+import { Modal } from "../../context/Modal";
+import * as postActions from '../../store/post'
 
 
-function EditPostModal({postInfo}) {
+function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
   const dispatch = useDispatch()
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const [postBody, setPostBody] = useState(postInfo.post_body)
   const [postImages, setPostImages] = useState(postInfo.images)
 
@@ -19,14 +19,16 @@ function EditPostModal({postInfo}) {
     }
 
     dispatch(postActions.editUserPost(payload, postInfo.id))
+    fetchData()
+    document.body.style.overflow = 'scroll'
     setShowModal(false)
   }
 
   return (
     <>
-      <button className="editButt" onClick={() => {setShowModal(true);document.body.style.overflow = 'scroll'}}>Edit Post</button>
+      <button className="editButt" onClick={() => setShowModal(true)}>Edit Post</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => {setShowModal(false);document.body.style.overflow = 'scroll'}}>
             <div style={{width: "100%"}}>
             {JSON.stringify(postInfo)}
                 <div>
