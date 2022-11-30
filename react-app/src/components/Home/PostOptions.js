@@ -4,7 +4,7 @@ import { Modal } from "../../context/Modal";
 import * as postActions from '../../store/post';
 import EditPostModal from './PostModal';
 
-function PostOptions({postInfo, fetchData}) {
+function PostOptions({session, postInfo, fetchData}) {
   const dispatch = useDispatch()
   const [showModal, setShowModal] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -46,15 +46,19 @@ function PostOptions({postInfo, fetchData}) {
         </div>
     </div>
         <div className="postOptionsContainer" style={showMenu ? {display:"flex"} : {display:"none"}}>
-          <EditPostModal showModal={showModal} setShowModal={setShowModal} postInfo={postInfo} />
-          <button onClick={
-            (e) => {
-                handleDeletePost(e, postInfo.id);
-                fetchData()
-            }
-          }>
-              Delete Post
-          </button>
+          { session.user.id === postInfo.user_info.id &&
+            <>
+              <EditPostModal showModal={showModal} setShowModal={setShowModal} postInfo={postInfo} fetchData={fetchData}/>
+              <button onClick={
+                (e) => {
+                    handleDeletePost(e, postInfo.id);
+                    fetchData()
+                }
+              }>
+                  Delete Post
+              </button>
+            </>
+          }
         </div>
       </>
   );

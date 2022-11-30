@@ -4,7 +4,7 @@ import { Modal } from "../../context/Modal";
 import * as postActions from '../../store/post'
 
 
-function EditPostModal({showModal, setShowModal, postInfo}) {
+function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
   const dispatch = useDispatch()
   // const [showModal, setShowModal] = useState(false);
   const [postBody, setPostBody] = useState(postInfo.post_body)
@@ -19,6 +19,8 @@ function EditPostModal({showModal, setShowModal, postInfo}) {
     }
 
     dispatch(postActions.editUserPost(payload, postInfo.id))
+    fetchData()
+    document.body.style.overflow = 'scroll'
     setShowModal(false)
   }
 

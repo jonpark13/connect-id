@@ -59,7 +59,7 @@ function HomePost({post, session, fetchData}) {
                     }</strong>
                 </div>
                 <div style={{float:"right", height:"40px"}}>
-                <PostOptions postInfo={post} fetchData={fetchData}/>
+                <PostOptions session={session} postInfo={post} fetchData={fetchData}/>
                 </div>
             </div>
             <div> {

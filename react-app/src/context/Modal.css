@@ -27,7 +27,7 @@
     justify-content: center;
     position: absolute;
     background-color: white;
-    z-index: 999;
+    border-radius: 10px;
     width: 400px;
     height: 500px;
     z-index: 4;

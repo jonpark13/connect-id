@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import * as postActions from './store/post'
 import Home from './components/Home';
 import Test from './components/TestPage'
 import Profile from './components/Profile';
@@ -20,6 +21,7 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
+      await dispatch(postActions.getUserPosts())
       setLoaded(true);
     })();
   }, [dispatch]);
