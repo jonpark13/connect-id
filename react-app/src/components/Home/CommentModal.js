@@ -47,8 +47,11 @@ function EditCommentModal({commentInfo, session, fetchData}) {
                         {width: "100%"}
                     }>
                         {
-                        JSON.stringify(commentInfo)
+                        "Edit Comment"
                     }
+                        {/* {
+                        JSON.stringify(commentInfo)
+                    } */}
                         <div> {
                             commentInfo.user_info.first_name
                         }

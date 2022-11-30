@@ -56,16 +56,17 @@ function HomePost({post, session, fetchData}) {
         });
         const resData = await response.json()
         console.log(resData, "COMMENT RESULTS")
+        setNewComments('')
         fetchData()
     }
 
     const timeSince = (date) => {
         date = new Date(date);
 
-        var seconds = Math.floor((new Date() - date) / 1000);
-        var intervalType;
+        let seconds = Math.floor((new Date() - date) / 1000);
+        let intervalType;
       
-        var interval = Math.floor(seconds / 31536000);
+        let interval = Math.floor(seconds / 31536000);
         if (interval >= 1) {
           intervalType = 'year';
         } else {
@@ -94,7 +95,12 @@ function HomePost({post, session, fetchData}) {
         }
       
         if (interval > 1 || interval === 0) {
-          intervalType += 's';
+            if(interval === 0 && intervalType == "second"){
+                return "now"
+            }
+            else {
+                intervalType += 's';
+            }
         }
       
         return interval + ' ' + intervalType + ' ago';

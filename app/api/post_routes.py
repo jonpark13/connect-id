@@ -70,6 +70,7 @@ def post_images():
             url = upload["url"]
             new_list.append(url)
             
+        # return {"images": "[" + ", ".join(new_list) + "]"}
         return {"images": "[" + ", ".join(new_list) + "]"}
     else:
         return {"images": ''}
