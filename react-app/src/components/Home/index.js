@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import HomePost from './HomePost'
 import './Home.css'
 import CreatePost from '../CreatePost';
@@ -24,7 +24,7 @@ function Home() {
   }, [userPosts]);
 
   if (!session.user) {
-    return null;
+    return <Redirect to={'/login'} />;
   }
 
   return (
@@ -59,7 +59,7 @@ function Home() {
         {
             posts.posts.map(e => (
                 <HomePost post={e} session={session} fetchData={fetchData}/>
-            ))
+            )).reverse()
         }
         </div>
         <div className='newContainer'>

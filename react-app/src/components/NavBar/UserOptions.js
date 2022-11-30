@@ -32,11 +32,11 @@ function UserOptions({ user }) {
   }, [showMenu]);
 
   return (
-    <div  className="navBarLinks" onClick={openMenu}>
-        <div className="navBarLinksCont">
+    <div  className="navBarLinks" style={{height:"35px"}} onClick={openMenu}>
+
 
             <i className="fa-regular fa-circle-user"/><div style={{display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"center", marginTop: "5px",fontSize:"12px"}}>Me <i className="meArrow fa-solid fa-angles-down" style={{marginLeft:"5px",fontSize:"10px"}}/></div>
-        </div>
+
 
       {showMenu && (
         <div className="userOptionsContainer">
