@@ -59,6 +59,47 @@ function HomePost({post, session, fetchData}) {
         fetchData()
     }
 
+    const timeSince = (date) => {
+        date = new Date(date);
+
+        var seconds = Math.floor((new Date() - date) / 1000);
+        var intervalType;
+      
+        var interval = Math.floor(seconds / 31536000);
+        if (interval >= 1) {
+          intervalType = 'year';
+        } else {
+          interval = Math.floor(seconds / 2592000);
+          if (interval >= 1) {
+            intervalType = 'month';
+          } else {
+            interval = Math.floor(seconds / 86400);
+            if (interval >= 1) {
+              intervalType = 'day';
+            } else {
+              interval = Math.floor(seconds / 3600);
+              if (interval >= 1) {
+                intervalType = "hour";
+              } else {
+                interval = Math.floor(seconds / 60);
+                if (interval >= 1) {
+                  intervalType = "minute";
+                } else {
+                  interval = seconds;
+                  intervalType = "second";
+                }
+              }
+            }
+          }
+        }
+      
+        if (interval > 1 || interval === 0) {
+          intervalType += 's';
+        }
+      
+        return interval + ' ' + intervalType + ' ago';
+      };
+
     return (
         <div className='postContainer'
             style={
@@ -83,7 +124,7 @@ function HomePost({post, session, fetchData}) {
             {
             post.images && <div>
                 <img src={
-                        post.images
+                        post.images[0]
                     }
                     style={
                         {
@@ -136,12 +177,13 @@ function HomePost({post, session, fetchData}) {
             <div> {
                 post.comments.map(com => (
                     <div style={{margin: "5px 0px"}}>
-                    <div> {com.user_info.first_name} {com.user_info.last_name}
-                    {com.user_info.id === session.user.id && 
-                    <CommentOptions commentInfo={com} session={session} fetchData={fetchData}/>
-                    }
-                    </div>
-                    <div style={{width: "100%", display: "flex", wordBreak: "break-all"}}> {com.comment}</div>
+                        <div> {com.user_info.first_name} {com.user_info.last_name}
+                            <div>{timeSince(com.created_on)}</div>
+                            {com.user_info.id === session.user.id && 
+                            <CommentOptions commentInfo={com} session={session} fetchData={fetchData}/>
+                            }
+                        </div>
+                        <div style={{width: "100%", display: "flex", wordBreak: "break-all"}}> {com.comment}</div>
                     </div>
                 ))
             } </div>
