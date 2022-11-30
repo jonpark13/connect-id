@@ -30,6 +30,8 @@ export function Modal({ onClose, children }) {
     }
   };
 
+  document.body.style.overflow = 'hidden';
+
   useEffect(() => {
     document.body.addEventListener("keydown", closeOnEscapeKeyDown);
     return function cleanup() {
@@ -38,7 +40,6 @@ export function Modal({ onClose, children }) {
   }, []);
 
   if (!modalNode) return null;
-
 
   return ReactDOM.createPortal(
     <div id="modal">

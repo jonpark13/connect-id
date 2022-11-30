@@ -40,7 +40,7 @@ function EditCommentModal({commentInfo, session, fetchData}) {
             {
             showModal && (
                 <Modal onClose={
-                    () => setShowModal(false)
+                    () => {setShowModal(false);document.body.style.overflow = 'scroll'}
                 }>
                     <div style={
                         {width: "100%"}

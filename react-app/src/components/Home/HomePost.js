@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import EditCommentModal from './CommentModal'
+import PostOptions from './PostOptions'
 
 function HomePost({post, session, fetchData}) {
     const [newComments, setNewComments] = useState('')
@@ -48,7 +49,7 @@ function HomePost({post, session, fetchData}) {
             style={
                 {padding: "15px 20px"}
         }>
-            <div>
+            <div className='postHeader'>
                 <div>
                     <strong>{
                         post.user_info.first_name
@@ -56,6 +57,9 @@ function HomePost({post, session, fetchData}) {
                         {
                         post.user_info.last_name
                     }</strong>
+                </div>
+                <div style={{float:"right", height:"40px"}}>
+                <PostOptions postInfo={post} fetchData={fetchData}/>
                 </div>
             </div>
             <div> {
