@@ -67,9 +67,9 @@ const LoginForm = () => {
           style={(errors.password || errors.email == "Email address or password is incorrect.") ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
       </div>
       {<div className='errorMsgText'>{errors.password}</div>}
+      <button type='submit'>Login</button>
     </form>
     <button onClick={demoLogin}>Demo</button>
     </div>

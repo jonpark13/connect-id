@@ -41,7 +41,7 @@ function CommentOptions({session, commentInfo, fetchData}) {
         console.log(response.json())
         fetchData()
     }
-}
+  }
 
   return (
     <>
