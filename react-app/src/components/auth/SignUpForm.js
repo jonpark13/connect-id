@@ -59,7 +59,7 @@ const SignUpForm = () => {
         ))}
       </div> */}
       <div className='inputField'>
-        <label  className='inputText'>First Name</label>
+        <label className='inputText'>First Name</label>
         <input
           className='inputBar'
           type='text'
@@ -69,7 +69,7 @@ const SignUpForm = () => {
           style={errors.first_name ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
         ></input>
       </div>
-      {<div className='errorMsgText'>{errors.first_name}</div>}
+      {<div className='errorMsgText'>{!!errors.first_name && errors.first_name + '. '}{firstName.length > 30 && (" " + firstName.length + '/30')}</div>}
       <div className='inputField'>
         <label className='inputText'>Last Name</label>
         <input
@@ -81,7 +81,7 @@ const SignUpForm = () => {
           style={errors.last_name ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
         ></input>
       </div>
-      {<div className='errorMsgText'>{errors.last_name}</div>}
+      {<div className='errorMsgText'>{!!errors.last_name && errors.last_name + '. '}{lastName.length > 30 && (" " + lastName.length + '/30')}</div>}
       <div className='inputField'>
         <label className='inputText'>Email</label>
         <input
@@ -93,7 +93,7 @@ const SignUpForm = () => {
           style={errors.email ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
         ></input>
       </div>
-      {<div className='errorMsgText'>{errors.email}</div>}
+      {<div className='errorMsgText'>{!!errors.email && errors.email + '. '}{email.length > 30 && (" " + email.length + '/50')}</div>}
       <div className='inputField'>
         <label className='inputText'>Password (5 or more characters)</label>
         <input
@@ -106,7 +106,7 @@ const SignUpForm = () => {
           style={errors.password ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
         ></input>
       </div>
-      {<div className='errorMsgText'>{errors.password}</div>}
+      {<div className='errorMsgText'>{!!errors.password && errors.password + ". "}{password.length > 30 && (" " + password.length + '/50')}</div>}
       <div className='inputField'>
         <label className='inputText'>Repeat Password (5 or more characters)</label>
         <input
