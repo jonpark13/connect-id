@@ -1,9 +1,11 @@
 import {useState} from 'react'
+import { useSelector } from 'react-redux'
 import CommentOptions from '../CommentOptions'
 import EditCommentModal from './CommentModal'
 import PostOptions from './PostOptions'
 
 function HomePost({post, session, fetchData}) {
+    const user = useSelector((state) => state.session.user)
     const [newComments, setNewComments] = useState('')
     const [hidden, setHidden] = useState(true)
 
@@ -25,6 +27,18 @@ function HomePost({post, session, fetchData}) {
         console.log(resData, "LIKE RESULTS")
         fetchData()
     }
+
+    const handleUnlikePost = async (e, id) => {
+        e.preventDefault()
+        const response = await fetch(`/api/likes/${id}`, {
+            method: "DELETE",
+        });
+        if (response.ok) {
+            const resData = response.json()
+            console.log(resData, "unLIKE RESULTS")
+            fetchData()
+        }
+      }
 
     const handleCommentPost = async (e, postId) => {
         e.preventDefault()
@@ -82,10 +96,10 @@ function HomePost({post, session, fetchData}) {
         }
         <div className='postQuickInfo'>
             {
-                !!post.likes.length && (<div style={{fontSize:"12px", color:"grey"}}>
+                !!post.likes.length ? (<div style={{fontSize:"12px", color:"grey"}}>
                 <i className="fa-regular fa-thumbs-up" /> {
                     post.likes.length
-                } </div>)
+                } </div>) : <div></div>
             }
             {
                 !!post.comments.length && (<div className='quickComment' onClick={() => setHidden(!hidden)}>
@@ -95,8 +109,12 @@ function HomePost({post, session, fetchData}) {
             }
         </div>
             <div className='buttonsContainer'>
-
-            <button className='postButton' onClick={(a) => handleLikePost(a, post.id)}><i className="fa-regular fa-hand-spock" /> Like</button>
+                {/* { (post.likes.filter(e => e.user_id == user.id)[0]).id + 'TEST'} */}
+            {
+                !!post.likes.filter(e => e.user_id == user.id).length ?
+                (<button className='postButton' style={{color:'rgb(88,139,157)'}} onClick={(e) => handleUnlikePost(e, (post.likes.filter(e => e.user_id == user.id)[0]).id)}><i className="fa-solid fa-hand-spock" />{' ' + "Like"}</button>) :
+                (<button className='postButton' onClick={(a) => handleLikePost(a, post.id)}><i className="fa-regular fa-hand-spock" /> Like</button>)
+            }
             <button className='postButton' onClick={() => setHidden(!hidden)}>
                 <i className="fa-regular fa-comment-dots" /> Comment
             </button>

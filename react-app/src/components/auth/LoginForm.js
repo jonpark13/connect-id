@@ -5,7 +5,7 @@ import { login } from '../../store/session';
 import './auth.css'
 
 const LoginForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -40,35 +40,39 @@ const LoginForm = () => {
     <>
     <div className='authPage'>
       <div className='authContent'>
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label htmlFor='email'>Email</label>
+      <div className='formContainer'>
+    <form className='formContainer' onSubmit={onLogin}>
+      {/* <div>
+        {JSON.stringify(errors)}
+      </div> */}
+      <div  className='inputField'>
+        <label className='inputText' htmlFor='email'>Email</label>
         <input
           name='email'
           type='text'
           placeholder='Email'
           value={email}
+          style={errors.email ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
           onChange={updateEmail}
         />
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
+      {<div className='errorMsgText'>{errors.email}</div>}
+      <div className='inputField'>
+        <label className='inputText' htmlFor='password'>Password</label>
         <input
           name='password'
           type='password'
           placeholder='Password'
           value={password}
+          style={(errors.password || errors.email == "Email address or password is incorrect.") ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
       </div>
+      {<div className='errorMsgText'>{errors.password}</div>}
+      <button type='submit'>Login</button>
     </form>
     <button onClick={demoLogin}>Demo</button>
+    </div>
     </div>
     </div>
     </>
