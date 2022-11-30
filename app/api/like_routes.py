@@ -30,7 +30,7 @@ def edit_like(id):
 
             db.session.commit()
 
-            return {'tyype': edit_like.to_dict()}
+            return {'type': edit_like.to_dict()}
         else:
             return {"message": "Current user does not own this like"}
     else:
