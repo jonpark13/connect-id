@@ -9,7 +9,7 @@ const NavBar = () => {
     const user = useSelector((state) => state.session)
 
     let userStatus
-    if (! user.user) {
+    if (!user.user) {
         userStatus = (
             <>
                 <div className='navBarLinks'
@@ -119,7 +119,9 @@ const NavBar = () => {
     return (
         <div className='navBarContainer'>
             <div className='navBarInner'>
-              <div className='navBar leftNav'>
+              <div className='navBar leftNav'> {
+                !user.user && <div style={{fontSize:'43px', fontWeight:"bolder", marginRight:'5px', color: "rgb(0,145,164)"}}>Connect</div>
+              }
               <img style={{height:"40px", width:"40px", objectFit:'cover', float:'left'}} src='./connectidLogo.png'/>
               </div>
               <div className='navBar rightNav'>

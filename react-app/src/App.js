@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
-      await dispatch(postActions.getUserPosts())
+      if(user.user) await dispatch(postActions.getUserPosts())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -54,7 +54,7 @@ function App() {
           <Profile />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <Profile />
+          <Redirect to={'/feed'}/>
         </Route>
         <Route path='/test' exact={true} >
           <Test />

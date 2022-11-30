@@ -1,0 +1,86 @@
+.authPage {
+    background-color: rgb(240, 243, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    height: calc(100vh - 100px);
+    width:100%;
+    overflow: hidden;
+}
+
+.authContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width:100%;
+    margin-bottom: 100px;
+}
+
+.authPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.formContainer {
+    min-height: 500px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.inputField {
+    margin: 8px 5px;
+    width:90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputText {
+    font-size: 14px;
+    color: grey;
+}
+
+.inputBar {
+    height: 30px;
+    border-radius: 4px;
+}
+
+.errorMsgText {
+    font-size: 12px;
+    color: rgb(200, 0, 0);
+}
+
+.formSubmit {
+    margin: 10px 0px;
+    font-size: 18px;
+    background-color: rgb(0,145,164);
+    border-radius: 20px;
+    border:none;
+    outline: none;
+    color:white;
+    padding: 0px 20px;
+    height:45px;
+    width: 90%
+}
+
+.formSubmit:hover {
+    background-color: rgb(0, 100, 114);
+    cursor: pointer;
+}
+
+.borderLine {
+    border: none;
+    width: 30%;
+    background-color: #000;
+    height: 1px
+}
