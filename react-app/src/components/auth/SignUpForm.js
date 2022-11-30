@@ -102,6 +102,7 @@ const SignUpForm = () => {
           name='password'
           onChange={updatePassword}
           value={password}
+          required={true}
           style={errors.password ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
         ></input>
       </div>
