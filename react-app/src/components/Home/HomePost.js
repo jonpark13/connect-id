@@ -126,7 +126,7 @@ function HomePost({post, session, fetchData}) {
                 <PostOptions session={session} postInfo={post} fetchData={fetchData}/>
                 </div>
             </div>
-            <div> {
+            <div className='postBodyContainer'> {
                 post.post_body
             } </div>
             {

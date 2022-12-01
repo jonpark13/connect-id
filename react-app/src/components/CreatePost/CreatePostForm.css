@@ -34,6 +34,25 @@
     height:40px
 }
 
+.createPostButton {
+    cursor: pointer;
+}
+
+.createPostButtonDisabled {
+    float:right;
+    background-color: rgb(229, 229, 229);
+    border-radius: 20px;
+    border:none;
+    outline: none;
+    color:rgb(141, 140, 140);
+    padding: 0px 20px;
+    height:40px
+}
+
+.createPostButtonDisabled:hover {
+    cursor:no-drop
+}
+
 .circleBackground {
     display: flex;
     align-items: center;

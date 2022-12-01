@@ -155,6 +155,10 @@
     background-color: rgb(217, 217, 217);
 }
 
+.postBodyContainer {
+    word-wrap: break-word;
+}
+
 .feedUserIcon {
     position:relative;
     font-size: 76px;

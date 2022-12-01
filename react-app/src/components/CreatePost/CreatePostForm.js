@@ -14,6 +14,7 @@ function CreatePostForm({showModal, setShowModal}) {
     const [posts, setPosts] = useState({});
     const [postEdit, setPostEdit] = useState('')
     const [newPost, setNewPost] = useState('')
+    const [errors, setErrors] = useState({})
     const {userId} = useParams();
 
     useEffect(() => {
@@ -50,7 +51,16 @@ function CreatePostForm({showModal, setShowModal}) {
         if (res.ok) {
             let data = await res.json();
             payload.images = data.images
-            dispatch(postActions.addUserPost(payload))
+            let postres = await dispatch(postActions.addUserPost(payload))
+            console.log(postres,"DISPATC H RES")
+            if(postres){
+                setErrors(postres)
+                console.log("error")
+            }
+            else{
+                document.body.style.overflow = 'scroll'
+                setShowModal(false)
+            }
             setImageLoading(false);
             
         }
@@ -58,8 +68,6 @@ function CreatePostForm({showModal, setShowModal}) {
             setImageLoading(false);
             console.log("error");
         }
-        document.body.style.overflow = 'scroll'
-        setShowModal(false)
     }
 
     return (
@@ -70,7 +78,7 @@ function CreatePostForm({showModal, setShowModal}) {
         <div className='postFormBody'>
             <form onSubmit={handleSubmit}>
                 <textarea className="postText" placeholder='What do you want to talk about?' value={newPost} onChange={(e) => {setNewPost(e.target.value);console.log(newPost)}} />
-                {}
+                <div className="errorMsgText">{!!errors.post_body && errors.post_body + ' '}{(newPost.length > 500) && (` ${newPost.length}/500`)}</div>
                 <div className='postBottom'>
                     <label className='postBottomLabel'>
                     <div className='circleBackground'>
@@ -84,7 +92,7 @@ function CreatePostForm({showModal, setShowModal}) {
                     // style={{display:"none"}}
                     />
                 </label>
-                <button className="createPostButton" disabled={!newPost.length} type='submit'>
+                <button className={!!newPost.length ? "createPostButton" : "createPostButtonDisabled"} disabled={!newPost.length} type='submit'>
                     Post
                 </button>
                 </div>

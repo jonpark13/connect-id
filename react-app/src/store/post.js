@@ -59,15 +59,17 @@ export const addUserPost = (postData) => async (dispatch) => {
     });
 
     if (response.ok) {
+        console.log("hit ok")
         const newPost = await response.json();
         dispatch(addPost(newPost));
-        return newPost.post;
-      } else if (response.status < 500) {
+    } else if (response.status < 500) {
+        console.log("hit the if")
         const data = await response.json();
-        if (data.errors) {
-          return data.errors;
+        if (data) {
+          return data
         }
       } else {
+        console.log("hiit the rando")
         return ['An error occurred. Please try again.']
       }
 }
