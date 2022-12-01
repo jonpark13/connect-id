@@ -45,6 +45,8 @@ def add_post():
         db.session.add(new_post)
         db.session.commit()
         return new_post.to_dict(comments=True, likes=True)
+    else:
+        return validation_errors_to_error_messages(form.errors), 401
 
 @post_routes.route('/images', methods=['POST'])
 @login_required
@@ -95,7 +97,7 @@ def add_comment(id):
             db.session.commit()
             return new_comment.to_dict()
         else:
-            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+            return validation_errors_to_error_messages(form.errors), 401
     else:
         return {"message": f"The Post at id:{id} does not exist "}
 

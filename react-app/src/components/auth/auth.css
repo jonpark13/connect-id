@@ -9,12 +9,33 @@
     overflow: hidden;
 }
 
+.loginPage {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    height: calc(100vh - 100px);
+    width:100%;
+    overflow: hidden;
+}
+
 .authContent {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    width:100%;
+    margin-bottom: 100px;
+}
+
+.loginContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
     width:100%;
     margin-bottom: 100px;
 }
@@ -29,6 +50,17 @@
 
 .formContainer {
     min-height: 500px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.loginFormContainer {
+    min-height: 300px;
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -83,4 +115,67 @@
     width: 30%;
     background-color: #000;
     height: 1px
+}
+
+.inputFloatField {
+    width:100%;
+    border: solid 1px rgb(185, 185, 185);
+    position: relative;
+    padding: 0 8px;
+    margin:10px 0px
+}
+
+.inputFloatField label {
+    font-size: 16px;
+    position: absolute;
+    left:5px;
+    bottom:35px;
+    background-color: white;
+    padding: 0px 5px;
+}
+
+.inputFloatField input {
+    width:100%;
+    border: none;
+    font-size: 16px;
+    outline: 0;
+    padding: 16px 0 10px;
+}
+
+.loginButton {
+    margin: 10px 0px;
+    font-size: 19px;
+    background-color: rgb(0,145,164);
+    border-radius: 30px;
+    border:none;
+    outline: none;
+    color:white;
+    margin:50px 0px;
+    padding: 0px 20px;
+    height:50px;
+    width: 105%
+}
+
+.loginButton:hover {
+    background-color: rgb(0, 100, 114);
+    cursor: pointer;
+}
+
+.signupRedirectButton {
+    margin: 10px 0px;
+    font-size: 19px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    border: black solid 1px;
+    outline: none;
+    color:rgb(0, 0, 0);
+    margin:50px 0px;
+    padding: 0px 20px;
+    height:50px;
+    width: 105%
+}
+
+.signupRedirectButton:hover {
+    background-color: rgb(239, 239, 239);
+    cursor: pointer;
 }
