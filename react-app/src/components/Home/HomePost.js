@@ -57,9 +57,14 @@ function HomePost({post, session, fetchData}) {
         });
         const resData = await response.json()
         console.log(resData, "RES")
-        setErrors(resData)
-        setNewComments('')
-        fetchData()
+        if(!response.ok) {
+            setErrors(resData)
+        }
+        else {
+            setErrors('')
+            setNewComments('')
+            fetchData()
+        }
     }
 
     const timeSince = (date) => {
@@ -182,7 +187,7 @@ function HomePost({post, session, fetchData}) {
                     Post
                 </button>
             } </div>
-            {!!errors.comment && <div className="errorMsgText">{errors.comment + '. '}{newComments.length > 250 && ` ${newComments.length}/250`}</div>}
+            <div className="errorMsgText">{!!errors.comment && errors.comment + '. '}{newComments.length > 250 && ` ${newComments.length}/250`}</div>
             <div className='commentsList'> {
                 post.comments.map(com => (
                     <div style={{margin: "5px 0px"}}>
