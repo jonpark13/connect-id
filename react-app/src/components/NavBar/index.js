@@ -1,15 +1,72 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {NavLink} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {NavLink, useLocation} from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import UserOptions from './UserOptions';
 
 const NavBar = () => {
-    const dispatch = useDispatch()
+    const location = useLocation()
     const user = useSelector((state) => state.session)
 
     let userStatus
     if (!user.user) {
+        if(location.pathname == '/login') {
+            userStatus = (
+                <>
+                    <div className='navBarLinks joinNow'
+                        style={
+                            {
+                                border: "none",
+                                borderRadius: "50px",
+                                margin: "10px 10px",
+                                width: "90px"
+                            }
+                    }>
+                        <NavLink style={
+                                {
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    color: 'black',
+                                    textDecoration: 'none'
+                                }
+                            }
+                            to='/sign-up'
+                            exact={true}
+                            activeClassName='active'>
+                            <div>Join now</div>
+                        </NavLink>
+                    </div>
+                    <div className='navBarLinks signIn'
+                        style={
+                            {
+                                border: "1.5px solid rgb(0,145,164)",
+                                borderRadius: "50px",
+                                margin: "10px 10px",
+                                width: "90px"
+                            }
+                    }>
+                        <NavLink style={
+                                {
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    color: 'rgb(0,145,164)',
+                                    textDecoration: 'none'
+                                }
+                            }
+                            to='/login'
+                            exact={true}
+                            activeClassName='active'>
+                            <div>Sign in</div>
+                        </NavLink>
+                    </div>
+                </>
+            )
+        }
+        else {
         userStatus = (
             <>
                 <div className='navBarLinks'
@@ -59,7 +116,7 @@ const NavBar = () => {
                     </NavLink>
                 </div>
             </>
-        )
+        )}
     } else {
         userStatus = (
             <>
@@ -117,12 +174,12 @@ const NavBar = () => {
         )
     }
     return (
-        <div className='navBarContainer'>
+        <div className={(location.pathname == '/login') ? 'navBarContainer': "navBarContainer navBarShadow"}>
             <div className='navBarInner'>
               <div className='navBar leftNav'> {
-                !user.user && <div style={{fontSize:'43px', fontWeight:"bolder", marginRight:'5px', color: "rgb(0,145,164)"}}>Connect</div>
+                !user.user && <div style={{fontSize:'35px', fontWeight:"bolder", marginRight:'5px', color: "rgb(0,145,164)"}}>Connect</div>
               }
-              <img style={{height:"40px", width:"40px", objectFit:'cover', float:'left'}} src='./connectidLogo.png'/>
+              <img style={{height:"35px", width:"35px", objectFit:'cover', float:'left'}} src='./connectidLogo.png'/>
               </div>
               <div className='navBar rightNav'>
                 {userStatus} 

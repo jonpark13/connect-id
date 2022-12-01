@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import './auth.css'
 
 const LoginForm = () => {
+  const history = useHistory()
   const [errors, setErrors] = useState({});
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,41 +39,46 @@ const LoginForm = () => {
 
   return (
     <>
-    <div className='authPage'>
-      <div className='authContent'>
-      <div className='formContainer'>
-    <form className='formContainer' onSubmit={onLogin}>
+    <div className='loginPage'>
+      <div className='loginContent'>
+      <div className='loginFormContainer'>
+        <div style={{position:"relative",left:"90px", top:"-40px",fontSize:"55px", width:"600px", color:"rgb(187 102 9)"}}>Welcome to your historical community</div>
+    <form className='loginFormContainer' onSubmit={onLogin}>
       {/* <div>
         {JSON.stringify(errors)}
       </div> */}
-      <div  className='inputField'>
-        <label className='inputText' htmlFor='email'>Email</label>
+      <div for="emailInput" className='inputFloatField'
+      style={errors.email ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
+      >
         <input
+          id="emailInput"
           name='email'
           type='text'
-          placeholder='Email'
           value={email}
-          style={errors.email ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
           onChange={updateEmail}
         />
+        <label className='inputText' htmlFor='email'>Email</label>
       </div>
       {<div className='errorMsgText'>{errors.email}</div>}
-      <div className='inputField'>
-        <label className='inputText' htmlFor='password'>Password</label>
+      <div className='inputFloatField'
+      style={(errors.password || errors.email == "Email address or password is incorrect.") ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
+      >
         <input
           name='password'
           type='password'
-          placeholder='Password'
           value={password}
-          style={(errors.password || errors.email == "Email address or password is incorrect.") ? {border:"rgb(200, 0, 0) 1px solid", caretColor:"black", outline:"rgb(200, 0, 0) 1px solid"} : {color:"black"}}
           onChange={updatePassword}
         />
+        <label className='inputText' htmlFor='password'>Password</label>
       </div>
       {<div className='errorMsgText'>{errors.password}</div>}
-      <button type='submit'>Login</button>
+      <button className='loginButton' type='submit'>Login</button>
     </form>
-    <button onClick={demoLogin}>Demo</button>
+    <button className='signupRedirectButton' onClick={() => history.push('/sign-up')}>New to Connectĭd? Join now</button>
+    <div style={{display:"flex", alignItems:"center",flexDirection:"row", width: "100%"}}><hr className='borderLine'/>or<hr className='borderLine'/></div>
+    <button className='loginButton' onClick={demoLogin}>Demo</button>
     </div>
+    <div><img src='https://connectidbucket.s3.amazonaws.com/connectidSplash.png'/></div>
     </div>
     </div>
     </>
