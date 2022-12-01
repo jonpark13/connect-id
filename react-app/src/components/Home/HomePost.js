@@ -8,6 +8,7 @@ function HomePost({post, session, fetchData}) {
     const user = useSelector((state) => state.session.user)
     const [newComments, setNewComments] = useState('')
     const [hidden, setHidden] = useState(true)
+    const [errors, setErrors] = useState({})
 
     const handleLikePost = async (e, postId) => {
         e.preventDefault()
@@ -55,7 +56,8 @@ function HomePost({post, session, fetchData}) {
             body: JSON.stringify(payload)
         });
         const resData = await response.json()
-        console.log(resData, "COMMENT RESULTS")
+        console.log(resData, "RES")
+        setErrors(resData)
         setNewComments('')
         fetchData()
     }
@@ -168,19 +170,20 @@ function HomePost({post, session, fetchData}) {
 
             </div>
             <div className='commentsContainer' style={hidden ? {display: "none"} : {display: "flex"}}>
-            <div>
-                <input placeholder='comment'
+            <div className='commentinputBar'>
+                <input placeholder='Add a comment'
                     value={newComments}
                     onChange={
                         (e) => setNewComments(e.target.value)
                     }/> {
-                newComments && <button onClick={
+                newComments && <button className="postCommentButton" onClick={
                     (a) => handleCommentPost(a, post.id)
                 }>
                     Post
                 </button>
             } </div>
-            <div> {
+            {!!errors.comment && <div className="errorMsgText">{errors.comment + '. '}{newComments.length > 250 && ` ${newComments.length}/250`}</div>}
+            <div className='commentsList'> {
                 post.comments.map(com => (
                     <div style={{margin: "5px 0px"}}>
                         <div> {com.user_info.first_name} {com.user_info.last_name}

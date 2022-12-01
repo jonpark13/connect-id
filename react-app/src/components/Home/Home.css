@@ -109,8 +109,28 @@
     box-shadow: 0px 0px 1px rgb(45, 45, 45);
 }
 
+.postCommentButton {
+    border: none;
+    border-radius: 20px;
+    width:55px;
+    height:30px;
+    background-color: rgb(0,145,164);
+}
+
+.postCommentButton:hover {
+    background-color: rgb(0, 118, 134);
+}
+
+.commentsList {
+    margin: 20px 0px;
+}
+
+.errorMsgText {
+    font-size: 12px;
+    color: rgb(200, 0, 0);
+}
+
 .commentsContainer {
-    margin-top: 10px;
     display: none;
     flex-direction: column;
     transition: 0.3s;
@@ -182,3 +202,21 @@
     width: 250px;
     height: 300px 
 } 
+
+.commentinputBar {
+    width: 100%;
+    height: 35px;
+    margin: 10px 0px
+}
+
+.commentinputBar input {
+    width: 80%;
+    padding: 0px 10px;
+    height: 35px;
+    border: 1px grey solid;
+    border-radius: 30px;
+}
+
+.commentinputBar input:focus {
+    outline: 1px grey solid;
+}

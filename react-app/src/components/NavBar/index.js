@@ -89,7 +89,7 @@ const NavBar = () => {
                         to='/login'
                         exact={true}
                         activeClassName='active'>
-                        <i className="fa-solid fa-user-group"/><div>Login</div>
+                        <i className="fa-solid fa-door-open" /><div>Login</div>
                     </NavLink>
                 </div>
                 <div className='navBarLinks'
@@ -112,7 +112,7 @@ const NavBar = () => {
                         to='/sign-up'
                         exact={true}
                         activeClassName='active'>
-                        <i className="fa-regular fa-message"/><div>Sign up</div>
+                        <i className="fa-solid fa-user-plus" /><div>Sign up</div>
                     </NavLink>
                 </div>
             </>

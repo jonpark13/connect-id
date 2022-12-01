@@ -70,8 +70,9 @@ function CreatePostForm({showModal, setShowModal}) {
         <div className='postFormBody'>
             <form onSubmit={handleSubmit}>
                 <textarea className="postText" placeholder='What do you want to talk about?' value={newPost} onChange={(e) => {setNewPost(e.target.value);console.log(newPost)}} />
+                {}
                 <div className='postBottom'>
-                    <label style={{display:"flex", flexDirection:"column", alignItems:'center', width:'max-content'}}>
+                    <label className='postBottomLabel'>
                     <div className='circleBackground'>
                     <i className="fa-regular fa-image" style={{fontSize:"30px"}}/>
                     </div>

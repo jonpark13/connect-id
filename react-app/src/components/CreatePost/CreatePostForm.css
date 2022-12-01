@@ -52,10 +52,20 @@
 .postBottom {
     width: 100%;
     display:flex;
+    align-items: center;
     justify-content: space-between;
 }
 
+.postBottomLabel {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: left;
+    width:max-content
+}
+
 .imagesInput {
+    text-align: center;
     width: 100px
 }
 
