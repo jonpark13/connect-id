@@ -45,9 +45,8 @@
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
-    align-items: center;
     background-color: white;
-    min-height: 200px;
+    min-height: 100px;
     width: 750px;
     min-width: 750px;
     margin: 5px 10px;
@@ -59,10 +58,11 @@
     background-color: rgb(88, 139, 157);
     height:200px;
     width:100%;
+    position:relative;
     border-radius: 10px 10px 0 0;
 }
 .userPageContainerSemiTop {
-    position: relative;
+    position: absolute;
     top: 90px;
     left: 50px;
     display: flex;
@@ -73,6 +73,15 @@
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
     z-index: 3;
+}
+
+.userImageDummy {
+    font-size: 9.5rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgb(66, 103, 96)
 }
 
 .userInfoContainer {
@@ -112,3 +121,30 @@
     border-radius: 10px;
     box-shadow: 0px 0px 1px rgb(45, 45, 45);
 } 
+
+.cardBorder {
+    margin:20px 20px
+}
+
+.cardContType {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    color: black;
+}
+
+.cardContTitle {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: black;
+}
+
+.cardContSub {
+    font-size: 1rem;
+    color: black;
+}
+
+.cardContDesc {
+    display: flex;
+    align-items: center;
+    color: grey;
+}

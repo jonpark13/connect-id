@@ -58,7 +58,7 @@ def post_images():
     if request.files:
         for x in request.files.getlist('image'):
             if not allowed_file(x.filename):
-                return {"errors": "file type not permitted"}, 400
+                return {"errors": "File(s) type not permitted"}, 400
             x.filename = get_unique_filename(x.filename)
 
             upload = upload_file_to_s3(x)
