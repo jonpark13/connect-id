@@ -162,7 +162,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
                     <img src={URL.createObjectURL(file)}/>
                     ))}
                 </div> */}
-                <Gallery list={imgPrev} prevList={postImages}/>
+                {(!!imgPrev.length || !!postImages.length) && <Gallery list={imgPrev} prevList={postImages}/>}
                 <div className='postBottom'>
                     <label className='postBottomLabel'>
                     <div className='circleBackground'>
