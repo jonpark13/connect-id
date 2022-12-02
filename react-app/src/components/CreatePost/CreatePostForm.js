@@ -21,6 +21,19 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
     const [errors, setErrors] = useState({})
     const {userId} = useParams();
 
+    const editPostFunc = async (pl, id) => {
+        let postres = await dispatch(postActions.editUserPost(pl, id))
+        if(postres && postres.ok === false){
+            let data = postres.json()
+            await data.then(e => setErrors(e))
+        }
+        else{
+            document.body.style.overflow = 'scroll'
+            fetchData()
+            setShowModal(false)
+        }
+    }
+
     const handleEdit = async (e) => {
         e.preventDefault()
         let payload = {
@@ -28,8 +41,6 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
             post_body: postBody,
             images: postInfo.images
         }
-        console.log(payload.images, "PRIOR")
-    
         let images = document.querySelector(".imagesInput")
         let formData
         console.log(images.files.length)
@@ -49,21 +60,19 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
             console.log(data, "PICTURRE DAATA")
             const dataToArr = (data.images.replace(/[\[\]']+/g,'')).split(', ')
             payload.images = (payload.images.concat(dataToArr)).filter(e => e)
-            console.log(payload.images)
+            
+            editPostFunc(payload, postInfo.id)
+            }
+            else {
+                let data = await res.json()
+                setImageLoading(false);
+                console.log(data)
+                setErrors(data)
             }
           }
-        let postres = await dispatch(postActions.editUserPost(payload, postInfo.id))
-        // console.log(postres, "POSTRES")
-        // console.log(postres.ok, "POSTRES")
-        if(postres && postres.ok === false){
-            let data = postres.json()
-            await data.then(e => setErrors(e))
-        }
-        else{
-            document.body.style.overflow = 'scroll'
-            fetchData()
-            setShowModal(false)
-        }
+          else {
+              editPostFunc(payload, postInfo.id)
+          }
       }
 
     const handleSubmit = async (e) => {
@@ -96,10 +105,8 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
             let data = await res.json();
             payload.images = data.images
             let postres = await dispatch(postActions.addUserPost(payload))
-            console.log(postres,"DISPATC H RES")
             if(postres){
                 setErrors(postres)
-                console.log("error")
             }
             else{
                 document.body.style.overflow = 'scroll'
@@ -110,7 +117,8 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
         }
         else {
             setImageLoading(false);
-            console.log("error");
+            let data = await res.json();
+            setErrors(data)
         }
     }
 
@@ -156,7 +164,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
         <div className='postFormBody'>
             <form onSubmit={submitType}>
                 <textarea className="postText" placeholder='What do you want to talk about?' value={postText} onChange={(e) => {setPostText(e.target.value)}} />
-                <div className="errorMsgText">{!!errors.post_body && errors.post_body + ' '}{(postText.length > 500) && (` ${postText.length}/500`)}</div>
+                <div className="errorMsgText">{!!errors.post_body && errors.post_body + '. '}{!!errors.errors && errors.errors + '. '}{(postText.length > 500) && (` ${postText.length}/500`)}</div>
                 {/* <div className='imgPrev'>
                     {imgPrev.map(file => (
                     <img src={URL.createObjectURL(file)}/>

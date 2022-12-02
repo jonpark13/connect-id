@@ -19,6 +19,42 @@ function Profile() {
     setUserPage(responseData);
   }
 
+  let userExperience
+  if(userPage.employment){
+    let expList = (userPage.employment).split(".")
+    userExperience =  
+      <>
+        <div className='cardContTitle' name="experienceTitle">
+          {expList[0]}
+        </div>
+        <div className='cardContSub' name="experienceCompany">
+          {expList[1]}
+        </div>
+        <div className='cardContDesc' name="experienceDur">
+          {expList[2]} <i style={{margin:"1px 5px", fontSize:"5px"}}className="fa-solid fa-circle" /> {expList[3]}
+        </div>
+      </>
+    
+  }
+
+  let userEdu
+  if(userPage.education){
+    let expList = (userPage.education).split(".")
+    userEdu =  
+      <>
+        <div className='cardContTitle' name="educationTitle">
+          {expList[0]}
+        </div>
+        <div className='cardContSub' name="educationDeg">
+          {expList[1]}
+        </div>
+        <div className='cardContDesc' name="educationDur">
+          {expList[2]} <i style={{margin:"1px 5px", fontSize:"5px"}}className="fa-solid fa-circle" /> {expList[3]}
+        </div>
+      </>
+    
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -34,7 +70,7 @@ function Profile() {
         <div className='userPageInfoCard'>
           <div className='userPageContainerTop'>
             <div className='userPageContainerSemiTop'>
-              imgCont
+              {userPage.profile_image || <div className='userImageDummy'><i className="fa-regular fa-circle-user" /></div>}
             </div>
           </div>
           <div className='userInfoContainer'>
@@ -42,26 +78,31 @@ function Profile() {
             {userPage.first_name} {userPage.last_name}
             </div>
             <div className='userInfoDesc'>
-            desc{userPage.descripition}
+            {userPage.description || "desc goes here"}
             </div>
             <div className='userInfoLoc'>
-            loc{userPage.location}
+            {userPage.location || "location goes here"}
             </div>
           </div>
           <div style={{width: "100%", display: "flex", wordBreak: "break-all"}}>
-          {
-            JSON.stringify(userPage)
-          }
           </div>
         </div>
           <div className='userPageCard'>
-            test
+            <div className='cardBorder'>
+            <div className='cardContType'>Activity</div>
+            </div>
           </div>
           <div className='userPageCard'>
-            Experience
+          <div className='cardBorder'>
+            <div className='cardContType'>Experience</div>
+            {userExperience}
+            </div>
           </div>
           <div className='userPageCard'>
-            Education
+          <div className='cardBorder'>
+            <div className='cardContType'>Education</div>
+            {userEdu}
+            </div>
           </div>
         </div>
         <div className='sideContainer'>
