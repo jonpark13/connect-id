@@ -54,7 +54,8 @@ function CommentOptions({session, commentInfo, fetchData}) {
           { session.user.id === commentInfo.user_info.id &&
             <>
               <EditCommentModal commentInfo={commentInfo} session={session} fetchData={fetchData}/>
-              <button onClick={(e) => handleDeleteComment(e, commentInfo.id)}>
+              <button className="modalButton" onClick={(e) => handleDeleteComment(e, commentInfo.id)}>
+              <i style={{margin:"12px", width:"18px"}} className="fa-regular fa-trash-can" />
                   Delete Comment
               </button>
             </>

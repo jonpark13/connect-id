@@ -49,12 +49,12 @@ function PostOptions({session, postInfo, fetchData}) {
           { session.user.id === postInfo.user_info.id &&
             <>
               <EditPostModal showModal={showModal} setShowModal={setShowModal} postInfo={postInfo} fetchData={fetchData}/>
-              <button onClick={
+              <button className="modalButton" onClick={
                 (e) => {
                     handleDeletePost(e, postInfo.id);
                     fetchData()
                 }
-              }>
+              }><i style={{margin:"12px", width:"18px"}} className="fa-regular fa-trash-can" />
                   Delete Post
               </button>
             </>

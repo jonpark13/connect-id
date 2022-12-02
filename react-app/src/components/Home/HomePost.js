@@ -191,7 +191,7 @@ function HomePost({post, session, fetchData}) {
             <div className='commentsList'> {
                 post.comments.map(com => (
                     <div style={{margin: "5px 0px"}}>
-                        <div> {com.user_info.first_name} {com.user_info.last_name}
+                        <div style={{height: "30px"}}> {com.user_info.first_name} {com.user_info.last_name}
                             <div>{timeSince(com.created_on)}</div>
                             {com.user_info.id === session.user.id && 
                             <CommentOptions commentInfo={com} session={session} fetchData={fetchData}/>
