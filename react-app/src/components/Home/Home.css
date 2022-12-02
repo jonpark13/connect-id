@@ -125,6 +125,68 @@
     margin: 20px 0px;
 }
 
+.commentUser {
+    width:50px
+}
+
+.commentBoxContent {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width:100%;
+    padding: 6px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 8px;
+}
+
+.commentBoxHeader {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 100%;
+    height:45px
+}
+
+.commentUserName {
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.commentBoxHeaderL {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    width:300px
+}
+
+.commentBoxHeaderR {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    position:relative;
+    width: 140px;
+    height: 20px
+}
+
+.timeStamp {
+    color:grey;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.commentBoxContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.commentBoxComment {
+    color:black;
+    font-size: 14px;
+}
+
 .errorMsgText {
     font-size: 12px;
     color: rgb(200, 0, 0);
@@ -205,6 +267,22 @@
     border-radius: 4px;
     width: 250px;
     height: 100px 
+} 
+
+.commentOptionsContainer {
+    display: flex;
+    cursor:auto;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 1px rgb(45, 45, 45);
+    border-radius: 5px 0px 5px 5px;
+    width: 250px;
+    height: 100px;
+    top:30px;
+    z-index: 1;
 } 
 
 .modalButton {
