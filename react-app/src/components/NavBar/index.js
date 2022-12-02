@@ -179,7 +179,7 @@ const NavBar = () => {
               <div className='navBar leftNav'> {
                 !user.user && <div style={{fontSize:'35px', fontWeight:"bolder", marginRight:'5px', color: "rgb(0,145,164)"}}>Connect</div>
               }
-              <img style={{height:"35px", width:"35px", objectFit:'cover', float:'left'}} src='./connectidLogo.png'/>
+              <img style={{height:"35px", width:"35px", objectFit:'cover', float:'left'}} src={'/connectidLogo.png'}/>
               </div>
               <div className='navBar rightNav'>
                 {userStatus} 

@@ -7,14 +7,16 @@ import './Profile.css'
 function Profile() {
   const dispatch = useDispatch()
   const session = useSelector((state) => state.session)
+  const [userPage, setUserPage] = useState({})
   const [posts, setPosts] = useState({posts:[]});
   const [postEdit, setPostEdit] = useState('')
-  const { userId }  = useParams();
+  const { usertag }  = useParams();
 
   let fetchData = async () =>  {
-    const response = await fetch('/api/posts/');
+    const response = await fetch(`/api/users/${usertag}`);
     const responseData = await response.json();
-    setPosts(responseData);
+
+    setUserPage(responseData);
   }
 
   useEffect(() => {
@@ -26,36 +28,44 @@ function Profile() {
   }
 
   return (
-    <div className='homePage'> 
-      <div className='homeContent'>
-        <div className='userContainer'>
-          <div className='userContainerTop'>
-            <div className='userContainerSemiTop'></div>
-          {
-            session.user.first_name
-          } {
-            session.user.last_name
-          }
+    <div className='profPage'> 
+      <div className='profContent'>
+        <div className='userPageContainer'>
+        <div className='userPageInfoCard'>
+          <div className='userPageContainerTop'>
+            <div className='userPageContainerSemiTop'>
+              imgCont
+            </div>
           </div>
-          <div style={{width: "100%", display: "flex", inlineSize: "200px", wordBreak: "break-all"}}>
+          <div className='userInfoContainer'>
+            <div className='userInfoName'>
+            {userPage.first_name} {userPage.last_name}
+            </div>
+            <div className='userInfoDesc'>
+            desc{userPage.descripition}
+            </div>
+            <div className='userInfoLoc'>
+            loc{userPage.location}
+            </div>
+          </div>
+          <div style={{width: "100%", display: "flex", wordBreak: "break-all"}}>
           {
-            JSON.stringify(session.user)
+            JSON.stringify(userPage)
           }
           </div>
         </div>
-        <div className='postsContainer'>
-          <div className='postsCreator'>
-            <div className='postsCreatorUpper'>
-              user img
-            <button className='postsCreatorButton'>Start a post</button>
-            </div>
-            <div className='postsCreatorLower'>
-
-            </div>
+          <div className='userPageCard'>
+            test
+          </div>
+          <div className='userPageCard'>
+            Experience
+          </div>
+          <div className='userPageCard'>
+            Education
           </div>
         </div>
-        <div className='newContainer'>
-            news
+        <div className='sideContainer'>
+          People also viewed
         </div>
       </div>
     </div>

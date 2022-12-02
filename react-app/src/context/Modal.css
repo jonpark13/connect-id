@@ -45,3 +45,14 @@
     z-index: 4;
 }
 
+.commentForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    width: 550px;
+    height: fit-content;
+    z-index: 4;
+}

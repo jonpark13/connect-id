@@ -1,0 +1,72 @@
+.userOtherWorks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(39, 39, 39);
+    height: 400px;
+}
+
+.userOtherWorksCarousel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width:90%;
+    margin: 10px 0px
+}
+
+.userOtherWorksCarouselInner {
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    transition:transform 0.3s;
+    width:100%
+}
+
+.userOtherWorksCarouselList {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.moveCarouselLeft {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-color: #777;
+    color: white;
+    font-size: xx-large;
+    height:30px;
+    width: 30px;
+    right: 44%;
+    bottom: 38%;
+    border-radius: 50%;
+}
+.moveCarouselRight {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background-color: #777;
+    color: white;
+    font-size: xx-large;
+    height:30px;
+    width: 30px;
+    left: 44%;
+    bottom: 46%;
+    border-radius: 50%;
+}
+
+.userOtherWorksImg {
+    margin: 0px 8px;
+    height:250px;
+    width:299px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.userOtherWorksImg:hover {
+    cursor: pointer;
+}
