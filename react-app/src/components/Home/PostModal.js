@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "../../context/Modal";
 import * as postActions from '../../store/post'
+import CreatePostForm from "../CreatePost/CreatePostForm";
 
 
 function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
@@ -52,8 +53,9 @@ function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
       <button className="editButt" onClick={() => setShowModal(true)}>Edit Post</button>
       {showModal && (
         <Modal onClose={() => {setShowModal(false);document.body.style.overflow = 'scroll'}} type={'postForm'}>
-            <div style={{width: "100%"}}>
-            {/* {JSON.stringify(postInfo)} */}
+          <CreatePostForm type={"edit"} showModal={showModal} setShowModal={setShowModal} postInfo={postInfo} fetchData={fetchData}/>
+            {/* <div style={{width: "100%"}}>
+            {JSON.stringify(postInfo)}
             {"Edit Post"}
                 <div>
                     {postInfo.user_info.first_name} {postInfo.user_info.last_name}
@@ -81,7 +83,7 @@ function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
                       ))
                     }
                 </div>
-            </div>
+            </div> */}
         </Modal>
       )}
     </>

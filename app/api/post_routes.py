@@ -136,17 +136,22 @@ def edit_post(id):
     Query for existing post, then edit by logged in User, returning newest post entry as a dictionary
     """
     post = Post.query.get(id)
+    print(request, "POSTEST")
+    print(request.data, "POSTEST")
     if post:
         if post.user_id == current_user.id:
-            post.updated_on = datetime.utcnow()
-            if request.json['post_body']:
-                post.post_body = request.json['post_body']
-            if request.json['images']:
+            form = PostForm(obj=post)
+            form['csrf_token'].data = request.cookies['csrf_token']
+            if form.validate_on_submit():
+                form.populate_obj(post)
+            # if request.json['post_body']:
+            #     post.post_body = request.json['post_body']
+            # if request.json['images']:
                 post.images = "[" + ", ".join(request.json['images']) + "]"
-
-            db.session.commit()
-
-            return post.to_dict()
+                db.session.commit()
+                return post.to_dict()
+            else:
+                return validation_errors_to_error_messages(form.errors), 401
         else:
             return {"message": "Current user does not own this post"}
     else:

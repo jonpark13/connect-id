@@ -1,11 +1,21 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Post, Comment
-from app.forms import PostForm
+from app.forms import PostForm, CommentForm
 from datetime import datetime
 
 comment_routes = Blueprint('comments', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = {}
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            print(errorMessages)
+            errorMessages[field] = error
+    return errorMessages
 
 @comment_routes.route('/')
 def comments():
@@ -41,17 +51,29 @@ def edit_comment(id):
     Query for existing comment, then edit by logged in User, returning newest post entry as a dictionary
     """
     edit_comment = Comment.query.get(id)
+    print(request.json, "REQUESTJSON")
     if edit_comment:
         if edit_comment.user_id == current_user.id:
-            edit_comment.updated_on = datetime.utcnow()
-            if request.json['comment']:
-                edit_comment.comment = request.json['comment']
-
+            form = CommentForm(obj=edit_comment)
+            form['csrf_token'].data = request.cookies['csrf_token']
+            if form.validate_on_submit():
+                form.populate_obj(edit_comment)
+                # edit_comment.comment = form.data["comment"],
+                    # user_id = form.data["user.id"],
+                    # post_id = form.data["post.id"]
+                print(edit_comment.to_dict(), "AFTEREDIT")
                 db.session.commit()
-
                 return edit_comment.to_dict()
             else:
-                return {"message": "Comment cannot be empty"}
+                return validation_errors_to_error_messages(form.errors), 401
+            # if request.json['comment']:
+            #     edit_comment.comment = request.json['comment']
+
+            #     db.session.commit()
+
+            #     return edit_comment.to_dict()
+            # else:
+            #     return {"message": "Comment cannot be empty"}
         else:
             return {"message": "Current user does not own this comment"}
     else:
