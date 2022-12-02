@@ -30,6 +30,7 @@ function Home() {
   return (
     <div className='homePage'> 
       <div className='homeContent'>
+        <div className='homeSideContainer'>
         <div className='userContainer'>
           <div className='userContainerTop'>
             <div className='userContainerSemiTop'>
@@ -39,13 +40,34 @@ function Home() {
           <div style={{width: "100%", display: "flex", inlineSize: "200px", wordBreak: "break-all"}}>
             <i className="feedUserIcon fa-regular fa-circle-user" />
           </div>
-          <div>
+          <div style={{fontSize:"1.1rem", margin:"5px 0px"}}>
           {
             session.user.first_name
           } {
             session.user.last_name
           }
           </div>
+          <div style={{fontSize:"1rem", color:"grey", margin:"5px 0px"}}>
+            {session.user.description}
+          </div>
+        </div>
+        <div className='aboutContainer'>
+          <div style={{ fontSize:"1.2rem",fontWeight:"bold", marginTop:"10px"}}>Meet the dev!</div>
+          <div style={{ fontSize:"1 rem", marginTop:"10px"}}>
+            Jon Park
+          </div>
+          <div style={{ fontSize:"0.8rem", marginTop:"10px"}}>about</div>
+          <div style={{ fontSize:"2rem", marginTop:"10px"}}>
+            <a href="https://github.com/jonpark13" target="_blank" >
+                <i className="abtIco fa-brands fa-github"></i>
+            </a>
+          </div>
+          <div  style={{ fontSize:"2rem", marginTop:"10px"}}>
+            <a href="https://www.linkedin.com/in/jon-park-9b23b6142/" target="_blank" >
+                <i className="abtIco fa-brands fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
         </div>
         <div className='postsContainer'>
           <div className='postsCreator'>

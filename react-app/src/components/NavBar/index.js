@@ -132,7 +132,7 @@ const NavBar = () => {
                         }>Home</div>
             
                 </NavLink>
-                <NavLink className='navBarLinks' to='/login'
+                {/* <NavLink className='navBarLinks' to='/login'
                     exact={true}
                     activeClassName='navBarLinks navActive'>
                         <i className="fa-solid fa-user-group"/><div style={
@@ -165,7 +165,7 @@ const NavBar = () => {
                             }
                         }>Test</div>
             
-                </NavLink>
+                </NavLink> */}
                 <UserOptions user={
                     user.user
                 }/>
