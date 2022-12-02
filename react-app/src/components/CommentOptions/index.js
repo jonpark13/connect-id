@@ -45,12 +45,11 @@ function CommentOptions({session, commentInfo, fetchData}) {
 
   return (
     <>
-    <div style={{float:"right", height:"40px"}} onClick={openMenu}>
-        <div style={{fontSize:"25px", float:"right", color:"grey"}}>
-            <i className="fa-solid fa-ellipsis" />
-        </div>
+    <div className="commEllipse">
+        <i style={{color:"gray"}} className="fa-solid fa-ellipsis"  onClick={openMenu}/>
     </div>
-        <div className="postOptionsContainer" style={showMenu ? {display:"flex"} : {display:"none"}}>
+
+        <div className="commentOptionsContainer" style={showMenu ? {display:"flex"} : {display:"none"}}>
           { session.user.id === commentInfo.user_info.id &&
             <>
               <EditCommentModal commentInfo={commentInfo} session={session} fetchData={fetchData}/>

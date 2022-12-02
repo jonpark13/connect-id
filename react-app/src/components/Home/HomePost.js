@@ -110,7 +110,7 @@ function HomePost({post, session, fetchData}) {
             }
         }
       
-        return interval + ' ' + intervalType + ' ago';
+        return interval + ' ' + intervalType;
       };
 
     return (
@@ -190,14 +190,22 @@ function HomePost({post, session, fetchData}) {
             <div className="errorMsgText">{!!errors.comment && errors.comment + '. '}{newComments.length > 250 && ` ${newComments.length}/250`}</div>
             <div className='commentsList'> {
                 post.comments.map(com => (
-                    <div style={{margin: "5px 0px"}}>
-                        <div style={{height: "30px"}}> {com.user_info.first_name} {com.user_info.last_name}
-                            <div>{timeSince(com.created_on)}</div>
-                            {com.user_info.id === session.user.id && 
-                            <CommentOptions commentInfo={com} session={session} fetchData={fetchData}/>
-                            }
+                    <div className='commentBoxContainer' style={{margin: "10px 0px"}}>
+                        <div className='commentUser'>icon</div>
+                        <div className='commentBoxContent'>
+                        <div className='commentBoxHeader'> 
+                            <div className='commentBoxHeaderL'> 
+                            <div className='commentUserName'>{com.user_info.first_name} {com.user_info.last_name}</div>
+                            </div>
+                            <div className='commentBoxHeaderR'>
+                                <div className='timeStamp'>{timeSince(com.created_on)}</div>
+                                {com.user_info.id === session.user.id && 
+                                <CommentOptions commentInfo={com} session={session} fetchData={fetchData}/>
+                                }
+                            </div>      
                         </div>
-                        <div style={{width: "100%", display: "flex", wordBreak: "break-all"}}> {com.comment}</div>
+                        <div className='commentBoxComment' style={{width: "100%", display: "flex", wordBreak: "break-all"}}> {com.comment}</div>
+                        </div>
                     </div>
                 ))
             } </div>
