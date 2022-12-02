@@ -44,10 +44,10 @@ function EditCommentModal({commentInfo, session, fetchData}) {
 
     return (
         <>
-            <button className="editButt"
+            <button className="modalButton"
                 onClick={
                     () => setShowModal(true)
-            }>Edit Comment</button>
+            }><i style={{margin:"12px", width:"18px"}} className="fa-solid fa-pencil" />Edit Comment</button>
             {
             showModal && (
                 <Modal onClose={

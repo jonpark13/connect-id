@@ -50,7 +50,7 @@ function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
 
   return (
     <>
-      <button className="editButt" onClick={() => setShowModal(true)}>Edit Post</button>
+      <button className="modalButton" onClick={() => setShowModal(true)}><i style={{margin:"12px", width:"18px"}} className="fa-solid fa-pencil" />Edit Post</button>
       {showModal && (
         <Modal onClose={() => {setShowModal(false);document.body.style.overflow = 'scroll'}} type={'postForm'}>
           <CreatePostForm type={"edit"} showModal={showModal} setShowModal={setShowModal} postInfo={postInfo} fetchData={fetchData}/>
