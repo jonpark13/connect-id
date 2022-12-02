@@ -16,7 +16,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
     const [postEdit, setPostEdit] = useState('')
     const [newPost, setNewPost] = useState('')
     const [postBody, setPostBody] = useState(type == "edit" ? postInfo.post_body : null)
-    const [postImages, setPostImages] = useState(type == "edit" ? postInfo.images : null)
+    const [postImages, setPostImages] = useState(type == "edit" ? postInfo.images : [])
     const [imgPrev, setImgPrev] = useState([])
     const [errors, setErrors] = useState({})
     const {userId} = useParams();
@@ -162,7 +162,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
                     <img src={URL.createObjectURL(file)}/>
                     ))}
                 </div> */}
-                <Gallery list={imgPrev} />
+                <Gallery list={imgPrev} prevList={postImages}/>
                 <div className='postBottom'>
                     <label className='postBottomLabel'>
                     <div className='circleBackground'>

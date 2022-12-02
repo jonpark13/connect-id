@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import './Gallery.css'
 
-function Gallery({list}) {
+function Gallery({list, prevList}) {
     const history = useHistory()
     const [index, setIndex] = useState(0)
 
@@ -20,12 +20,14 @@ function Gallery({list}) {
 
 
     const updateIndex = (newIndex) => {
+        // console.log(newIndex)
         if(newIndex <= 0) {
             newIndex = 0
         }
-        else if (newIndex * 4 >= list.length) {
-            newIndex = Math.ceil((list.length - 4)/4)
+        else if (newIndex >= (list.length + prevList.length)) {
+            newIndex = ((list.length + prevList.length) - 1)
         }
+        // console.log(newIndex)
         setIndex(newIndex)
     }
 
@@ -42,6 +44,11 @@ function Gallery({list}) {
                                 <img className='userOtherWorksImg' src={URL.createObjectURL(each)}/>
 
                         ))}
+                        {
+                            prevList.map((each) => (
+                                <img className='userOtherWorksImg' src={each}/>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
