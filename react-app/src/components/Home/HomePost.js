@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import { useSelector } from 'react-redux'
 import CommentOptions from '../CommentOptions'
+import PostViewModal from '../PostView'
 import EditCommentModal from './CommentModal'
 import PostOptions from './PostOptions'
 
@@ -136,16 +137,7 @@ function HomePost({post, session, fetchData}) {
             } </div>
             {
             post.images && <div>
-                <img src={
-                        post.images[0]
-                    }
-                    style={
-                        {
-                            maxHeight: "1000px",
-                            width: "100%",
-                            objectFit: "cover"
-                        }
-                    }/>
+                <PostViewModal post={post}/>
             </div>
         }
         <div className='postQuickInfo'>
