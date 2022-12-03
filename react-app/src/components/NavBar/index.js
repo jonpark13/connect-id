@@ -1,11 +1,12 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {NavLink, useLocation} from 'react-router-dom';
+import {NavLink, useHistory, useLocation} from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import UserOptions from './UserOptions';
 
 const NavBar = () => {
     const location = useLocation()
+    const history = useHistory()
     const user = useSelector((state) => state.session)
 
     let userStatus
@@ -179,7 +180,7 @@ const NavBar = () => {
               <div className='navBar leftNav'> {
                 !user.user && <div style={{fontSize:'35px', fontWeight:"bolder", marginRight:'5px', color: "rgb(0,145,164)"}}>Connect</div>
               }
-              <img style={{height:"35px", width:"35px", objectFit:'cover', float:'left'}} src={'/connectidLogo.png'}/>
+              <img onClick={() => !user.user ? null : history.push('/feed')} className={`navLogo${!user.user ? "" : " hovLink"}`} src={'/connectidLogo.png'}/>
               </div>
               <div className='navBar rightNav'>
                 {userStatus} 

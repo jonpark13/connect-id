@@ -27,6 +27,17 @@
     align-items: center;
 }
 
+.navLogo {
+    height:35px;
+    width:35px;
+    object-fit:cover;
+    float:left
+}
+
+.hovLink:hover {
+    cursor: pointer;
+}
+
 .leftNav {
     justify-content: start;
     margin-left: 200px;
