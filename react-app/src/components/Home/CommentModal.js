@@ -32,7 +32,7 @@ function EditCommentModal({commentInfo, session, fetchData}) {
             setErrors('')
             setCommentBody('')
             fetchData()
-            document.body.style.overflow = 'scroll'
+            // document.body.style.overflow = 'scroll'
             setShowModal(false)
         }
         console.log(resData, "COMMENT RESULTS")
@@ -53,7 +53,7 @@ function EditCommentModal({commentInfo, session, fetchData}) {
                 <Modal onClose={
                         () => {
                             setShowModal(false);
-                            document.body.style.overflow = 'scroll'
+                            // document.body.style.overflow = 'scroll'
                         }
                     }
                     type={'postForm'}>

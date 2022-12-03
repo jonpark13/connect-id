@@ -1,3 +1,7 @@
+html, body {
+    height:100vh
+}
+
 #modal {
     position: fixed;
     top: 0;

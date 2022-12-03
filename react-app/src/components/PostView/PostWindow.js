@@ -6,7 +6,7 @@ import Gallery from '../Gallery';
 import UserInfo from '../UserInfo';
 import './PostWindow.css'
 
-function PostWindow({showModal, setShowModal, post}) {
+function PostWindow({showModal, setShowModal, post, time}) {
 
 
     return (
@@ -15,7 +15,7 @@ function PostWindow({showModal, setShowModal, post}) {
             {!!post.images.length && <Gallery list={[]} prevList={post.images} height={"100%"} width={"100%"}/>}
         </div>
         <div className='postViewHeader'>
-            <UserInfo user={post.user_info}/>
+            <UserInfo user={post.user_info} time={time}/>
         </div>
         </div>
     );

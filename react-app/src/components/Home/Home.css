@@ -1,3 +1,7 @@
+body {
+    overflow-y: scroll;
+}
+
 .homePage {
     background-color: rgb(240, 243, 255);
     display: flex;

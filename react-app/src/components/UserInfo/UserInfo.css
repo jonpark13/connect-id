@@ -1,0 +1,28 @@
+.userInfoContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.userInfo {
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.userIcon {
+    font-size:3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgb(111, 186, 190)
+}
+
+.userName {
+    font-size:1.1rem;
+    font-weight: bold;
+}
+
+.userDesc {
+    font-size:0.9rem;
+    color:grey
+}

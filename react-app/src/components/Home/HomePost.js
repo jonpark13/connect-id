@@ -2,6 +2,7 @@ import {useState} from 'react'
 import { useSelector } from 'react-redux'
 import CommentOptions from '../CommentOptions'
 import PostViewModal from '../PostView'
+import UserInfo from '../UserInfo'
 import EditCommentModal from './CommentModal'
 import PostOptions from './PostOptions'
 
@@ -103,7 +104,7 @@ function HomePost({post, session, fetchData}) {
         }
       
         if (interval > 1 || interval === 0) {
-            if(interval === 0 && intervalType == "second"){
+            if(interval <= 0 && intervalType == "second"){
                 return "now"
             }
             else {
@@ -120,14 +121,7 @@ function HomePost({post, session, fetchData}) {
                 {padding: "15px 20px"}
         }>
             <div className='postHeader'>
-                <div>
-                    <strong>{
-                        post.user_info.first_name
-                    }
-                        {
-                        post.user_info.last_name
-                    }</strong>
-                </div>
+                <UserInfo user={post.user_info} time={timeSince(post.created_on)}/>
                 <div style={{float:"right", height:"40px"}}>
                 <PostOptions session={session} postInfo={post} fetchData={fetchData}/>
                 </div>
@@ -137,7 +131,7 @@ function HomePost({post, session, fetchData}) {
             } </div>
             {
             post.images && <div>
-                <PostViewModal post={post}/>
+                <PostViewModal post={post} time={timeSince(post.created_on)}/>
             </div>
         }
         <div className='postQuickInfo'>
