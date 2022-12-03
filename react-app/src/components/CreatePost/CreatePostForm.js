@@ -28,7 +28,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
             await data.then(e => setErrors(e))
         }
         else{
-            document.body.style.overflow = 'scroll'
+            // document.body.style.overflow = 'scroll'
             fetchData()
             setShowModal(false)
         }
@@ -109,7 +109,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
                 setErrors(postres)
             }
             else{
-                document.body.style.overflow = 'scroll'
+                // document.body.style.overflow = 'scroll'
                 setShowModal(false)
             }
             setImageLoading(false);
@@ -170,7 +170,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
                     <img src={URL.createObjectURL(file)}/>
                     ))}
                 </div> */}
-                {(!!imgPrev.length || !!postImages.length) && <Gallery list={imgPrev} prevList={postImages}/>}
+                {(!!imgPrev.length || !!postImages.length) && <Gallery list={imgPrev} prevList={postImages} height={"400px"} width={"500px"}/>}
                 <div className='postBottom'>
                     <label className='postBottomLabel'>
                     <div className='circleBackground'>

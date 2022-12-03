@@ -1,6 +1,6 @@
 .navBarContainer {
     position: fixed;
-    width:100%;
+    width:100vw;
     height: 55px;
     background-color: white;
     z-index: 3;
@@ -25,6 +25,17 @@
     display:flex;
     flex-direction:row;
     align-items: center;
+}
+
+.navLogo {
+    height:35px;
+    width:35px;
+    object-fit:cover;
+    float:left
+}
+
+.hovLink:hover {
+    cursor: pointer;
 }
 
 .leftNav {

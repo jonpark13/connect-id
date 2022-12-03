@@ -1,0 +1,38 @@
+.userInfoContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.userInfo {
+    margin: 0px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.userIcon {
+    font-size:3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgb(111, 186, 190)
+}
+
+.userIcon:hover {
+    cursor: pointer;
+}
+
+.userName {
+    font-size:1rem;
+    font-weight: bold;
+}
+
+.userName:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgb(0,145,164);
+}
+
+.userDesc {
+    font-size:0.8rem;
+    color:grey
+}

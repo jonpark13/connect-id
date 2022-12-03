@@ -44,7 +44,7 @@ function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
     console.log(payload.images, "POST")
     dispatch(postActions.editUserPost(payload, postInfo.id))
     fetchData()
-    document.body.style.overflow = 'scroll'
+    // document.body.style.overflow = 'scroll'
     setShowModal(false)
   }
 
@@ -52,7 +52,7 @@ function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
     <>
       <button className="modalButton" onClick={() => setShowModal(true)}><i style={{margin:"12px", width:"18px"}} className="fa-solid fa-pencil" />Edit Post</button>
       {showModal && (
-        <Modal onClose={() => {setShowModal(false);document.body.style.overflow = 'scroll'}} type={'postForm'}>
+        <Modal onClose={() => {setShowModal(false);document.body.style.overflow = ''}} type={'postForm'}>
           <CreatePostForm type={"edit"} showModal={showModal} setShowModal={setShowModal} postInfo={postInfo} fetchData={fetchData}/>
             {/* <div style={{width: "100%"}}>
             {JSON.stringify(postInfo)}

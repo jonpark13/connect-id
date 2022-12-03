@@ -183,3 +183,15 @@ def current_users_posts():
     """
     user_posts = Post.query.filter(Post.user_id == current_user.id).all()
     return {'posts': [post.to_dict(comments=True,likes=True) for post in user_posts]}
+
+@post_routes.route('/<int:id>')
+@login_required
+def get_post(id):
+    """
+    Query for an existing post usings its id and returning the post information as a dictionary
+    """
+    post = Post.query.get(id)
+    if post:
+        return post.to_dict(comments=True,likes=True)
+    else:
+        return {"message": f"The Post at id:{id} does not exist "}

@@ -73,14 +73,14 @@ function Profile() {
               {userPage.profile_image || <div className='userImageDummy'><i className="fa-regular fa-circle-user" /></div>}
             </div>
           </div>
-          <div className='userInfoContainer'>
-            <div className='userInfoName'>
+          <div className='profInfoContainer'>
+            <div className='profInfoName'>
             {userPage.first_name} {userPage.last_name}
             </div>
-            <div className='userInfoDesc'>
+            <div className='profInfoDesc'>
             {userPage.description || "desc goes here"}
             </div>
-            <div className='userInfoLoc'>
+            <div className='profInfoLoc'>
             {userPage.location || "location goes here"}
             </div>
           </div>

@@ -1,3 +1,7 @@
+body {
+    overflow-y: scroll;
+}
+
 .homePage {
     background-color: rgb(240, 243, 255);
     display: flex;
@@ -160,6 +164,7 @@
 .commentBoxHeader {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     box-sizing: border-box;
     width: 100%;
     height:45px
@@ -175,7 +180,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    width:300px
+
 }
 
 .commentBoxHeaderR {
@@ -184,7 +189,7 @@
     justify-content: end;
     align-items: center;
     position:relative;
-    width: 140px;
+
     height: 20px
 }
 

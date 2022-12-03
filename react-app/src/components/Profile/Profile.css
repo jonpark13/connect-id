@@ -84,7 +84,7 @@
     color:rgb(66, 103, 96)
 }
 
-.userInfoContainer {
+.profInfoContainer {
     margin: 20px 10px;
     display: flex;
     box-sizing: border-box;
@@ -94,17 +94,17 @@
     color: black;
 }
 
-.userInfoName {
+.profInfoName {
     margin: 50px 30px 2px 30px;
     font-size: 2rem;
 }
 
-.userInfoDesc {
+.profInfoDesc {
     margin: 2px 30px 5px 30px;
     font-size: 1.2rem;
 }
 
-.userInfoLoc {
+.profInfoLoc {
     margin: 5px 30px 10px 30px;
     font-size: 1rem;
     color: grey;
