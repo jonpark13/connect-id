@@ -6,11 +6,17 @@ import UserInfo from '../UserInfo'
 import EditCommentModal from './CommentModal'
 import PostOptions from './PostOptions'
 
-function HomePost({post, session, fetchData}) {
+function CommentBoard({post, session, fetchData}) {
     const user = useSelector((state) => state.session.user)
     const [newComments, setNewComments] = useState('')
     const [hidden, setHidden] = useState(true)
     const [errors, setErrors] = useState({})
+
+    let fetchPostData = async () =>  {
+        const response = await fetch(`/api/posts/${post.id}`);
+        const responseData = await response.json();
+        post = responseData
+      }
 
     const handleLikePost = async (e, postId) => {
         e.preventDefault()
@@ -28,6 +34,7 @@ function HomePost({post, session, fetchData}) {
         });
         const resData = await response.json()
         console.log(resData, "LIKE RESULTS")
+        fetchPostData()
         fetchData()
     }
 
@@ -39,6 +46,7 @@ function HomePost({post, session, fetchData}) {
         if (response.ok) {
             const resData = response.json()
             console.log(resData, "unLIKE RESULTS")
+            fetchPostData()
             fetchData()
         }
       }
@@ -67,6 +75,11 @@ function HomePost({post, session, fetchData}) {
             setNewComments('')
             fetchData()
         }
+    }
+
+    const selectAddComment = () => {
+        const commInput = document.getElementById('commentInput')
+        commInput.focus()
     }
 
     const timeSince = (date) => {
@@ -116,24 +129,7 @@ function HomePost({post, session, fetchData}) {
       };
 
     return (
-        <div className='postContainer'
-            style={
-                {padding: "15px 20px"}
-        }>
-            <div className='postHeader'>
-                <UserInfo user={post.user_info} time={timeSince(post.created_on)}/>
-                <div style={{float:"right", height:"40px"}}>
-                <PostOptions session={session} postInfo={post} fetchData={fetchData}/>
-                </div>
-            </div>
-            <div className='postBodyContainer'> {
-                post.post_body
-            } </div>
-            {
-            post.images && <div>
-                <PostViewModal post={post} time={timeSince(post.created_on)} fetchData={fetchData}/>
-            </div>
-        }
+        <>
         <div className='postQuickInfo'>
             {
                 !!post.likes.length ? (<div style={{fontSize:"12px", color:"grey"}}>
@@ -155,14 +151,15 @@ function HomePost({post, session, fetchData}) {
                 (<button className='postButton' style={{color:'rgb(88,139,157)'}} onClick={(e) => handleUnlikePost(e, (post.likes.filter(e => e.user_id == user.id)[0]).id)}><i className="fa-solid fa-hand-spock" />{' ' + "Like"}</button>) :
                 (<button className='postButton' onClick={(a) => handleLikePost(a, post.id)}><i className="fa-regular fa-hand-spock" /> Like</button>)
             }
-            <button className='postButton' onClick={() => setHidden(!hidden)}>
+            <button className='postButton' onClick={() => selectAddComment()}>
                 <i className="fa-regular fa-comment-dots" /> Comment
             </button>
 
             </div>
-            <div className='commentsContainer' style={hidden ? {display: "none"} : {display: "flex"}}>
+            <div className='commentsContainer' style={{display: "flex"}}>
             <div className='commentinputBar'>
                 <input placeholder='Add a comment'
+                    id='commentInput'
                     value={newComments}
                     onChange={
                         (e) => setNewComments(e.target.value)
@@ -196,8 +193,7 @@ function HomePost({post, session, fetchData}) {
                 ))
             } </div>
             </div>
-        </div>
-
+            </>
     )
 }
-export default HomePost;
+export default CommentBoard;

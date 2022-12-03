@@ -30,21 +30,21 @@ function Gallery({list, prevList, height, width}) {
                 <div className='userOtherWorksCarouselInner' style={{"transform": `translateX(-${index * 100}%)`}}>
                     <div className='userOtherWorksCarouselList' >
                         {list.map((each) => (
-                                <img style={{width:`${width}`}} className='userOtherWorksImg' src={URL.createObjectURL(each)}/>
+                                <img style={{width:`${width}`}} className='userOtherWorksImg' src={URL.createObjectURL(each)} onError={(e) => {e.target.src = "https://connectidbucket.s3.amazonaws.com/imgError.png"}}/>
                         ))}
                         {
                             prevList.map((each) => (
                                 <img style={{width:`${width}`}} className='userOtherWorksImg' src={each}/>
                             ))
                         }
-                        <div className="moveCarouselLeft" >
+                    </div>
+                </div>
+                <div className="moveCarouselLeft" >
                             <i className="fa-solid fa-circle-arrow-left" onClick={() => { updateIndex( index - 1 )}}/>   
                         </div>
                         <div className="moveCarouselRight" >
                             <i className="fa-solid fa-circle-arrow-right" onClick={() => { updateIndex( index + 1 )}}/>
                         </div>
-                    </div>
-                </div>
             </div>
         </div>
 
