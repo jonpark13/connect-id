@@ -9,12 +9,13 @@ const NavBar = () => {
     const history = useHistory()
     const user = useSelector((state) => state.session)
 
-    if(location.pathname.startsWith('/id/') || location.pathname == '/sign-up' || location.pathname == '/login'){
-        document.body.style.overflow = 'hidden'
-    }
-    else{
-        document.body.style.overflow = 'scroll'
-    }
+    // console.log(location.pathname)
+    // if(location.pathname.startsWith('/id/') || location.pathname == '/sign-up' || location.pathname == '/login'){
+    //     document.body.style.overflow = 'hidden'
+    // }
+    // else{
+    //     document.body.style.overflow = 'scroll'
+    // }
 
     let userStatus
     if (!user.user) {
