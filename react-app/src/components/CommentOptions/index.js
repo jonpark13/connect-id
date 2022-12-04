@@ -45,7 +45,7 @@ function CommentOptions({session, commentInfo, fetchData}) {
 
   return (
     <>
-    <div className="commEllipse">
+    <div className="commEllipse" onClick={e => e.stopPropagation()}>
         <i style={{color:"gray"}} className="fa-solid fa-ellipsis"  onClick={openMenu}/>
     </div>
 

@@ -130,7 +130,7 @@ function CommentBoard({post, session, fetchData}) {
 
     return (
         <>
-        <div className='postQuickInfo'>
+        <div className='postQuickInfo' style={{marginTop:"10px"}}>
             {
                 !!post.likes.length ? (<div style={{fontSize:"12px", color:"grey"}}>
                 <i className="fa-regular fa-thumbs-up" /> {
