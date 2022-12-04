@@ -36,8 +36,8 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    def to_dict(self):
-        return {
+    def to_dict(self, activity=False):
+        user =  {
             'id': self.id,
             'first_name': self.first_name,
             'last_name': self.last_name,
@@ -48,3 +48,10 @@ class User(db.Model, UserMixin):
             'location': self.location,
             'employment': self.employment
         }
+        if(activity):
+            user['activity'] = {
+                "comments": [comment.to_dict() for comment in self.comments],
+                "post": [post.to_dict() for post in self.posts],
+                "likes": [like.to_dict() for like in self.likes]
+            }
+        return user

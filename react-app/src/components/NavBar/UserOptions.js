@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton'
+import UserInfo from "../UserInfo";
 import './NavBar.css'
 
 function UserOptions({ user }) {
@@ -40,11 +41,10 @@ function UserOptions({ user }) {
 
       {showMenu && (
         <div className="userOptionsContainer">
-          <div>{user.first_name} {user.last_name}
+          <div className="loggedInUser">
+            <UserInfo user={user} />
           </div>
-          <div>
           <LogoutButton />
-          </div>
         </div>
       )}
     </div>

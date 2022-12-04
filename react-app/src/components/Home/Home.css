@@ -45,7 +45,7 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
-    height: 300px;
+    min-height: 300px;
     width: 250px;
     margin: 20px 10px;
     border-radius: 10px;
@@ -56,25 +56,65 @@
     background-color: rgb(88, 139, 157);
     height:75px;
     width:100%;
+    position:relative;
     border-radius: 10px 10px 0 0;
 }
+
 .userContainerSemiTop {
-    position: relative;
-    top: 74%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 40px;
+    position: absolute;
+    top: 30px;
+    left: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
     width: 80px;
-    border-radius: 150px 150px 0 0;
     background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.userContainerSemiTop:hover {
+    cursor: pointer;
+}
+
+.userContainerImage {
+    height:75px;
+    width:75px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userContainerImageDummy {
+    font-size: 75px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:rgb(66, 103, 96)
 }
 
 .userContainerName {
-    padding: 0px 5px;
-    width: 100%;
+    text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size:1.1rem;
+    margin:5px 0px
+}
+
+.userContainerDesc {
+    text-align: center;
+    font-size:1rem;
+    color:grey;
+    margin:5px 0px
+}
+
+.userContainerBot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:50px 0px 50px 0px
 }
 
 .postsContainer {
@@ -198,7 +238,7 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    width:100%;
+    width:calc(100% - 50px);
     padding: 6px;
     background-color: rgb(243, 243, 243);
     border-radius: 8px;
@@ -214,6 +254,7 @@
 }
 
 .commentUserContainer {
+    max-width: 155px;
     display: flex;
     flex-direction: column
 }
@@ -229,8 +270,12 @@
 }
 
 .commentUserDesc {
+    width: 100%;
     font-size:0.8rem;
-    color:grey
+    color:grey;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .commentBoxHeaderL {
@@ -302,14 +347,6 @@
     margin: 10px 0px;
     white-space: break-spaces;
     word-wrap: break-word;
-}
-
-.feedUserIcon {
-    position:relative;
-    font-size: 76px;
-    left:31%;
-    bottom: 48%;
-    color: rgb(111, 186, 190);
 }
 
 .postQuickInfo {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import HomePost from './HomePost'
 import './Home.css'
 import CreatePost from '../CreatePost';
@@ -8,6 +8,7 @@ import PostViewModal from '../PostView';
 
 function Home() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const session = useSelector((state) => state.session)
   const userPosts = useSelector((state) => state.post)
   const [posts, setPosts] = useState({posts:[]});
@@ -99,22 +100,21 @@ function Home() {
         <div className='homeSideContainer'>
         <div className='userContainer'>
           <div className='userContainerTop'>
-            <div className='userContainerSemiTop'>
-
+            <div className='userContainerSemiTop' onClick={() => history.push(`/id/${session.user.id}`)}>
+              {(!!session.user.profile_image && <img className='userContainerImage' src={session.user.profile_image} />) || <div className='userContainerImageDummy'><i className="fa-regular fa-circle-user" /></div>}
             </div>
           </div>
-          <div style={{width: "100%", display: "flex", inlineSize: "200px", wordBreak: "break-all"}}>
-            <i className="feedUserIcon fa-regular fa-circle-user" />
-          </div>
-          <div className='userContainerName' style={{fontSize:"1.1rem", margin:"5px 0px"}}>
+          <div className='userContainerBot'>
+          <div className='userContainerName'>
           {
             session.user.first_name
           } {
             session.user.last_name
           }
           </div>
-          <div style={{fontSize:"1rem", color:"grey", margin:"5px 0px"}}>
+          <div className='userContainerDesc'>
             {session.user.description}
+          </div>
           </div>
         </div>
         <div className='aboutContainer'>

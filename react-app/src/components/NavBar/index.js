@@ -150,20 +150,20 @@ const NavBar = () => {
                                 fontSize: "12px"
                             }
                         }>Login</div>
-                </NavLink>
-                <NavLink className='navBarLinks' to='/sign-up'
+                </NavLink> */}
+                <NavLink className='navBarLinks' to={`/id/${user.user.id}`}
                     exact={true}
                     activeClassName='navBarLinks navActive'>
                     
-                        <i className="fa-regular fa-message"/><div style={
+                        <i className="fa-regular fa-address-card"/><div style={
                             {
                                 marginTop: "5px",
                                 fontSize: "12px"
                             }
-                        }>Sign up</div>
+                        }>View Profile</div>
             
                 </NavLink>
-                <NavLink className='navBarLinks' to='/test'
+                {/* <NavLink className='navBarLinks' to='/test'
                     exact={true}
                     activeClassName='navBarLinks navActive'>
                     
