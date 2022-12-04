@@ -35,7 +35,7 @@ export function Modal({ onClose, type, children }) {
     document.body.addEventListener("keydown", closeOnEscapeKeyDown);
     return function cleanup() {
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflow = 'auto';
     };
   }, []);
 

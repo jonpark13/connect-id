@@ -24,6 +24,8 @@
 }
 
 .postViewHeader {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     padding: 20px 20px;
     border-bottom: rgb(204, 204, 204) solid 1px;
@@ -37,6 +39,7 @@
 }
 
 .postBodyModal {
+    white-space: break-spaces;
     margin: 10px 0px;
     word-wrap: break-word;
 }
