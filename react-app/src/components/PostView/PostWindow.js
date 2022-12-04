@@ -17,6 +17,9 @@ function PostWindow({showModal, setShowModal, post, time, fetchData}) {
         </div>
         <div className='postViewHeader'>
             <UserInfo user={post.user_info} time={time}/>
+            <div className='postBodyModal'>
+                {post.post_body}
+            </div>
             <CommentBoard post={post} session={session} fetchData={fetchData}/>
         </div>
         </div>

@@ -241,6 +241,7 @@ body {
 }
 
 .postBodyContainer {
+    margin: 10px 0px;
     word-wrap: break-word;
 }
 

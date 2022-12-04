@@ -1,3 +1,9 @@
+.postImageView {
+    max-height: 800px;
+    width: 100%;
+    object-fit: cover;
+}
+
 .postViewContainer {
     display:flex;
     width: 100%;
@@ -16,6 +22,11 @@
     width: 65%;
     padding: 20px 20px;
     height: 100%;
+}
+
+.postBodyModal {
+    margin: 10px 0px;
+    word-wrap: break-word;
 }
 
 .postText {

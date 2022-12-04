@@ -123,14 +123,16 @@ function HomePost({post, session, fetchData}) {
             <div className='postHeader'>
                 <UserInfo user={post.user_info} time={timeSince(post.created_on)}/>
                 <div style={{float:"right", height:"40px"}}>
-                <PostOptions session={session} postInfo={post} fetchData={fetchData}/>
+                { post.user_info.id === session.user.id &&
+                    <PostOptions session={session} postInfo={post} fetchData={fetchData}/>
+                }
                 </div>
             </div>
             <div className='postBodyContainer'> {
                 post.post_body
             } </div>
             {
-            post.images && <div>
+            post.images && <div style={{width:"calc(100% + 40px", margin:"0px -20px", boxSizing:"border-box"}}>
                 <PostViewModal post={post} time={timeSince(post.created_on)} fetchData={fetchData}/>
             </div>
         }
