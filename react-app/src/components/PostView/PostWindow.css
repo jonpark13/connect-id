@@ -1,3 +1,16 @@
+.postView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    max-width: 1200px;
+    min-width: 500px;
+    height: 800px;
+    z-index: 4;
+}
+
 .postImageView {
     max-height: 800px;
     width: 100%;
@@ -12,14 +25,13 @@
 
 .postViewHeader {
     box-sizing: border-box;
-    width: 35%;
     padding: 20px 20px;
     border-bottom: rgb(204, 204, 204) solid 1px;
 }
 
 .postViewBody {
     box-sizing: border-box;
-    width: 65%;
+    width: max-content;
     padding: 20px 20px;
     height: 100%;
 }

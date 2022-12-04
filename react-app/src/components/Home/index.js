@@ -4,6 +4,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import HomePost from './HomePost'
 import './Home.css'
 import CreatePost from '../CreatePost';
+import PostViewModal from '../PostView';
 
 function Home() {
   const dispatch = useDispatch()
@@ -26,6 +27,52 @@ function Home() {
   if (!session.user) {
     return <Redirect to={'/login'} />;
   }
+
+  const timeSince = (date) => {
+    date = new Date(date);
+
+    let seconds = Math.floor((new Date() - date) / 1000);
+    let intervalType;
+  
+    let interval = Math.floor(seconds / 31536000);
+    if (interval >= 1) {
+      intervalType = 'year';
+    } else {
+      interval = Math.floor(seconds / 2592000);
+      if (interval >= 1) {
+        intervalType = 'month';
+      } else {
+        interval = Math.floor(seconds / 86400);
+        if (interval >= 1) {
+          intervalType = 'day';
+        } else {
+          interval = Math.floor(seconds / 3600);
+          if (interval >= 1) {
+            intervalType = "hour";
+          } else {
+            interval = Math.floor(seconds / 60);
+            if (interval >= 1) {
+              intervalType = "minute";
+            } else {
+              interval = seconds;
+              intervalType = "second";
+            }
+          }
+        }
+      }
+    }
+  
+    if (interval > 1 || interval === 0) {
+        if(interval <= 0 && intervalType == "second"){
+            return "now"
+        }
+        else {
+            intervalType += 's';
+        }
+    }
+  
+    return interval + ' ' + intervalType;
+  };
 
   return (
     <div className='homePage'> 
@@ -52,7 +99,7 @@ function Home() {
           </div>
         </div>
         <div className='aboutContainer'>
-          <div style={{ fontSize:"1.2rem",fontWeight:"bold", marginTop:"10px"}}>Meet the dev!</div>
+          <div style={{ fontSize:"1.2rem",fontWeight:"bold", marginTop:"10px"}}>About the dev</div>
           <div style={{ fontSize:"1 rem", marginTop:"10px"}}>
             Jon Park
           </div>
@@ -84,8 +131,20 @@ function Home() {
             )).reverse()
         }
         </div>
-        <div className='newContainer'>
-            news
+        <div className='newsContainer'>
+            <div className='newsHeader'>
+              Recent posts
+            </div>
+            <div className='newsBody'>
+              <div className='newsList'>
+
+              {
+                posts.posts.map(e => (
+                  <PostViewModal post={e} time={timeSince(e.created_on)} fetchData={fetchData} type={'news'}/>
+              ))
+              }
+              </div>
+            </div>
         </div>
       </div>
     </div>

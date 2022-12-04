@@ -133,7 +133,7 @@ function HomePost({post, session, fetchData}) {
             } </div>
             {
             post.images && <div style={{width:"calc(100% + 40px", margin:"0px -20px", boxSizing:"border-box"}}>
-                <PostViewModal post={post} time={timeSince(post.created_on)} fetchData={fetchData}/>
+                <PostViewModal post={post} time={timeSince(post.created_on)} fetchData={fetchData} type={'post'}/>
             </div>
         }
         <div className='postQuickInfo'>

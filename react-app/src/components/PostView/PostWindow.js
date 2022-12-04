@@ -12,10 +12,13 @@ function PostWindow({showModal, setShowModal, post, time, fetchData}) {
 
     return (
         <div className='postViewContainer'>
+            {post.images[0] != '' && !!post.images.length && 
+
         <div className='postViewBody'>
-            {!!post.images.length && <Gallery list={[]} prevList={post.images} height={"100%"} width={"740px"}/>}
+            <Gallery list={[]} prevList={post.images} height={"100%"} width={"740px"}/>
         </div>
-        <div className='postViewHeader'>
+            }
+        <div className='postViewHeader' style={(post.images[0] != '' && !!post.images.length) ? {width:"350px"} : {width:"500px"}}>
             <UserInfo user={post.user_info} time={time}/>
             <div className='postBodyModal'>
                 {post.post_body}
