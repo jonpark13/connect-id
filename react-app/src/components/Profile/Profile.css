@@ -116,11 +116,23 @@
     align-items: center;
     background-color: white;
     height: 500px;
-    min-width: 250px;
+    min-width: 300px;
     margin: 20px 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 1px rgb(45, 45, 45);
 } 
+
+.sideContainerTitle {
+    margin: 10px 10px;
+    font-weight: bold;
+}
+
+.sideContainerItem {
+    display: flex;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 0px 10px;
+}
 
 .cardBorder {
     margin:20px 20px

@@ -1,25 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useHistory, useParams } from 'react-router-dom';
+import { ShuffleContext } from '../../context/shuffle';
 import * as postActions from '../../store/post'
+import UserInfo from '../UserInfo';
 import './Profile.css'
 
 function Profile() {
   const dispatch = useDispatch()
   const history = useHistory()
+  const { shuffle } = useContext( ShuffleContext)
   const session = useSelector((state) => state.session)
   const [userPage, setUserPage] = useState({})
+  const [users, setUsers] = useState([])
   const [posts, setPosts] = useState({posts:[]});
   const [postEdit, setPostEdit] = useState('')
   const { usertag }  = useParams();
 
-  let fetchData = async () =>  {
-    const response = await fetch(`/api/users/${usertag}`);
+  console.log(usertag)
+
+  let fetchData = async (id) =>  {
+    const response = await fetch(`/api/users/${id}`);
     if(!response.ok){
     history.replace('/404')
     }
     const responseData = await response.json();
     setUserPage(responseData);
+  }
+
+  let fetchOthers = async () => {
+    const response = await fetch('/api/users/');
+    const responseData = await response.json();
+    setUsers(responseData);
   }
 
   let userExperience
@@ -59,8 +71,9 @@ function Profile() {
   }
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData(usertag);
+    fetchOthers()
+  }, [usertag]);
 
   if (!session.user) {
     return <Redirect to={'/login'} />
@@ -109,7 +122,10 @@ function Profile() {
           </div>
         </div>
         <div className='sideContainer'>
+          <div className='sideContainerTitle'>
           People also viewed
+          </div>
+            {!!users.users && shuffle(users.users.filter(u => u.id != usertag)).map(e => <div className='sideContainerItem'><UserInfo user={e} time={null}/></div>)}
         </div>
       </div>
     </div>

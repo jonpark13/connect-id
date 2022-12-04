@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import CommentOptions from '../CommentOptions'
 import PostViewModal from '../PostView'
 import UserInfo from '../UserInfo'
@@ -8,6 +9,7 @@ import PostOptions from './PostOptions'
 
 function HomePost({post, session, fetchData}) {
     const user = useSelector((state) => state.session.user)
+    const history = useHistory()
     const [newComments, setNewComments] = useState('')
     const [hidden, setHidden] = useState(true)
     const [errors, setErrors] = useState({})
@@ -179,11 +181,20 @@ function HomePost({post, session, fetchData}) {
             <div className='commentsList'> {
                 post.comments.map(com => (
                     <div className='commentBoxContainer' style={{margin: "10px 0px"}}>
-                        <div className='commentUser'><i className="fa-regular fa-circle-user" /></div>
+                        <div className='commentUser' onClick={() => history.push(`/id/${com.user_info.id}`)}>
+                            <i className="fa-regular fa-circle-user" />
+                        </div>
                         <div className='commentBoxContent'>
                         <div className='commentBoxHeader'> 
                             <div className='commentBoxHeaderL'> 
-                            <div className='commentUserName'>{com.user_info.first_name} {com.user_info.last_name}</div>
+                            <div className='commentUserContainer'>
+                            <div className='commentUserInfo' onClick={() => history.push(`/id/${com.user_info.id}`)}>
+                                {com.user_info.first_name} {com.user_info.last_name}
+                            </div>
+                            <div className='commentUserDesc'>
+                                {user.description}
+                            </div>
+                            </div>
                             </div>
                             <div className='commentBoxHeaderR'>
                                 <div className='timeStamp'>{timeSince(com.created_on)}</div>
