@@ -30,12 +30,12 @@ export function Modal({ onClose, type, children }) {
     }
   };
 
-  document.body.style.overflow = 'hidden';
-
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     document.body.addEventListener("keydown", closeOnEscapeKeyDown);
     return function cleanup() {
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
+      document.body.style.overflow = 'scroll';
     };
   }, []);
 

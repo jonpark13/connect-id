@@ -14,11 +14,12 @@ function PostViewModal({post, time, fetchData, type}) {
   }
   if(type === 'news'){
     refButton = (
-      <div key={post.id} onClick={() => setShowModal(true)}>
-        <div>
+      <div className='newsTextlineContainer' key={post.id} onClick={() => setShowModal(true)}>
+        <div className='newsTextline'>
+        <i style={{fontSize:"8px", marginRight: "10px"}} className="fa-solid fa-circle" />
           {post.post_body}
         </div>
-        <div>
+        <div className='newsTextlineTime'>
           {time}
         </div>
       </div>
@@ -29,7 +30,7 @@ function PostViewModal({post, time, fetchData, type}) {
     <>
       {refButton}
       {showModal && (
-        <Modal onClose={() => {setShowModal(false);document.body.style.overflow = ''}} type={'postView'}>
+        <Modal onClose={() => {setShowModal(false)}} type={'postView'}>
           <PostWindow post={post} showModal={showModal} setShowModal={setShowModal} time={time} fetchData={fetchData}/>
         </Modal>
       )}

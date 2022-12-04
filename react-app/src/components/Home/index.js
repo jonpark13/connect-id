@@ -28,6 +28,25 @@ function Home() {
     return <Redirect to={'/login'} />;
   }
 
+  function shuffle(array) {
+    let newArr = array.slice()
+    let currentIndex = newArr.length, randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [newArr[currentIndex], newArr[randomIndex]] = [
+            newArr[randomIndex], newArr[currentIndex]];
+    }
+
+    return newArr;
+  }
+
   const timeSince = (date) => {
     date = new Date(date);
 
@@ -139,9 +158,9 @@ function Home() {
               <div className='newsList'>
 
               {
-                posts.posts.map(e => (
+                shuffle(posts.posts).map(e => (
                   <PostViewModal post={e} time={timeSince(e.created_on)} fetchData={fetchData} type={'news'}/>
-              ))
+              )).slice(1,6)
               }
               </div>
             </div>

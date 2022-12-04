@@ -120,3 +120,28 @@
 input::file-selector-button {
     display: none;
 }
+
+.newsTextlineContainer {
+    padding: 10px 10px;
+}
+
+.newsTextline {
+    font-size: 15px;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.newsTextlineTime {
+    margin-left: 16px;
+    font-size: 14px;
+    color: grey;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.newsTextlineContainer:hover {
+    cursor: pointer;
+    background-color: rgb(215, 215, 215);
+}
