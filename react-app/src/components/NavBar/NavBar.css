@@ -1,4 +1,5 @@
 .navBarContainer {
+    box-sizing: border-box;
     position: fixed;
     width:100vw;
     height: 55px;
@@ -8,10 +9,12 @@
 }
 
 .navBarShadow {
+    box-sizing: border-box;
     box-shadow: 0px 0px 1px rgb(0 0 0)
 }
 
 .navBarInner {
+    box-sizing: border-box;
     display:flex;
     flex-direction:row;
     align-items: center;
@@ -20,6 +23,8 @@
 }
 
 .navBar {
+    box-sizing: border-box;
+    box-sizing: border-box;
     width:350px;
     min-width: 350px;
     display:flex;
@@ -58,6 +63,7 @@
     align-items:center;
     justify-content:center;
     color:rgb(115, 115, 115);
+    position: relative;
 }
 
 .navActive {
@@ -85,6 +91,7 @@
 }
 
 .userOptionsContainer {
+    box-sizing: border-box;
     display: flex;
     cursor:auto;
     flex-direction: column;
@@ -93,11 +100,10 @@
     justify-content: center;
     align-items: center;
     top: 64px;
-    right: 700px 15%;
     box-shadow: 0px 0px 1px rgb(45, 45, 45);
     border-radius: 4px;
     width: 250px;
-    height: 300px;
+    height: 100px;
 }
 
 .joinNow:hover{

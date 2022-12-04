@@ -8,9 +8,10 @@ function CommentOptions({session, commentInfo, fetchData}) {
   const [showModal, setShowModal] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
+
   const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
+    if (showMenu) setShowMenu(false)
+    else setShowMenu(true);
   };
 
   useEffect(() => {
@@ -45,8 +46,8 @@ function CommentOptions({session, commentInfo, fetchData}) {
 
   return (
     <>
-    <div className="commEllipse" onClick={e => e.stopPropagation()}>
-        <i style={{color:"gray"}} className="fa-solid fa-ellipsis"  onClick={openMenu}/>
+    <div className="commEllipse">
+        <i style={{color:"gray"}} className="fa-solid fa-ellipsis"  onClick={e => {e.stopPropagation();openMenu()}}/>
     </div>
 
         <div className="commentOptionsContainer" style={showMenu ? {display:"flex"} : {display:"none"}}>

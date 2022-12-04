@@ -156,11 +156,10 @@ function Home() {
             </div>
             <div className='newsBody'>
               <div className='newsList'>
-
               {
-                shuffle(posts.posts).map(e => (
+                shuffle(posts.posts.map(e => (
                   <PostViewModal post={e} time={timeSince(e.created_on)} fetchData={fetchData} type={'news'}/>
-              )).slice(1,6)
+              )).slice(1,6))
               }
               </div>
             </div>

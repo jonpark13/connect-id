@@ -1,18 +1,18 @@
 .profPage {
+    box-sizing: border-box;
+    padding: 50px 0px;
     background-color: rgb(240, 243, 255);
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
     min-height: 100vh;
-    width:100%;
 }
 
 .profContent {
     display: flex;
     flex-direction: row;
     justify-content: center;
-
+    box-sizing: border-box;
     height:90%;
     width:100%;
     margin-bottom: 100px;
@@ -76,7 +76,7 @@
 }
 
 .userImageDummy {
-    font-size: 9.5rem;
+    font-size: 9.1rem;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -116,11 +116,23 @@
     align-items: center;
     background-color: white;
     height: 500px;
-    min-width: 250px;
+    min-width: 300px;
     margin: 20px 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 1px rgb(45, 45, 45);
 } 
+
+.sideContainerTitle {
+    margin: 10px 10px;
+    font-weight: bold;
+}
+
+.sideContainerItem {
+    display: flex;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 0px 10px;
+}
 
 .cardBorder {
     margin:20px 20px

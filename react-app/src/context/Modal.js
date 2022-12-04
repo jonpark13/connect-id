@@ -35,14 +35,14 @@ export function Modal({ onClose, type, children }) {
     document.body.addEventListener("keydown", closeOnEscapeKeyDown);
     return function cleanup() {
       document.body.removeEventListener("keydown", closeOnEscapeKeyDown);
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflow = 'auto';
     };
   }, []);
 
   if (!modalNode) return null;
 
   return ReactDOM.createPortal(
-    <div id="modal">
+    <div id="modal" >
       <div id="modal-background" onClick={onClose} />
       <div className={type}>
         {children}
