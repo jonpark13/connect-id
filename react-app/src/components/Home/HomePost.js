@@ -123,15 +123,17 @@ function HomePost({post, session, fetchData}) {
             <div className='postHeader'>
                 <UserInfo user={post.user_info} time={timeSince(post.created_on)}/>
                 <div style={{float:"right", height:"40px"}}>
-                <PostOptions session={session} postInfo={post} fetchData={fetchData}/>
+                { post.user_info.id === session.user.id &&
+                    <PostOptions session={session} postInfo={post} fetchData={fetchData}/>
+                }
                 </div>
             </div>
             <div className='postBodyContainer'> {
                 post.post_body
             } </div>
             {
-            post.images && <div>
-                <PostViewModal post={post} time={timeSince(post.created_on)} fetchData={fetchData}/>
+            post.images && <div style={{width:"calc(100% + 40px", margin:"0px -20px", boxSizing:"border-box"}}>
+                <PostViewModal post={post} time={timeSince(post.created_on)} fetchData={fetchData} type={'post'}/>
             </div>
         }
         <div className='postQuickInfo'>
@@ -177,7 +179,7 @@ function HomePost({post, session, fetchData}) {
             <div className='commentsList'> {
                 post.comments.map(com => (
                     <div className='commentBoxContainer' style={{margin: "10px 0px"}}>
-                        <div className='commentUser'>icon</div>
+                        <div className='commentUser'><i className="fa-regular fa-circle-user" /></div>
                         <div className='commentBoxContent'>
                         <div className='commentBoxHeader'> 
                             <div className='commentBoxHeaderL'> 

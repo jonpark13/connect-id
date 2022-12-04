@@ -9,7 +9,7 @@ function CreatePost() {
     <>
       <button className='postsCreatorButton' onClick={() => setShowModal(true)}>Start a post</button>
       {showModal && (
-        <Modal onClose={() => {setShowModal(false);document.body.style.overflow = 'scroll'}} type={'postForm'}>
+        <Modal onClose={() => {setShowModal(false)}} type={'postForm'}>
           <CreatePostForm type={'create'} showModal={showModal} setShowModal={setShowModal}/>
         </Modal>
       )}

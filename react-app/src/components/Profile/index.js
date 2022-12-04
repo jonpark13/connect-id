@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import * as postActions from '../../store/post'
 import './Profile.css'
 
 function Profile() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const session = useSelector((state) => state.session)
   const [userPage, setUserPage] = useState({})
   const [posts, setPosts] = useState({posts:[]});
@@ -14,8 +15,10 @@ function Profile() {
 
   let fetchData = async () =>  {
     const response = await fetch(`/api/users/${usertag}`);
+    if(!response.ok){
+    history.replace('/404')
+    }
     const responseData = await response.json();
-
     setUserPage(responseData);
   }
 

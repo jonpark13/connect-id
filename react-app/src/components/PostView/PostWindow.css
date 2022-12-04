@@ -1,3 +1,22 @@
+.postView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    max-width: 1200px;
+    min-width: 500px;
+    height: 800px;
+    z-index: 4;
+}
+
+.postImageView {
+    max-height: 800px;
+    width: 100%;
+    object-fit: cover;
+}
+
 .postViewContainer {
     display:flex;
     width: 100%;
@@ -6,16 +25,20 @@
 
 .postViewHeader {
     box-sizing: border-box;
-    width: 35%;
     padding: 20px 20px;
     border-bottom: rgb(204, 204, 204) solid 1px;
 }
 
 .postViewBody {
     box-sizing: border-box;
-    width: 65%;
+    width: max-content;
     padding: 20px 20px;
     height: 100%;
+}
+
+.postBodyModal {
+    margin: 10px 0px;
+    word-wrap: break-word;
 }
 
 .postText {
@@ -96,4 +119,29 @@
 
 input::file-selector-button {
     display: none;
+}
+
+.newsTextlineContainer {
+    padding: 10px 10px;
+}
+
+.newsTextline {
+    font-size: 15px;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.newsTextlineTime {
+    margin-left: 16px;
+    font-size: 14px;
+    color: grey;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.newsTextlineContainer:hover {
+    cursor: pointer;
+    background-color: rgb(215, 215, 215);
 }

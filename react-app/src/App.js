@@ -56,6 +56,12 @@ function App() {
         <Route path='/test' exact={true} >
           <Test />
         </Route>
+        <Route path="*">
+          <div style={{ fontSize: 200, marginTop: "150px",textAlign:"center" }}>* 404: Page not found *</div>
+        </Route>
+        <Route path="/404" exact={true}>
+          <div style={{ fontSize: 200, marginTop: "150px",textAlign:"center" }}>* 404: Page not found *</div>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

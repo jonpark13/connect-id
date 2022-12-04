@@ -174,7 +174,7 @@ function CommentBoard({post, session, fetchData}) {
             <div className='commentsList'> {
                 post.comments.map(com => (
                     <div className='commentBoxContainer' style={{margin: "10px 0px"}}>
-                        <div className='commentUser'>icon</div>
+                        <div className='commentUser'><i className="fa-regular fa-circle-user" /></div>
                         <div className='commentBoxContent'>
                         <div className='commentBoxHeader'> 
                             <div className='commentBoxHeaderL'> 
