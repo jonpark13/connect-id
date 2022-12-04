@@ -13,7 +13,7 @@ function UserInfo({user, time}) {
     if(user.profile_image) {
         userIcon = (
             <div className='userModIcon' onClick={profilePage}>
-                <img src={user.profile_image}/>
+                <img className='userModProfileImage' src={user.profile_image}/>
             </div>
         )
     }

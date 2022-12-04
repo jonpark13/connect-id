@@ -33,7 +33,7 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
-    height: 400px;
+    min-height: 400px;
     width: 750px;
     min-width: 750px;
     margin: 20px 10px 5px 10px;
@@ -73,6 +73,13 @@
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
     z-index: 3;
+}
+
+.userImage {
+    height:150px;
+    width:150px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .userImageDummy {
@@ -116,7 +123,7 @@
     align-items: center;
     background-color: white;
     height: 500px;
-    min-width: 300px;
+    width: 300px;
     margin: 20px 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 1px rgb(45, 45, 45);
@@ -142,6 +149,10 @@
     margin-bottom: 5px;
     font-size: 1.2rem;
     color: black;
+}
+
+.cardContInd {
+    margin: 10px 0px 10px 15px;
 }
 
 .cardContTitle {

@@ -1,12 +1,14 @@
 .userInfoContainer {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .userInfo {
     margin: 0px 10px;
     display: flex;
     flex-direction: column;
+    width: calc(100% - 60px)
 }
 
 .userIcon {
@@ -17,11 +19,26 @@
     color:rgb(111, 186, 190)
 }
 
+.userModProfileImage {
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.userModProfileImage:hover {
+    cursor: pointer;
+}
+
 .userIcon:hover {
     cursor: pointer;
 }
 
 .userName {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size:1rem;
     font-weight: bold;
 }
@@ -33,6 +50,10 @@
 }
 
 .userDesc {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size:0.8rem;
     color:grey
 }

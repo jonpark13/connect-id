@@ -5,45 +5,33 @@ from app.models import db, User, Post, environment, SCHEMA
 def seed_posts():
     post1 = Post(
         user_id = 1,
-        post_body = "testing post 1",
-        images = "https://i.imgur.com/SGZVyKe.jpeg",
-        # comments = ,
-        # likes = ,
+        post_body = "Mars is there, waiting to be reached.",
+        images = "[https://mars.nasa.gov/system/site_config_values/meta_share_images/1_mars-nasa-gov.jpg, https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/pia25190.jpeg, https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/pia24836_perseverance_selfie_at_rochette_figure_3_croppedcloseup.jpeg]"
     )
     post2 = Post(
-        user_id = 2,
-        post_body = "testing post 2",
-        images = "",
-        # comments = ,
-        # likes = ,
+        user_id = 1,
+        post_body = "It was Mars, the god of war, and for me, the fighting man, it had always held the power of irresistible enchantment. As I gazed at it on that far-gone night it seemed to call across the unthinkable void, to lure me to it, to draw me as the lodestone attracts a particle of iron.\n-Edgar Rice Burroughs",
+        images = "[https://media.mythopedia.com/2mZ7liWNSTYYXRVRSbeZ0e/f787be1fa5ab5052c29e65bf91c231b9/relief-of-mars-ultor-roman-cleveland-museum-of-art.jpg]"
     )
     post3 = Post(
         user_id = 3,
-        post_body = "testing post 3",
-        images = "https://i.imgur.com/rkVF20T.png",
-        # comments = ,
-        # likes = ,
+        post_body = "In the middle of the journey of our life I found myself within a dark woods where the straight way was lost.]",
+        images = "[https://www.beingguru.com/wp-content/uploads/2018/07/never-giveup.jpg]"
     )
     post4 = Post(
         user_id = 1,
         post_body = "testing post 4",
-        images = "https://i.imgur.com/Ve9zZPX.jpeg",
-        # comments = ,
-        # likes = ,
+        images = "[https://i.imgur.com/Ve9zZPX.jpeg]"
     )
     post5 = Post(
         user_id = 2,
         post_body = "testing post 5",
-        images = "https://i.imgur.com/ISWtVym.jpeg",
-        # comments = ,
-        # likes = ,
+        images = "[https://i.imgur.com/ISWtVym.jpeg]"
     )
     post6 = Post(
         user_id = 3,
         post_body = "testing post 6",
-        images = "",
-        # comments = ,
-        # likes = ,
+        images = ""
     )
 
     db.session.add(post1)

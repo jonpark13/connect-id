@@ -191,7 +191,7 @@ function CommentBoard({post, session, fetchData}) {
                             <div className='commentUserContainer'>
                             <div className='commentUserName'  onClick={() => history.push(`/id/${com.user_info.id}`)}>{com.user_info.first_name} {com.user_info.last_name}</div>
                             <div className='commentUserDesc'>
-                                {user.description}
+                                {com.user_info.description}
                             </div>
                             </div>
                             </div>
