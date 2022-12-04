@@ -1,12 +1,14 @@
 .userInfoContainer {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .userInfo {
     margin: 0px 10px;
     display: flex;
     flex-direction: column;
+    width: calc(100% - 60px)
 }
 
 .userIcon {
@@ -22,6 +24,10 @@
 }
 
 .userName {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size:1rem;
     font-weight: bold;
 }
@@ -33,6 +39,10 @@
 }
 
 .userDesc {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size:0.8rem;
     color:grey
 }

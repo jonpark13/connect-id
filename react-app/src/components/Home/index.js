@@ -106,7 +106,7 @@ function Home() {
           <div style={{width: "100%", display: "flex", inlineSize: "200px", wordBreak: "break-all"}}>
             <i className="feedUserIcon fa-regular fa-circle-user" />
           </div>
-          <div style={{fontSize:"1.1rem", margin:"5px 0px"}}>
+          <div className='userContainerName' style={{fontSize:"1.1rem", margin:"5px 0px"}}>
           {
             session.user.first_name
           } {
@@ -157,9 +157,9 @@ function Home() {
             <div className='newsBody'>
               <div className='newsList'>
               {
-                shuffle(posts.posts.map(e => (
+                shuffle(posts.posts).slice(0,5).map(e => (
                   <PostViewModal post={e} time={timeSince(e.created_on)} fetchData={fetchData} type={'news'}/>
-              )).slice(1,6))
+              ))
               }
               </div>
             </div>
