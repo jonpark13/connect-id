@@ -4,13 +4,15 @@ import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { ShuffleContext } from '../../context/shuffle';
 import * as postActions from '../../store/post'
 import EditUser from '../EditUser';
+import PostViewModal from '../PostView';
 import UserInfo from '../UserInfo';
 import './Profile.css'
+
 
 function Profile() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const { shuffle } = useContext( ShuffleContext)
+  const { shuffle, timeSince } = useContext( ShuffleContext)
   const session = useSelector((state) => state.session)
   const [userPage, setUserPage] = useState({})
   const [users, setUsers] = useState([])
@@ -146,19 +148,22 @@ function Profile() {
           <div className='userPageCard'>
             <div className='cardBorder'>
             <div className='cardContType'>Activity</div>
-            {!!userPage.activity && (Object.values(userPage.activity).map(f => f.map(e => <div>{JSON.stringify(e)}</div>)))}
+            {!!userPage.activity && (Object.keys(userPage.activity).map(f => {
+              // if(f == "likes") return userPage.activity[f].map(e => <div><div>{userPage.first_name} liked this post {e.post_id}</div></div>)
+              if(f == "post") return userPage.activity[f].map(e => <div className='activityElementContainer'><div className='activityElementEvent'>{userPage.first_name} created this post</div><div className='activityElementBody'><PostViewModal post={e} time={timeSince(e.created_on)} type={'news'}/></div></div>)
+              }))}{!userPage.activity && <div>No recent activity</div>}
             </div>
           </div>
           <div className='userPageCard'>
           <div className='cardBorder'>
             <div className='cardContType'>Experience</div>
-            {userExperience}
+            {userExperience || <div style={{fontSize:"14px", color:"grey"}}>Experience has not been updated</div>}
             </div>
           </div>
           <div className='userPageCard'>
           <div className='cardBorder'>
             <div className='cardContType'>Education</div>
-            {userEdu}
+            {userEdu  || <div style={{fontSize:"14px", color:"grey"}}>Education has not been updated</div>}
             </div>
           </div>
         </div>

@@ -108,6 +108,7 @@
 }
 
 .profInfoDesc {
+    word-break:break-word;
     margin: 2px 30px 5px 30px;
     font-size: 1.2rem;
 }
@@ -190,4 +191,21 @@
 
 .editUserButton:hover {
     background-color: rgb(212, 212, 212);
+}
+
+.activityElementContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0px;
+}
+
+.activityElementEvent {
+    font-size: 14px;
+    color: grey;
+}
+
+.activityElementBody {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
 }

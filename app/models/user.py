@@ -51,7 +51,7 @@ class User(db.Model, UserMixin):
         if(activity):
             user['activity'] = {
                 "comments": [comment.to_dict() for comment in self.comments],
-                "post": [post.to_dict() for post in self.posts],
+                "post": [post.to_dict(likes=True, comments=True) for post in self.posts],
                 "likes": [like.to_dict() for like in self.likes]
             }
         return user

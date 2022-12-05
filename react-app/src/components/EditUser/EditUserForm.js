@@ -135,7 +135,7 @@ function EditUserForm({setShowModal, user, type}) {
                             }
                             value={description}/>
                     </div>
-                    <div style={{marginLeft:"5px"}}  className="errorMsgText">{!!errors.description && errors.description}</div>
+                    <div style={{marginLeft:"5px"}}  className="errorMsgText">{!!errors.description && errors.description}{(description.length > 250) && (` ${description.length}/250`)}</div>
                     <div className='inputField'>
                         <label className='inputText'>My location</label>
                         <input className='inputBar' type='text'
@@ -144,7 +144,7 @@ function EditUserForm({setShowModal, user, type}) {
                             }
                             value={location}/>
                     </div>
-                    <div style={{marginLeft:"5px"}} className="errorMsgText">{!!errors.location && errors.location}</div>
+                    <div style={{marginLeft:"5px"}} className="errorMsgText">{!!errors.location && errors.location}{(location.length > 50) && (` ${location.length}/50`)}</div>
                     <button className='editProfButton' type='submit'>Save</button>
                 </form>
             </div>
