@@ -55,7 +55,7 @@ jonpark13@gmail.com
 [Github](https://github.com/jonpark13)
 [LinkedIn](https://www.linkedin.com/in/jon-park-9b23b6142/)
 
-[Project Repo](https://github.com/jonpark13/API-project)
+[Project Repo](https://github.com/jonpark13/connect-id)
 
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
