@@ -80,6 +80,7 @@
     width:150px;
     border-radius: 50%;
     object-fit: cover;
+    border:none;
 }
 
 .userImageDummy {
@@ -170,4 +171,23 @@
     display: flex;
     align-items: center;
     color: grey;
+}
+
+.editUserButton {
+    position:absolute;
+    bottom:-30%;
+    left:90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.editUserButton:hover {
+    background-color: rgb(212, 212, 212);
 }

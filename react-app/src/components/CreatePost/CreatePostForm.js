@@ -58,7 +58,6 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
     
           if (res.ok) {
             let data = await res.json();
-            console.log(data, "PICTURRE DAATA")
             const dataToArr = (data.images.replace(/[\[\]']+/g,'')).split(', ')
             payload.images = (payload.images.concat(dataToArr)).filter(e => e)
             
@@ -67,7 +66,6 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
             else {
                 let data = await res.json()
                 setImageLoading(false);
-                console.log(data)
                 setErrors(data)
             }
           }

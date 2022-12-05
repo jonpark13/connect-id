@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CreatePostForm from './CreatePostForm';
+import EditUserForm from './EditUserForm';
 
-function CreatePost() {
+function EditUser() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button className='postsCreatorButton' onClick={() => setShowModal(true)}>Edit</button>
+      <button className='editUserButton' onClick={() => setShowModal(true)}><i className="fa-regular fa-pen-to-square" style={{fontSize:"30px"}}/></button>
       {showModal && (
         <Modal onClose={() => {setShowModal(false)}} type={'postForm'}>
-          <CreatePostForm type={'create'} showModal={showModal} setShowModal={setShowModal}/>
+          <EditUserForm setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default CreatePost
+export default EditUser

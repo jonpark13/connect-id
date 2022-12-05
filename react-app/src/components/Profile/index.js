@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { ShuffleContext } from '../../context/shuffle';
 import * as postActions from '../../store/post'
+import EditUser from '../EditUser';
 import UserInfo from '../UserInfo';
 import './Profile.css'
 
@@ -113,7 +114,7 @@ function Profile() {
   useEffect(() => {
     fetchData(usertag);
     fetchOthers()
-  }, [usertag]);
+  }, [usertag, session]);
 
   if (!session.user) {
     return <Redirect to={'/login'} />
@@ -128,19 +129,18 @@ function Profile() {
             <div className='userPageContainerSemiTop'>
               {(!!userPage.profile_image && <img className='userImage' src={userPage.profile_image} />) || <div className='userImageDummy'><i className="fa-regular fa-circle-user" /></div>}
             </div>
+            {usertag === session.user.id.toString() && <EditUser user={session.user}/>}
           </div>
           <div className='profInfoContainer'>
             <div className='profInfoName'>
             {userPage.first_name} {userPage.last_name}
             </div>
             <div className='profInfoDesc'>
-            {userPage.description || "desc goes here"}
+            {userPage.description || "Please update your description"}
             </div>
             <div className='profInfoLoc'>
-            {userPage.location || "location goes here"}
+            {userPage.location || "Please update your location"}
             </div>
-          </div>
-          <div style={{width: "100%", display: "flex", wordBreak: "break-all"}}>
           </div>
         </div>
           <div className='userPageCard'>

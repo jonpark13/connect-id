@@ -125,7 +125,6 @@ export const update = (data, id) => async (dispatch) => {
       profile_image}
     ),
   });
-  
   if (response.ok) {
     console.log(response, "RES")
     const data = await response.json();
@@ -134,8 +133,8 @@ export const update = (data, id) => async (dispatch) => {
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
-    if (data.errors) {
-      return data.errors;
+    if (data) {
+      return data;
     }
   } else {
     return ['An error occurred. Please try again.']

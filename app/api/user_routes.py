@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db,User
 from app.forms import UserUpdateForm
+from app.s3 import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 user_routes = Blueprint('users', __name__)
 
@@ -56,3 +58,30 @@ def edit_user_info(id):
             return {"message": "Current user does not own this post"}
     else:
         return {"message": f"The User at id:{id} does not exist "}
+
+@user_routes.route('/images', methods=['POST'])
+@login_required
+def post_images():
+    """
+    Route for uploading images for post from logged in User
+    """
+    if request.files:
+        for x in request.files.getlist('image'):
+            if not allowed_file(x.filename):
+                return {"errors": "File(s) type not permitted"}, 400
+            x.filename = get_unique_filename(x.filename)
+
+            upload = upload_file_to_s3(x)
+
+            if "url" not in upload:
+            # if the dictionary doesn't have a url key
+            # it means that there was an error when we tried to upload
+            # so we send back that error message
+                return upload, 400
+            
+            url = upload["url"]
+            
+        # return {"images": "[" + ", ".join(new_list) + "]"}
+        return {"image": url}
+    else:
+        return {"image": ''}
