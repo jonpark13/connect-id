@@ -19,20 +19,46 @@ def seed_posts():
         images = "[https://www.beingguru.com/wp-content/uploads/2018/07/never-giveup.jpg]"
     )
     post4 = Post(
-        user_id = 1,
-        post_body = "testing post 4",
-        images = "[https://i.imgur.com/Ve9zZPX.jpeg]"
+        user_id = 2,
+        post_body = "When life gets you down, don't hide in the sink. Stand up, keep your head high, and show them what you got! Here are some images of my journey from when the dog was at our house",
+        images = "[https://i.imgur.com/Ve9zZPX.jpeg, https://cdn.britannica.com/29/150929-050-547070A1/lion-Kenya-Masai-Mara-National-Reserve.jpg]"
     )
     post5 = Post(
         user_id = 2,
-        post_body = "testing post 5",
+        post_body = "Feeling overwhelmed is common. It’s a sign that the demands on your time and energy have surpassed your ability to cope with them. Sometimes overwhelm is temporary; other times, it can lead to persistent and unhealthy pressure and strain. The good news is that with the right mindset you can make the unmanageable feel manageable again. Discover how to disrupt the stress circuit, cultivate calm and positive emotions, and take small, imperfect steps toward resolution.",
         images = "[https://i.imgur.com/ISWtVym.jpeg]"
     )
     post6 = Post(
         user_id = 3,
-        post_body = "testing post 6",
+        post_body = "Excited to have joined the team at Google to lead comms for YouTube OuterSpace. Look forward to collaborating with many of you in the year ahead.",
+        images = "[https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Googleplex_HQ_%28cropped%29.jpg/1920px-Googleplex_HQ_%28cropped%29.jpg]"
+    )
+    post7 = Post(
+        user_id = 4,
+        post_body = "I didn't always work in space.\n\nIt suddenly struck me that that tiny pea, pretty and blue, was the Earth. I put up my thumb and shut one eye, and my thumb blotted out the planet Earth.",
         images = ""
     )
+    post8 = Post(
+        user_id = 3,
+        post_body = "Here are some pictures of our recent visit to Europa",
+        images = "[https://www.nasa.gov/sites/default/files/styles/image_card_4x3_ratio/public/thumbnails/image/trappist1-during-press-conference-web.gif,https://www.nasa.gov/sites/default/files/styles/image_card_4x3_ratio/public/316542main_0712_0025.jpg,https://photojournal.jpl.nasa.gov/thumb/PIA17004.gif]"
+    )
+    post9 = Post(
+        user_id = 9,
+        post_body = 'A man I knew once said, "If you’re good at something, never do it for free.". Focus is key. Spreading your resources and attention across too many fronts can affect your business growth. ',
+        images = "[https://images.saymedia-content.com/.image/t_share/MTc0MjU4ODA1NjIwNjE1MDM2/the-top-six-rich-guys-in-the-dc-universe.jpg]"
+    )
+    post10 = Post(
+        user_id = 8,
+        post_body = "I'm a great believer that any tool that enhances communication has profound effects in terms of how people can learn from each other, and how they can achieve the kind of freedoms that they're interested in.",
+        images = ""
+    )
+    post11 = Post(
+        user_id = 12,
+        post_body = "A man acquainted with history may, in some respect, be said to have lived from the beginning of the world, and to have been making continual additions to his stock of knowledge in every century.",
+        images = "[https://live.staticflickr.com/8229/8492603154_77fcb374cd_b.jpg]"
+    )
+
 
     db.session.add(post1)
     db.session.add(post2)
@@ -40,6 +66,11 @@ def seed_posts():
     db.session.add(post4)
     db.session.add(post5)
     db.session.add(post6)
+    db.session.add(post7)
+    db.session.add(post8)
+    db.session.add(post9)
+    db.session.add(post10)
+    db.session.add(post11)
 
     db.session.commit()
 
