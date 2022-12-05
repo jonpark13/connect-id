@@ -175,6 +175,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
         <div className='postFormHeader'>
             <div style={{fontSize:"18px"}}>{headerTitle}</div>
         </div>
+        <button className='editUserimg' style={{right:"2%", top:"2%"}} onClick={() => setShowModal(false)}><i className="fa-solid fa-xmark" style={{fontSize:"30px"}}/></button>
         <div className='postFormBody'>
             <form onSubmit={submitType}>
                 <textarea className="postText" placeholder='What do you want to talk about?' value={postText} onChange={(e) => {setPostText(e.target.value)}} />

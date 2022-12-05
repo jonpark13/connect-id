@@ -97,7 +97,7 @@ def seed_users():
         email='batmaninc@ms.io',
         password='password',
         description = 'Chairperson of Wayne Eterprises, inc.',
-        education = "Yale University.?",
+        education = "Yale University.Law.?",
         location = "Gotham, New Jersey",
         employment = "Chairperson.Wayne Eterprises.1979 - Present",
         profile_image = "https://s3.amazonaws.com/comicgeeks/characters/avatars/1.jpg?t=1667273296"
@@ -108,7 +108,7 @@ def seed_users():
         email='fireman@titan.com',
         password='password',
         description = 'Titan god of fire',
-        education = "Titans school for the gifted.?",
+        education = "Titans school for the gifted.?.?",
         location = "Mount Elbrus, Kabardino-Balkaria",
         employment = "Leader.Civilization.507 - Present",
         profile_image = "https://static.wikia.nocookie.net/kablam/images/b/b5/Screen_Shot_2015-05-11_at_4.17.33_PM.png"
@@ -121,7 +121,7 @@ def seed_users():
         description = 'Astronomer, Physicist, and Engineer',
         education = "University of Pisa.Medicine.1581 - 1585",
         location = "Pisa, Italy",
-        employment = "Scholar.University of Padua.1592 - 1610.Chair of mathematics.University of Pisa.1589 - 1592",
+        employment = "Scholar.University of Padua.1592 - 1610,Chair of mathematics.University of Pisa.1589 - 1592",
         profile_image = 'https://upload.wikimedia.org/wikipedia/commons/5/5d/Galileo-sustermans4.jpg'
     )
     dave = User(
@@ -132,7 +132,7 @@ def seed_users():
         description = 'Philosopher and Empiricist',
         education = "Edinburgh University.?.1723 - 1726",
         location = "Edinburgh, Scotland",
-        employment = "Librarian.Faculty of Advocates.1752 - 1754.Librarian and scholar.University of Edinburgh.?",
+        employment = "Librarian.Faculty of Advocates.1752 - 1754,Librarian and scholar.University of Edinburgh.?",
         profile_image = "https://cdn.theatlantic.com/thumbor/PVz1QM-nHQjZSNqaZBWqc3-8BMU=/271x35:2335x1583/1200x900/media/img/2015/09/BOB_Essay_Opener_WEBCrop/original.jpg"
     )
 

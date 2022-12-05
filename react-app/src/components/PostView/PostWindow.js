@@ -19,6 +19,7 @@ function PostWindow({showModal, setShowModal, post, time, fetchData}) {
         </div>
             }
         <div className='postViewHeader' style={(post.images[0] != '' && !!post.images.length) ? {width:"350px"} : {width:"500px"}}>
+        <button className='editUserimg' style={{right:"2%", top:"1%"}} onClick={() => setShowModal(false)}><i className="fa-solid fa-xmark" style={{fontSize:"30px"}}/></button>
             <UserInfo user={post.user_info} time={time}/>
             <div className='postBodyModal'>
                 {post.post_body}

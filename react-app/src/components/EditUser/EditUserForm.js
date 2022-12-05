@@ -109,6 +109,7 @@ function EditUserForm({setShowModal, user, type}) {
                     {fontSize: "18px"}
                 }>Edit my profile</div>
             </div>
+            <button className='editUserimg' style={{right:"2%", top:"2%"}} onClick={() => setShowModal(false)}><i className="fa-solid fa-xmark" style={{fontSize:"30px"}}/></button>
             <div className='userFormBody'>
                 <div className='imageEdit'>
                 <img className='userImage' src={imgPrev} onChange={e => {e.target.style.objectFit = "cover";e.target.style.borderRadius = "50%"}} onError={e => {e.target.src = "https://connectidbucket.s3.amazonaws.com/imgError.png";e.target.style.objectFit = "contain";e.target.style.borderRadius = 0;}}/>

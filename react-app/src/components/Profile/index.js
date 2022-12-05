@@ -44,23 +44,39 @@ function Profile() {
     userExperience = expList.map(e => {
       let sub = e.split('.')
       let timeLen = sub[2]
-      // console.log(timeLen)
-      let start = timeLen.split('-')[0].trim('')
-      let end = timeLen.split('-')[1].trim('')
-      if(timeLen){
-        if(start.includes('BCE')) start = -parseInt(start.replace(/\D/g,'')) + 1
-        else {
-          start = start.replace(/\D/g,'')
-          end = sub[2].split(' - ')[1]
+      if(timeLen == "?"){
+        return (
+          <div className='cardContInd'>
+          <div className='cardContTitle' name="educationTitle">
+            {sub[0]}
+          </div>
+          <div className='cardContSub' name="educationDeg">
+            {sub[1]}
+          </div>
+          <div className='cardContDesc' name="educationDur">
+            {sub[2]} <i style={{margin:"1px 5px", fontSize:"5px"}}className="fa-solid fa-circle" /> {"?"}
+          </div>
+        </div>
+        )
+      }
+      else{
+        let start = timeLen.split('-')[0].trim('')
+        let end = timeLen.split('-')[1].trim('')
+        if(timeLen){
+          if(start.includes('BCE')) start = -parseInt(start.replace(/\D/g,'')) + 1
+          else {
+            start = start.replace(/\D/g,'')
+            end = sub[2].split(' - ')[1]
+          }
+          if (end === 'present' || end === 'Present'){
+            end = (new Date().getFullYear())
+          }
+          else {
+            if(end.includes('BCE')) console.log(end)
+            end = parseInt(sub[2].split(' - ')[1].replace(/\D/g,''))
+          }
+          timeDiff = Math.abs(start - end)
         }
-        if (end === 'present' || end === 'Present'){
-          end = (new Date().getFullYear())
-        }
-        else {
-          if(end.includes('BCE')) console.log(end)
-          end = parseInt(sub[2].split(' - ')[1].replace(/\D/g,''))
-        }
-        timeDiff = Math.abs(start - end)
       }
       return (
         <div className='cardContInd'>
@@ -81,9 +97,45 @@ function Profile() {
   let userEdu
   if(userPage.education){
     let expList = (userPage.education).split(",")
-    console.log(expList)
     userEdu = expList.map(e => {
       let sub = e.split('.')
+      let timeLen = sub[2]
+      if(timeLen == "?"){
+        return (
+          <div className='cardContInd'>
+          <div className='cardContTitle' name="educationTitle">
+            {sub[0]}
+          </div>
+          <div className='cardContSub' name="educationDeg">
+            {sub[1]}
+          </div>
+          <div className='cardContDesc' name="educationDur">
+            {sub[2]} <i style={{margin:"1px 5px", fontSize:"5px"}}className="fa-solid fa-circle" /> {"?"}
+          </div>
+        </div>
+        )
+      }
+      else {
+      // console.log(timeLen)
+      let start = timeLen.split('-')[0].trim('')
+      let end = timeLen.split('-')[1].trim('')
+      if(timeLen){
+        if(start.includes('BCE')) start = -parseInt(start.replace(/\D/g,'')) + 1
+        else {
+          start = start.replace(/\D/g,'')
+          end = sub[2].split(' - ')[1]
+        }
+        if (end === 'present' || end === 'Present'){
+          end = (new Date().getFullYear())
+        }
+        else {
+          if(end.includes('BCE')) end = -parseInt(end.replace(/\D/g,'')) + 1
+          else {
+            end = parseInt(sub[2].split(' - ')[1].replace(/\D/g,''))
+          }
+        }
+        timeDiff = Math.abs(start - end)
+      }
       return (
         <div className='cardContInd'>
         <div className='cardContTitle' name="educationTitle">
@@ -93,10 +145,10 @@ function Profile() {
           {sub[1]}
         </div>
         <div className='cardContDesc' name="educationDur">
-          {sub[2]} <i style={{margin:"1px 5px", fontSize:"5px"}}className="fa-solid fa-circle" /> {expList[3]}
+          {sub[2]} <i style={{margin:"1px 5px", fontSize:"5px"}}className="fa-solid fa-circle" /> {sub[2] ? (timeDiff + ' years') : "?"}
         </div>
       </div>
-      )
+      )}
     })
     // userEdu = 
     //   <>

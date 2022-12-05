@@ -15,6 +15,7 @@
     width: 100%;
     padding: 20px 20px;
     border-bottom: rgb(204, 204, 204) solid 1px;
+    position: relative;
 }
 
 .userFormBody {

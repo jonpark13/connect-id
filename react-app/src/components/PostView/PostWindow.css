@@ -25,6 +25,7 @@
 
 .postViewHeader {
     display: flex;
+    position: relative;
     flex-direction: column;
     box-sizing: border-box;
     padding: 20px 20px;
@@ -147,4 +148,21 @@ input::file-selector-button {
 .newsTextlineContainer:hover {
     cursor: pointer;
     background-color: rgb(215, 215, 215);
+}
+
+.editUserimg {
+    position:absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.editUserimg:hover {
+    background-color: rgb(212, 212, 212);
 }

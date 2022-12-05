@@ -48,6 +48,87 @@ def seed_likes():
         post_id = 5,
         type = "thumbsup"
     )
+    like10 = Like(
+        user_id = 4,
+        post_id = 5,
+        type = "thumbsup"
+    )
+    like11 = Like(
+        user_id = 4,
+        post_id = 6,
+        type = "thumbsup"
+    )
+    like12 = Like(
+        user_id = 5,
+        post_id = 7,
+        type = "thumbsup"
+    )
+    like13 = Like(
+        user_id = 6,
+        post_id = 7,
+        type = "thumbsup"
+    )
+    like14 = Like(
+        user_id = 6,
+        post_id = 8,
+        type = "thumbsup"
+    )
+    like15 = Like(
+        user_id = 7,
+        post_id = 8,
+        type = "thumbsup"
+    )
+    like16 = Like(
+        user_id = 7,
+        post_id = 9,
+        type = "thumbsup"
+    )
+    like17 = Like(
+        user_id = 8,
+        post_id = 9,
+        type = "thumbsup"
+    )
+    like18 = Like(
+        user_id = 8,
+        post_id = 10,
+        type = "thumbsup"
+    )
+    like19 = Like(
+        user_id = 9,
+        post_id = 11,
+        type = "thumbsup"
+    )
+    like20 = Like(
+        user_id = 9,
+        post_id = 12,
+        type = "thumbsup"
+    )
+    like21 = Like(
+        user_id = 10,
+        post_id = 6,
+        type = "thumbsup"
+    )
+    like22 = Like(
+        user_id = 10,
+        post_id = 7,
+        type = "thumbsup"
+    )
+    like23 = Like(
+        user_id = 11,
+        post_id = 8,
+        type = "thumbsup"
+    )
+    like24 = Like(
+        user_id = 11,
+        post_id = 9,
+        type = "thumbsup"
+    )
+    like25 = Like(
+        user_id = 12,
+        post_id = 10,
+        type = "thumbsup"
+    )
+
 
     db.session.add(like1)
     db.session.add(like2)

@@ -6,65 +6,88 @@ def seed_comments():
     comment1 = Comment(
         user_id = 1,
         post_id = 2,
-        comment = "comment1"
-        # comments = ,
-        # likes = ,
+        comment = "great post!"
+
     )
     comment2 = Comment(
         user_id = 1,
         post_id = 3,
-        comment = "comment2",
-        # comments = ,
-        # likes = ,
+        comment = "inspirational!",
     )
     comment3 = Comment(
         user_id = 2,
         post_id = 1,
-        comment = "comment3"
-        # comments = ,
-        # likes = ,
+        comment = "I agree"
     )
     comment4 = Comment(
         user_id = 2,
         post_id = 3,
-        comment = "comment4"
-        # comments = ,
-        # likes = ,
+        comment = "mhm"
     )
     comment5 = Comment(
         user_id = 2,
         post_id = 1,
-        comment = "comment5"
-        # comments = ,
-        # likes = ,
+        comment = "I'll see you around!"
     )
     comment6 = Comment(
-        user_id = 3,
-        post_id = 2,
-        comment = "comment6"
-        # comments = ,
-        # likes = ,
+        user_id = 4,
+        post_id = 6,
+        comment = "We're thrilled to be on this journey with you!"
     )
     comment7 = Comment(
-        user_id = 1,
-        post_id = 5,
-        comment = "comment7"
-        # comments = ,
-        # likes = ,
+        user_id = 5,
+        post_id = 6,
+        comment = "Welcome aboard!"
     )
     comment8 = Comment(
-        user_id = 2,
-        post_id = 5,
-        comment = "comment8"
-        # comments = ,
-        # likes = ,
+        user_id = 1,
+        post_id = 4,
+        comment = "lorem ipsum"
     )
     comment9 = Comment(
+        user_id = 2,
+        post_id = 4,
+        comment = "awesome"
+    )
+    comment1 = Comment(
         user_id = 3,
-        post_id = 5,
-        comment = "comment9"
-        # comments = ,
-        # likes = ,
+        post_id = 4,
+        comment = "great post!"
+    )
+    comment2 = Comment(
+        user_id = 4,
+        post_id = 4,
+        comment = "inspirational!",
+    )
+    comment3 = Comment(
+        user_id = 5,
+        post_id = 4,
+        comment = "I agree"
+    )
+    comment8 = Comment(
+        user_id = 6,
+        post_id = 4,
+        comment = "lorem ipsum"
+    )
+    comment9 = Comment(
+        user_id = 7,
+        post_id = 7,
+        comment = "awesome"
+    )
+    comment1 = Comment(
+        user_id = 8,
+        post_id = 8,
+        comment = "great post!"
+    )
+    comment2 = Comment(
+        user_id = 9,
+        post_id = 9,
+        comment = "inspirational!",
+    )
+    comment3 = Comment(
+        user_id = 10,
+        post_id = 10,
+        comment = "I agree"
     )
 
     db.session.add(comment1)
