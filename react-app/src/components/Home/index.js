@@ -118,17 +118,22 @@ function Home() {
           </div>
         </div>
         <div className='aboutContainer'>
-          <div style={{ fontSize:"1.2rem",fontWeight:"bold", marginTop:"10px"}}>About the dev</div>
+          <div style={{ fontSize:"1rem",fontWeight:"bold", marginTop:"10px"}}>About Connectid</div>
+          <div style={{ display:"flex",textAlign:"center",fontSize:"0.8 rem", margin:"10px"}}>
+          Connectid is a clone of the largest professional networking website, LinkedIn. Like LinkedIn, users who are serious about networking while maintaining a professional environment can connect and share messages, ideas and their history with their fellow colleagues.
+          </div>
+          <div style={{ fontSize:"1 rem", marginTop:"10px"}}>
+            Meet the dev
+          </div>
           <div style={{ fontSize:"1 rem", marginTop:"10px"}}>
             Jon Park
           </div>
-          <div style={{ fontSize:"0.8rem", marginTop:"10px"}}>about</div>
           <div style={{ fontSize:"2rem", marginTop:"10px"}}>
             <a href="https://github.com/jonpark13" target="_blank" >
                 <i className="abtIco fa-brands fa-github"></i>
             </a>
           </div>
-          <div  style={{ fontSize:"2rem", marginTop:"10px"}}>
+          <div  style={{ fontSize:"2rem", margin:"10px"}}>
             <a href="https://www.linkedin.com/in/jon-park-9b23b6142/" target="_blank" >
                 <i className="abtIco fa-brands fa-linkedin"></i>
             </a>
