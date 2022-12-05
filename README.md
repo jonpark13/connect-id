@@ -7,7 +7,7 @@
 
 <img src="./react-app/public/connectidLogo.png" width="200"/>
 
-Connectid is a full stack web app, cloned from one of the largest music discovery platforms, SoundCloud. With Vibe Vapor you can check out other artists, try playlists and play music, all with keeping the same vibe as SoundCloud.
+Connectid is a clone of the largest professional networking website, LinkedIn. Like LinkedIn, users who are serious about networking while maintaining a professional environment can connect and share messages, ideas and their history with their fellow colleagues. 
 
 ## Tech Stacks
 
@@ -25,6 +25,7 @@ Connectid is a full stack web app, cloned from one of the largest music discover
 
 ## Splash Page
 
+<img src="https://i.imgur.com/qYtkvjy.png" />
 
 ## Login Page
 
