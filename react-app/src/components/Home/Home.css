@@ -227,7 +227,13 @@
     display: flex;
     justify-content: center;
     color:rgb(111, 186, 190)
-    
+}
+
+.commentUserImage {
+    height: 32px;
+    width: 32px;
+    object-fit: cover;
+    border-radius: 50%
 }
 
 .commentUser:hover {
@@ -257,6 +263,10 @@
     max-width: 155px;
     display: flex;
     flex-direction: column
+}
+
+.commentUserInfo:hover {
+    cursor: pointer;
 }
 
 .commentUserName {

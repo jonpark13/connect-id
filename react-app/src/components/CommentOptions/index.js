@@ -39,7 +39,7 @@ function CommentOptions({session, commentInfo, fetchData}) {
         method: "DELETE",
     });
     if (response.ok) {
-        console.log(response.json())
+        // console.log(response.json())
         fetchData()
     }
   }

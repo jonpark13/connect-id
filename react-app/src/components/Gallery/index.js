@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import { useHistory } from 'react-router-dom';
+import React, {useState} from 'react';
 import './Gallery.css'
 
 function Gallery({list, prevList, height, width}) {
-    const history = useHistory()
     const [index, setIndex] = useState(0)
 
     if(prevList[0] === '' && prevList.length == 1) prevList = []
@@ -31,7 +29,7 @@ function Gallery({list, prevList, height, width}) {
                         ))}
                         {
                             prevList.map((each) => (
-                                <img style={{width:`${width}`}} className='userOtherWorksImg' src={each}/>
+                                <img style={{width:`${width}`}} className='userOtherWorksImg' src={each} onError={e => e.target.src = "https://connectidbucket.s3.amazonaws.com/No_image_available.png"}/>
                             ))
                         }
                     </div>

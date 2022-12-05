@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Modal } from "../../context/Modal";
 import * as postActions from '../../store/post';
 import EditPostModal from './PostModal';
 
