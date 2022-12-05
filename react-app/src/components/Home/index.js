@@ -81,14 +81,9 @@ function Home() {
         }
       }
     }
-  
+    if (interval < 0) return "now"
     if (interval > 1 || interval === 0) {
-        if(interval <= 0 && intervalType == "second"){
-            return "now"
-        }
-        else {
-            intervalType += 's';
-        }
+      intervalType += 's';
     }
   
     return interval + ' ' + intervalType;
