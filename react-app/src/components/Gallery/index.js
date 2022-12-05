@@ -6,10 +6,7 @@ function Gallery({list, prevList, height, width}) {
     const history = useHistory()
     const [index, setIndex] = useState(0)
 
-    // const rescrollTop = () => {
-    //     let hit = document.getElementsByClassName('one')
-    //     return hit[0].scrollTop = 0
-    // }
+    if(prevList[0] === '' && prevList.length == 1) prevList = []
 
     const updateIndex = (newIndex) => {
         // console.log(newIndex)
@@ -39,12 +36,12 @@ function Gallery({list, prevList, height, width}) {
                         }
                     </div>
                 </div>
-                <div className="moveCarouselLeft" >
-                            <i className="fa-solid fa-circle-arrow-left" onClick={() => { updateIndex( index - 1 )}}/>   
-                        </div>
-                        <div className="moveCarouselRight" >
-                            <i className="fa-solid fa-circle-arrow-right" onClick={() => { updateIndex( index + 1 )}}/>
-                        </div>
+                {(list.length + prevList.length) > 1 && <><div className="moveCarouselLeft" >
+                    <i className="fa-solid fa-circle-arrow-left" onClick={() => { updateIndex( index - 1 )}}/>   
+                </div>
+                <div className="moveCarouselRight" >
+                    <i className="fa-solid fa-circle-arrow-right" onClick={() => { updateIndex( index + 1 )}}/>
+                </div></>}
             </div>
         </div>
 

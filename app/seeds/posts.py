@@ -10,12 +10,12 @@ def seed_posts():
     )
     post2 = Post(
         user_id = 1,
-        post_body = "It was Mars, the god of war, and for me, the fighting man, it had always held the power of irresistible enchantment. As I gazed at it on that far-gone night it seemed to call across the unthinkable void, to lure me to it, to draw me as the lodestone attracts a particle of iron.\n-Edgar Rice Burroughs",
+        post_body = "It was Mars, the god of war, and for me, the fighting man, it had always held the power of irresistible enchantment. As I gazed at it on that far-gone night it seemed to call across the unthinkable void, to lure me to it, to draw me as the lodestone attracts a particle of iron.\n\n- Edgar Rice Burroughs",
         images = "[https://media.mythopedia.com/2mZ7liWNSTYYXRVRSbeZ0e/f787be1fa5ab5052c29e65bf91c231b9/relief-of-mars-ultor-roman-cleveland-museum-of-art.jpg]"
     )
     post3 = Post(
         user_id = 3,
-        post_body = "In the middle of the journey of our life I found myself within a dark woods where the straight way was lost.]",
+        post_body = "In the middle of the journey of our life I found myself within a dark woods where the straight way was lost.",
         images = "[https://www.beingguru.com/wp-content/uploads/2018/07/never-giveup.jpg]"
     )
     post4 = Post(

@@ -1,0 +1,94 @@
+.postFormHeader {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 20px;
+    border-bottom: rgb(204, 204, 204) solid 1px;
+}
+
+.postFormBody {
+    box-sizing: border-box;
+    width: 550px;
+    padding: 20px 20px;
+    height: 100%;
+}
+
+.postText {
+    border: none;
+    outline: none;
+    width: 100%;
+    resize: none;
+    min-height: 300px;
+    height: fit-content;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    white-space: pre-line;
+}
+
+.createPostButton {
+    float:right;
+    background-color: rgb(0,145,164);
+    border-radius: 20px;
+    border:none;
+    outline: none;
+    color:white;
+    padding: 0px 20px;
+    height:40px
+}
+
+.createPostButton {
+    cursor: pointer;
+}
+
+.createPostButtonDisabled {
+    float:right;
+    background-color: rgb(229, 229, 229);
+    border-radius: 20px;
+    border:none;
+    outline: none;
+    color:rgb(141, 140, 140);
+    padding: 0px 20px;
+    height:40px
+}
+
+.createPostButtonDisabled:hover {
+    cursor:no-drop
+}
+
+.circleBackground {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.circleBackground:hover {
+    background-color: rgb(212, 212, 212);
+}
+
+.postBottom {
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.postBottomLabel {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: left;
+    width:max-content
+}
+
+.imagesInput {
+    text-align: center;
+    width: 100px
+}
+
+input::file-selector-button {
+    display: none;
+}
