@@ -12,6 +12,7 @@ import * as postActions from './store/post'
 import Home from './components/Home';
 import Test from './components/TestPage'
 import Profile from './components/Profile';
+import EditUserForm from './components/EditUser/EditUserForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,7 +55,7 @@ function App() {
           <Redirect to={'/feed'}/>
         </Route>
         <Route path='/test' exact={true} >
-          <Test />
+          <EditUserForm />
         </Route>
         <Route path="*">
           <div style={{ fontSize: 200, marginTop: "150px",textAlign:"center" }}>* 404: Page not found *</div>

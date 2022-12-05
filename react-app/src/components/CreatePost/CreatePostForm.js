@@ -19,6 +19,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
     const [postImages, setPostImages] = useState(type == "edit" ? postInfo.images : [])
     const [imgPrev, setImgPrev] = useState([])
     const [errors, setErrors] = useState({})
+    const [imgErr, setImgErr] = useState(false)
     const {userId} = useParams();
 
     const editPostFunc = async (pl, id) => {
@@ -57,7 +58,6 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
     
           if (res.ok) {
             let data = await res.json();
-            console.log(data, "PICTURRE DAATA")
             const dataToArr = (data.images.replace(/[\[\]']+/g,'')).split(', ')
             payload.images = (payload.images.concat(dataToArr)).filter(e => e)
             
@@ -66,7 +66,6 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
             else {
                 let data = await res.json()
                 setImageLoading(false);
-                console.log(data)
                 setErrors(data)
             }
           }
@@ -122,19 +121,34 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
         }
     }
 
-    const imgPreviews = () => {
-        let images = document.querySelector(".imagesInput")
+    const imgPreviews = (e) => {
+        let images = e.target
         if (images && images.files.length) {
             setImgPrev(Array.from(images.files))
-            console.log(imgPrev)
+            console.log(imgPrev, "imgprev")
         }
         else {
             setImgPrev([])
         }
-        // arr =  Array.from(images.files).map(file => (
-        //     <img src={URL.createObjectURL(file)}/>
-        // ))
-        // console.log(arr)
+    }
+
+    const postImgErrHandler = (e) => {
+        let files = Array.from(e.target.files)
+        if(files.length > 0){
+            for(let i = 0; i < files.length; i++){
+                if(files[i].type.startsWith('image/')){
+                    console.log('is image')
+                }
+                else {
+                    console.log('is not image')
+                     return setImgErr(true)
+                }
+            }
+            return setImgErr(false)
+        }
+        else {
+            return setImgErr(false)
+        }
     }
 
     let headerTitle
@@ -177,7 +191,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
                     <i className="fa-regular fa-image" style={{fontSize:"30px"}}/>
                     </div>
                     <input
-                    onChange={() => imgPreviews()}
+                    onChange={(e) => {imgPreviews(e);postImgErrHandler(e)}}
                     id='imagesInput'
                     className='imagesInput'
                     type="file"
@@ -186,7 +200,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
                     // style={{display:"none"}}
                     />
                 </label>
-                <button className={!!postText.length ? "createPostButton" : "createPostButtonDisabled"} disabled={!postText.length} type='submit'>
+                <button className={(!postText.length || imgErr ) ? "createPostButtonDisabled" : "createPostButton"} disabled={!postText.length || imgErr} type='submit'>
                     {submitText}
                 </button>
                 </div>

@@ -46,7 +46,7 @@
     align-items: center;
     background-color: white;
     min-height: 300px;
-    width: 250px;
+    width: 300px;
     margin: 20px 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 1px rgb(45, 45, 45);
@@ -96,18 +96,19 @@
 
 .userContainerName {
     text-align: center;
-    white-space: nowrap;
+    white-space: normal;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size:1.1rem;
-    margin:5px 0px
+    margin:5px 5px
 }
 
 .userContainerDesc {
+    word-break: break-word;
     text-align: center;
     font-size:1rem;
     color:grey;
-    margin:5px 0px
+    margin:5px 5px
 }
 
 .userContainerBot {
