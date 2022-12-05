@@ -205,7 +205,6 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
                     {submitText}
                 </button>
                 </div>
-                {(imageLoading)&& <p>Loading...</p>}
             </form>
         </div>
         </>
