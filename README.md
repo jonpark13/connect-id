@@ -1,7 +1,7 @@
 
 # Connectĭd
 
-[Check out the Demo](https://connect-id-prroject.onrender.com)
+[Check out the Live Site!](https://connect-id-prroject.onrender.com)
 
 ## About The Project
 
@@ -11,17 +11,16 @@ Connectid is a full stack web app, cloned from one of the largest music discover
 
 ## Tech Stacks
 
-Backend
 - ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 - ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+-----
 - ![Amazon S3](https://img.shields.io/static/v1?style=for-the-badge&message=Amazon+S3&color=569A31&logo=Amazon+S3&logoColor=FFFFFF&label=)
-
-Frontend
+- ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+-----
 - [![React][React.js]][React-url]
 - [![Redux][Redux.js.org]][Redux-url]
 - [![Postgres][Postgresql.org]][Postgres-url]
 - ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-
 
 
 ## Splash Page
@@ -44,7 +43,7 @@ Frontend
 
 ## To do
 
-- Allow more customizable features for users to display their talents and work across the platform
+- Allow more customizable features for users to display their talents and work across the platform, like an in-depth education display
 
 - Add in a chatting feature using websockets to allow users to communicate with each other in real-time
 
