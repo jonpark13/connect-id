@@ -173,7 +173,9 @@ function HomePost({post, session, fetchData}) {
             } </div>
             <div className="errorMsgText">{!!errors.comment && errors.comment + '. '}{newComments.length > 250 && ` ${newComments.length}/250`}</div>
             <div className='commentsList'> {
-                post.comments.map(com => (
+                (post.comments).sort(function(a, b) {
+                    return a.id - b.id;
+                  }).map(com => (
                     <div className='commentBoxContainer' style={{margin: "10px 0px"}}>
                         <div className='commentUser' onClick={() => history.push(`/id/${com.user_info.id}`)}>
                         {!!com.user_info.profile_image ? <img className='commentUserImage' src={com.user_info.profile_image} onError={e => e.target.src = "https://connectidbucket.s3.amazonaws.com/No_image_available.png"}/> : <i className="fa-regular fa-circle-user" />}
