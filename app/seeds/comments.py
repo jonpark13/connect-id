@@ -49,42 +49,42 @@ def seed_comments():
         post_id = 4,
         comment = "awesome"
     )
-    comment1 = Comment(
+    comment10 = Comment(
         user_id = 3,
         post_id = 4,
         comment = "great post!"
     )
-    comment2 = Comment(
+    comment11 = Comment(
         user_id = 4,
         post_id = 4,
         comment = "inspirational!",
     )
-    comment3 = Comment(
+    comment12 = Comment(
         user_id = 5,
         post_id = 4,
         comment = "I agree"
     )
-    comment8 = Comment(
+    comment13 = Comment(
         user_id = 6,
         post_id = 4,
         comment = "lorem ipsum"
     )
-    comment9 = Comment(
+    comment14 = Comment(
         user_id = 7,
         post_id = 7,
         comment = "awesome"
     )
-    comment1 = Comment(
+    comment15 = Comment(
         user_id = 8,
         post_id = 8,
         comment = "great post!"
     )
-    comment2 = Comment(
+    comment16 = Comment(
         user_id = 9,
         post_id = 9,
         comment = "inspirational!",
     )
-    comment3 = Comment(
+    comment17 = Comment(
         user_id = 10,
         post_id = 10,
         comment = "I agree"
@@ -99,6 +99,14 @@ def seed_comments():
     db.session.add(comment7)
     db.session.add(comment8)
     db.session.add(comment9)
+    db.session.add(comment10)
+    db.session.add(comment11)
+    db.session.add(comment12)
+    db.session.add(comment13)
+    db.session.add(comment14)
+    db.session.add(comment15)
+    db.session.add(comment16)
+    db.session.add(comment17)
 
     db.session.commit()
 
