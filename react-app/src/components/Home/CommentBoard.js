@@ -122,7 +122,8 @@ function CommentBoard({post, session, fetchData}) {
           }
         }
       
-        if (interval < 0) return "now"
+        if (interval < 0 || (interval === 0 && intervalType === "second")) return "now"
+
         if (interval > 1 || interval === 0) {
             intervalType += 's';
         }
