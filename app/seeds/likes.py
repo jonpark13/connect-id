@@ -100,7 +100,7 @@ def seed_likes():
     )
     like20 = Like(
         user_id = 9,
-        post_id = 12,
+        post_id = 6,
         type = "thumbsup"
     )
     like21 = Like(
