@@ -1,26 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {useHistory, useParams} from 'react-router-dom';
 import * as postActions from '../../store/post'
 import Gallery from '../Gallery';
 import './CreatePostForm.css'
 
 function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
     const dispatch = useDispatch()
-    const history = useHistory()
-    const myPosts = useSelector((state) => state.post)
     const user = useSelector((state) => state.session)
-    const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
-    const [posts, setPosts] = useState({});
-    const [postEdit, setPostEdit] = useState('')
     const [newPost, setNewPost] = useState('')
     const [postBody, setPostBody] = useState(type == "edit" ? postInfo.post_body : null)
     const [postImages, setPostImages] = useState(type == "edit" ? postInfo.images : [])
     const [imgPrev, setImgPrev] = useState([])
     const [errors, setErrors] = useState({})
     const [imgErr, setImgErr] = useState(false)
-    const {userId} = useParams();
 
     const editPostFunc = async (pl, id) => {
         let postres = await dispatch(postActions.editUserPost(pl, id))
@@ -44,7 +37,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
         }
         let images = document.querySelector(".imagesInput")
         let formData
-        console.log(images.files.length)
+        // console.log(images.files.length)
         if (images.files.length) {
             formData = new FormData();
             for (const img of images.files) {
@@ -83,9 +76,9 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
         }
         let images = document.querySelector(".imagesInput")
         let formData
-        console.log(images.files.length)
+        // console.log(images.files.length)
         if (images.files.length) {
-            console.log(images.files)
+            // console.log(images.files)
             formData = new FormData();
             for (const img of images.files) {
                 formData.append("image", img);
@@ -125,7 +118,7 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
         let images = e.target
         if (images && images.files.length) {
             setImgPrev(Array.from(images.files))
-            console.log(imgPrev, "imgprev")
+            // console.log(imgPrev, "imgprev")
         }
         else {
             setImgPrev([])
@@ -137,10 +130,10 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
         if(files.length > 0){
             for(let i = 0; i < files.length; i++){
                 if(files[i].type.startsWith('image/')){
-                    console.log('is image')
+                    // console.log('is image')
                 }
                 else {
-                    console.log('is not image')
+                    // console.log('is not image')
                      return setImgErr(true)
                 }
             }
@@ -205,7 +198,6 @@ function CreatePostForm({type, showModal, setShowModal, postInfo, fetchData}) {
                     {submitText}
                 </button>
                 </div>
-                {(imageLoading)&& <p>Loading...</p>}
             </form>
         </div>
         </>

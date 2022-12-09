@@ -1,11 +1,7 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import CommentOptions from '../CommentOptions'
-import PostViewModal from '../PostView'
-import UserInfo from '../UserInfo'
-import EditCommentModal from './CommentModal'
-import PostOptions from './PostOptions'
 
 function CommentBoard({post, session, fetchData}) {
     const user = useSelector((state) => state.session.user)
@@ -15,7 +11,7 @@ function CommentBoard({post, session, fetchData}) {
     const [errors, setErrors] = useState({})
     const [postData, setPostData] = useState(post)
 
-    console.log(postData, "POSTDATA")
+    // console.log(postData, "POSTDATA")
 
     let fetchPostData = async () =>  {
         const response = await fetch(`/api/posts/${postData.id}`);
@@ -42,7 +38,7 @@ function CommentBoard({post, session, fetchData}) {
             body: JSON.stringify(payload)
         });
         const resData = await response.json()
-        console.log(resData, "LIKE RESULTS")
+        // console.log(resData, "LIKE RESULTS")
         fetchPostData()
         // fetchData()
     }
@@ -54,7 +50,7 @@ function CommentBoard({post, session, fetchData}) {
         });
         if (response.ok) {
             const resData = response.json()
-            console.log(resData, "unLIKE RESULTS")
+            // console.log(resData, "unLIKE RESULTS")
             fetchPostData()
             // fetchData()
         }
@@ -75,7 +71,7 @@ function CommentBoard({post, session, fetchData}) {
             body: JSON.stringify(payload)
         });
         const resData = await response.json()
-        console.log(resData, "RES")
+        // console.log(resData, "RES")
         if(!response.ok) {
             setErrors(resData)
         }
@@ -126,7 +122,8 @@ function CommentBoard({post, session, fetchData}) {
           }
         }
       
-        if (interval < 0) return "now"
+        if (interval < 0 || (interval === 0 && intervalType === "second")) return "now"
+
         if (interval > 1 || interval === 0) {
             intervalType += 's';
         }
@@ -178,9 +175,11 @@ function CommentBoard({post, session, fetchData}) {
             } </div>
             <div className="errorMsgText">{!!errors.comment && errors.comment + '. '}{newComments.length > 250 && ` ${newComments.length}/250`}</div>
             <div className='commentsList'> {
-                postData.comments.map(com => (
+                postData.comments.sort(function(a, b) {
+                    return a.id - b.id;
+                  }).map(com => (
                     <div className='commentBoxContainer' style={{margin: "10px 0px"}}>
-                        <div className='commentUser'  onClick={() => history.push(`/id/${com.user_info.id}`)}><i className="fa-regular fa-circle-user" /></div>
+                        <div className='commentUser'  onClick={() => history.push(`/id/${com.user_info.id}`)}>{!!com.user_info.profile_image ? <img className='commentUserImage' src={com.user_info.profile_image} onError={e => e.target.src = "https://connectidbucket.s3.amazonaws.com/No_image_available.png"}/> : <i className="fa-regular fa-circle-user" />}</div>
                         <div className='commentBoxContent'>
                         <div className='commentBoxHeader'> 
                             <div className='commentBoxHeaderL'> 

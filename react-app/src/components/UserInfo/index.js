@@ -13,7 +13,7 @@ function UserInfo({user, time}) {
     if(user.profile_image) {
         userIcon = (
             <div className='userModIcon' onClick={profilePage}>
-                <img className='userModProfileImage' src={user.profile_image}/>
+                <img className='userModProfileImage' src={user.profile_image} onError={e => e.target.src = "https://connectidbucket.s3.amazonaws.com/No_image_available.png"}/>
             </div>
         )
     }

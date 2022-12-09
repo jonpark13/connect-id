@@ -9,7 +9,6 @@ function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
   const dispatch = useDispatch()
   // const [showModal, setShowModal] = useState(false);
   const [postBody, setPostBody] = useState(postInfo.post_body)
-  const [postImages, setPostImages] = useState(postInfo.images)
   const [imageLoading, setImageLoading] = useState(false);
 
   const handleEdit = async (e) => {
@@ -19,11 +18,11 @@ function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
         post_body: postBody,
         images: postInfo.images
     }
-    console.log(payload.images, "PRIOR")
+    // console.log(payload.images, "PRIOR")
 
     let images = document.querySelector(".imagesInputEdit")
     let formData
-    console.log(images.files.length)
+    // console.log(images.files.length)
     if (images.files.length) {
         formData = new FormData();
         for (const img of images.files) {
@@ -41,7 +40,7 @@ function EditPostModal({showModal, setShowModal, postInfo, fetchData}) {
         payload.images = (payload.images.concat(dataToArr)).filter(e => e)
         }
       }
-    console.log(payload.images, "POST")
+    // console.log(payload.images, "POST")
     dispatch(postActions.editUserPost(payload, postInfo.id))
     fetchData()
     // document.body.style.overflow = 'scroll'

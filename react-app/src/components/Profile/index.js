@@ -181,7 +181,7 @@ function Profile() {
         <div className='userPageInfoCard'>
           <div className='userPageContainerTop'>
             <div className='userPageContainerSemiTop'>
-              {(!!userPage.profile_image && <img className='userImage' src={userPage.profile_image} />) || <div className='userImageDummy'><i className="fa-regular fa-circle-user" /></div>}
+              {(!!userPage.profile_image && <img className='userImage' src={userPage.profile_image} onError={e => e.target.src = "https://connectidbucket.s3.amazonaws.com/No_image_available.png"}/>) || <div className='userImageDummy'><i className="fa-regular fa-circle-user" /></div>}
             </div>
             {usertag === session.user.id.toString() && <EditUser user={session.user}/>}
           </div>
@@ -223,7 +223,7 @@ function Profile() {
           <div className='sideContainerTitle'>
           People also viewed
           </div>
-            {!!users.users && shuffle(users.users.filter(u => u.id != usertag)).map(e => <div className='sideContainerItem'><UserInfo user={e} time={null}/></div>).slice(1,7)}
+            {!!users.users && shuffle(users.users.filter(u => ((u.id.toString() !== usertag.toString()) && u.id.toString() !== session.user.id.toString()))).map(e => <div className='sideContainerItem'><UserInfo user={e} time={null}/></div>).slice(1,7)}
         </div>
       </div>
     </div>

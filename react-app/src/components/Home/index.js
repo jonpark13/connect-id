@@ -81,7 +81,7 @@ function Home() {
         }
       }
     }
-    if (interval < 0) return "now"
+    if (interval < 0 || (interval === 0 && intervalType === "second")) return "now"
     if (interval > 1 || interval === 0) {
       intervalType += 's';
     }
@@ -96,7 +96,7 @@ function Home() {
         <div className='userContainer'>
           <div className='userContainerTop'>
             <div className='userContainerSemiTop' onClick={() => history.push(`/id/${session.user.id}`)}>
-              {(!!session.user.profile_image && <img className='userContainerImage' src={session.user.profile_image} />) || <div className='userContainerImageDummy'><i className="fa-regular fa-circle-user" /></div>}
+              {(!!session.user.profile_image && <img className='userContainerImage' src={session.user.profile_image} onError={e => e.target.src = "https://connectidbucket.s3.amazonaws.com/No_image_available.png"}/>) || <div className='userContainerImageDummy'><i className="fa-regular fa-circle-user" /></div>}
             </div>
           </div>
           <div className='userContainerBot'>

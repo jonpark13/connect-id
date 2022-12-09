@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
 import {Modal} from "../../context/Modal";
 import './EditPostForm.css'
 
 
 function EditCommentModal({commentInfo, session, fetchData}) {
-    const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false);
     const [commentBody, setCommentBody] = useState(commentInfo.comment)
     const [errors, setErrors] = useState({})
@@ -17,7 +15,7 @@ function EditCommentModal({commentInfo, session, fetchData}) {
             user_id: session.user.id,
             post_id: commentInfo.post_id
         }
-        console.log(payload)
+        // console.log(payload)
         const response = await fetch(`/api/comments/${commentId}`, {
             method: 'PUT',
             headers: {
@@ -35,7 +33,7 @@ function EditCommentModal({commentInfo, session, fetchData}) {
             // document.body.style.overflow = 'scroll'
             setShowModal(false)
         }
-        console.log(resData, "COMMENT RESULTS")
+        // console.log(resData, "COMMENT RESULTS")
     }
 
     useEffect(() => {

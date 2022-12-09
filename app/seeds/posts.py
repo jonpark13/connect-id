@@ -41,7 +41,7 @@ def seed_posts():
     post8 = Post(
         user_id = 3,
         post_body = "Here are some pictures of our recent visit to Europa",
-        images = "[https://www.nasa.gov/sites/default/files/styles/image_card_4x3_ratio/public/thumbnails/image/trappist1-during-press-conference-web.gif,https://www.nasa.gov/sites/default/files/styles/image_card_4x3_ratio/public/316542main_0712_0025.jpg,https://photojournal.jpl.nasa.gov/thumb/PIA17004.gif]"
+        images = "[https://www.nasa.gov/sites/default/files/styles/image_card_4x3_ratio/public/thumbnails/image/trappist1-during-press-conference-web.gif, https://www.nasa.gov/sites/default/files/styles/image_card_4x3_ratio/public/316542main_0712_0025.jpg, https://photojournal.jpl.nasa.gov/thumb/PIA17004.gif]"
     )
     post9 = Post(
         user_id = 9,

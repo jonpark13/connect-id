@@ -89,7 +89,7 @@ def seed_users():
         education = "Harvard University.Law.1973 - 1975",
         location = "Seattle, Washington",
         employment = "Co-founder.Bill & Melinda Gates Foundation.2000 - Present,Co-founder and CEO.Microsoft.1975 - 2000",
-        profile_image = "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcQi4a8NzG1ocCbgUUZxxDLocQwDQvhod4gHC3aRRg3juK0LDsZHECn7AwMJq8WUmPFLai9IJhY5YWNLRys"
+        profile_image = "https://t1.gstatic.com/licensed-image?q=tbn:ANd9GcQi4a8NzG1ocCbgUUZxxDLocQwDQvhod4gHC3aRRg3juK0LDsZHECn7AwMJq8WUmPFLai9IJhY5YWNLRys"
     )
     bat = User(
         first_name='Bruce',
