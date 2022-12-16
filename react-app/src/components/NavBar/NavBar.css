@@ -119,6 +119,108 @@
     width: 250px;
     min-height: 100px;
 }
+.searchDropdownContainer {
+    box-sizing: border-box;
+    display: flex;
+    cursor:auto;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    top: 50px;
+    box-shadow: 0px 0px 1px rgb(45, 45, 45);
+    border-radius: 4px;
+    width: 400px;
+    min-height: 100px;
+    z-index: 4;
+}
+
+.searchFiller {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 5px 5px;
+}
+
+.userSearchContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 5px 5px;
+}
+
+.userSearchContainerInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:100%;
+    padding: 5px 5px;
+    
+}
+
+.userSearchContainer:hover {
+    background-color: rgb(233, 233, 233);
+    cursor: pointer;
+}
+
+.userSearchContainer > * {
+    margin: 0px 8px;
+    font-size: 0.8rem
+}
+
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(241, 255, 253);
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.searchBar:focus-within {
+    border: black 1px solid;
+    flex-grow: 1;
+}
+
+.searchBar > i {
+    margin: 0px 10px;
+    font-size: 0.8rem;
+}
+
+.searchBar > input {
+    border: none;
+    background-color: none;
+    background: none;
+}
+
+.searchBar > input:focus {
+    border: none;
+    outline: none;
+
+}
+
+.searchName {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size:1rem;
+    font-weight: bold;
+}
+
+.searchDesc {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size:0.8rem;
+    color:grey;
+    flex-grow: 1
+}
 
 .joinNow:hover{
     background-color: rgb(225, 225, 225);

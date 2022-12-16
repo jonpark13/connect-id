@@ -2,6 +2,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import {NavLink, useHistory, useLocation} from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import SearchBar from './SearchBar';
 import UserOptions from './UserOptions';
 
 const NavBar = () => {
@@ -189,6 +190,7 @@ const NavBar = () => {
                 !user.user && <div style={{fontSize:'35px', fontWeight:"bolder", marginRight:'5px', color: "rgb(0,145,164)"}}>Connect</div>
               }
               <img onClick={() => !user.user ? null : history.push('/feed')} className={`navLogo${!user.user ? "" : " hovLink"}`} src={'/connectidLogo.png'}/>
+              {!!user.user && <SearchBar />}
               </div>
               <div className='navBar rightNav'>
                 {userStatus} 
