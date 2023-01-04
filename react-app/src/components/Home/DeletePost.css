@@ -1,0 +1,55 @@
+.deletePostHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px 20px;
+    border-bottom: rgb(204, 204, 204) solid 1px;
+    position: relative;
+}
+
+.deletePostButton {
+    background-color: rgb(0,145,164);
+    border-radius: 20px;
+    border:none;
+    outline: none;
+    color:white;
+    padding: 0px 20px;
+    height:40px;
+    margin: 5px 10px;
+}
+
+.deletePostButton:hover {
+    cursor: pointer;
+    background-color: rgb(0, 118, 134);
+}
+
+.txt {
+    color: rgb(140, 140, 140);;
+}
+
+.cancelDeleteButton {
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    border:solid 1px rgb(141, 140, 140);
+    outline: none;
+    color:rgb(141, 140, 140);
+    padding: 0px 20px;
+    height:40px;
+    margin: 5px 10px;
+}
+
+.cancelDeleteButton:hover {
+    cursor: pointer;
+    background-color: rgb(233, 233, 233);
+}
+
+.deleteOptions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 60px
+}
