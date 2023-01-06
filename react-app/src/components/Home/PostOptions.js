@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as postActions from '../../store/post';
+import DeletePostModal from "./DeletePostModal";
 import EditPostModal from './PostModal';
 
 function PostOptions({session, postInfo, fetchData}) {
@@ -48,14 +49,15 @@ function PostOptions({session, postInfo, fetchData}) {
           { session.user.id === postInfo.user_info.id &&
             <>
               <EditPostModal showModal={showModal} setShowModal={setShowModal} postInfo={postInfo} fetchData={fetchData}/>
-              <button className="modalButton" onClick={
+              {/* <button className="modalButton" onClick={
                 (e) => {
                     handleDeletePost(e, postInfo.id);
                     fetchData()
                 }
               }><i style={{margin:"12px", width:"18px"}} className="fa-regular fa-trash-can" />
                   Delete Post
-              </button>
+              </button> */}
+              <DeletePostModal postInfo={postInfo} handleDeletePost={handleDeletePost} fetchData={fetchData}/>
             </>
           }
         </div>
