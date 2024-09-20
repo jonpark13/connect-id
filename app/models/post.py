@@ -11,7 +11,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     post_body = db.Column(db.Text)
     images = db.Column(db.Text)
-    created_on = db.Column(db.DateTime, server_default=db.func.now(), default=datetime.utcnow())
+    created_on = db.Column(db.DateTime, default=db.func.now())
     updated_on = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     user = db.relationship("User", back_populates="posts")

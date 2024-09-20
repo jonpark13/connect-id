@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from sqlalchemy import union
+from sqlalchemy import union, or_
 from flask_login import login_required, current_user
 from app.models import db,User
 from app.forms import UserUpdateForm
@@ -94,8 +94,9 @@ def search_users():
     Query for all relevant users from search query
     """
     args = request.args.get('val')
-    users_fname = User.query.filter(User.first_name.like(f'%{args}%')).all()
-    users_lname = User.query.filter(User.last_name.like(f'%{args}%')).all()
-    users_joined = users_fname + users_lname
+    # users_fname = User.query.filter(User.first_name.like(f'%{args}%')).all()
+    # users_lname = User.query.filter(User.last_name.like(f'%{args}%')).all()
+    # users_joined = users_fname + users_lname
+    users_joined = User.query.filter(or_(User.first_name.like(f'%{args}%'),User.last_name.like(f'%{args}%')))
     user_set = set(users_joined)
     return {"users": [user.to_dict() for user in user_set]}

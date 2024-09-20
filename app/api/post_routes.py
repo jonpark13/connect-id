@@ -195,3 +195,81 @@ def get_post(id):
         return post.to_dict(comments=True,likes=True)
     else:
         return {"message": f"The Post at id:{id} does not exist "}
+
+# @post_routes.route('/testa')
+# @login_required
+# def get_test():
+#     """
+#     Query for an existing post usings its id and returning the post information as a dictionary
+#     """
+#     try:
+#         # test_thing = Post.query.filter(Post.id >= 2).paginate(page=1, per_page=2)
+#         # print(test_thing, "THIS")
+
+#         page = int(request.args.get('page', 1))
+#         per_page = int(request.args.get('per_page', 10))
+#         search = request.args.get('qs')
+#         print(search, "SEARCH")
+#         cases = Post.query
+
+#         if search:
+#             cases = cases.filter(Post.post_body.ilike(f'%{search}%'))
+
+#         # cases = cases.filter(Post.id >= 2)
+
+#         # cases = cases.filter(Post.id <= 5)
+
+#         cases = cases.order_by(Post.id.desc()).all()
+        
+#         cases_list = [case.to_dict() for case in cases]
+#         print(cases_list, page, per_page, 'SEARCH2')
+
+#         # test = Post.paginate(Post.query.all())
+
+#         # Validate pagination parameters
+#         if page < 1 or per_page < 1:
+#             raise ValueError('Invalid pagination parameters')
+
+#         # Apply filters
+#         # filtered_cases = filter(lambda p: p['price'] >= min_price and p['price'] <= max_price, posts)
+#         # if category:
+#         #     filtered_cases = filter(lambda p: p['category'] == category, filtered_cases)
+
+#         # Apply sorting
+#         # sorted_cases = sorted(posts, key=lambda p: p[sort_by], reverse=sort_order.lower() == 'asc')
+
+#         # Validate page number
+#         total_cases = len(cases)
+
+#         if total_cases == 0:
+#             raise ValueError('0 matching cases')
+
+#         total_pages = (total_cases + per_page - 1) // per_page
+#         print(page, total_cases, total_pages, "SEARCH3")
+#         if page > total_pages:
+#             raise ValueError('Invalid page number')
+
+#         # # Paginate the results
+#         start_index = (page - 1) * per_page
+#         end_index = start_index + per_page
+#         paginated_cases = cases_list[start_index:end_index]
+
+#         # return jsonify({'cases': [case.to_dict() for case in paginated_cases],
+#         #     'page': page,
+#         #     'per_page': per_page,
+#         #     'total_pages': total_pages,
+#         #     'total_cases': total_cases,
+#         # })
+
+#         if posts:
+#             return jsonify({
+#             'cases': paginated_cases,
+#             'total_cases': total_cases,
+#             'total_pages': total_pages,
+#             'page': page,
+#             'per_page': per_page
+#             })
+#         else:
+#             return {"message": f"The Post at id:{id} does not exist "}
+#     except ValueError as e:
+#         return jsonify({'error': str(e)}), 400
