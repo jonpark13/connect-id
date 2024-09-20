@@ -230,7 +230,7 @@ function Profile() {
           </div>
             {!!users.users && handleShuffle(users)}
         </div> */}
-        {!!users.users &&<SideList items={users.users.filter(u => u.id !== session.user.id)} usertag={usertag}/>}
+        {!!users.users && <SideList items={users.users.filter(u => u.id !== session.user.id)} usertag={usertag}/>}
       </div>
     </div>
 );
