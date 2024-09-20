@@ -89,6 +89,41 @@ function Home() {
     return interval + ' ' + intervalType;
   };
 
+  // const testB = async () => {
+  //   const response = await fetch('/api/posts/testa?');
+  //   const responseData = await response.json();
+  //   console.log(responseData);
+  // }
+
+  // const testB2 = async () => {
+  //   const response = await fetch('/api/posts/testa?qs=test');
+  //   const responseData = await response.json();
+  //   console.log(responseData);
+  // }
+
+  // const testA = () => {
+  //   let url = "/api/cases/main?"
+  //   let qObj = {'page':null, 'query':'test', 'doctor':1}
+  //   if(true){
+  //     let sub = ''
+  //     let count = 0
+  //     let newArr = Object.keys(qObj)
+  //     for(let x in newArr){
+  //       if(qObj[newArr[x]]) {
+  //         if(count === 0){
+  //           sub = sub.concat(`${newArr[x]}=${qObj[newArr[x]]}`)
+  //           count++
+  //         }
+  //         else {
+  //           sub = sub.concat(`&${newArr[x]}=${qObj[newArr[x]]}`)
+  //         }
+  //       }
+  //     }
+  //     url = url.concat(sub)
+  //     console.log(url, 'url')
+  //   }
+  // }
+
   return (
     <div className='homePage'> 
       <div className='homeContent'>
@@ -113,6 +148,16 @@ function Home() {
           </div>
         </div>
         <div className='aboutContainer'>
+          {/* <button 
+          onClick={() => testB()}
+          style={{ display:"flex",textAlign:"center",fontSize:"0.8 rem", margin:"10px"}}>test</button>
+          <button 
+          onClick={() => testB2()}
+          style={{ display:"flex",textAlign:"center",fontSize:"0.8 rem", margin:"10px"}}>test2</button>
+          <button 
+          onClick={() => testA()}
+          style={{ display:"flex",textAlign:"center",fontSize:"0.8 rem", margin:"10px"}}>test2
+          </button> */}
           <div style={{ fontSize:"1rem",fontWeight:"bold", marginTop:"10px"}}>About Connectid</div>
           <div style={{ display:"flex",textAlign:"center",fontSize:"0.8 rem", margin:"10px"}}>
           Connectid is a clone of the largest professional networking website, LinkedIn. Like LinkedIn, users who are serious about networking while maintaining a professional environment can connect and share messages, ideas and their history with their fellow colleagues.

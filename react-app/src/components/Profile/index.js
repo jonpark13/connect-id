@@ -6,6 +6,7 @@ import * as postActions from '../../store/post'
 import EditUser from '../EditUser';
 import PostViewModal from '../PostView';
 import UserInfo from '../UserInfo';
+import SideList from './SideList';
 import './Profile.css'
 
 
@@ -165,6 +166,10 @@ function Profile() {
     
   }
 
+  // const handleShuffle = useCallback((list) => {
+  //   return shuffle(list.users.filter(u => ((u.id.toString() !== usertag.toString()) && u.id.toString() !== session.user.id.toString()))).map(e => <div className='sideContainerItem'><UserInfo user={e} time={null}/></div>).slice(1,7)
+  // }, [list])
+
   useEffect(() => {
     fetchData(usertag);
     fetchOthers()
@@ -219,12 +224,13 @@ function Profile() {
             </div>
           </div>
         </div>
-        <div className='sideContainer'>
+        {/* <div className='sideContainer'>
           <div className='sideContainerTitle'>
           People also viewed
           </div>
-            {!!users.users && shuffle(users.users.filter(u => ((u.id.toString() !== usertag.toString()) && u.id.toString() !== session.user.id.toString()))).map(e => <div className='sideContainerItem'><UserInfo user={e} time={null}/></div>).slice(1,7)}
-        </div>
+            {!!users.users && handleShuffle(users)}
+        </div> */}
+        {!!users.users &&<SideList items={users.users.filter(u => u.id !== session.user.id)} usertag={usertag}/>}
       </div>
     </div>
 );
